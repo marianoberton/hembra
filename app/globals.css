@@ -2,12 +2,24 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --accent: #ffff00;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -22,5 +34,266 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+.text-display {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+}
+
+.text-headline {
+  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 108%;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.text-body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+}
+
+.text-caption {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--gray-600);
+  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+}
+
+/* Grid System */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+}
+
+/* Card Components */
+.card {
+  background: var(--background);
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.02);
+}
+
+/* Accent Elements */
+.accent-bg {
+  background-color: var(--accent);
+  color: var(--foreground);
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+/* Layout Utilities */
+.full-height {
+  min-height: 100vh;
+}
+
+.section-padding {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 0;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Images */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Image Card Specific Styles */
+.image-card-container {
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-card-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.btn-primary:hover {
+  background-color: var(--gray-800);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: var(--foreground);
+}
+
+.btn-accent:hover {
+  background-color: #e6e600;
+}
+
+/* PROWL Card Styles */
+.prowl-label {
+  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 102%;
+  text-align: start;
+  color: #333333;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.prowl-label-white {
+  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 102%;
+  text-align: start;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.prowl-arrow {
+  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 102%;
+  text-align: start;
+  color: #000000;
+  text-decoration: none;
+  text-transform: none;
+  transition: opacity 0.2s ease;
+}
+
+.prowl-arrow-white {
+  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 102%;
+  text-align: start;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: none;
+  transition: opacity 0.2s ease;
+}
+
+.prowl-arrow:hover {
+  opacity: 0.8;
+}
+
+.prowl-arrow-white:hover {
+  opacity: 0.8;
+}
+
+/* CardTitleSubtitle Specific Styles */
+.card-title-subtitle-main {
+  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 95%;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.card-title-subtitle-description {
+  font-family: "Neue Haas Grotesk Display Pro 56 Roman Italic", "Neue Haas Grotesk Display Pro 56 Roman Italic Placeholder", sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 102%;
+  text-align: center;
+  color: rgb(51, 51, 51);
+  text-decoration: underline;
 }
