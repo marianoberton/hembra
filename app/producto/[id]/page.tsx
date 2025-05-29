@@ -3,12 +3,6 @@ import ProductDetail from '../../components/ProductDetail';
 import Header from '../../components/Header';
 import { TiendanubeProduct } from '../../../types/tiendanube';
 
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
-}
-
 // Ayuda a Next.js a identificar las rutas dinámicas en tiempo de build
 export async function generateStaticParams() {
   // Idealmente, aquí deberías hacer un fetch de todos los IDs de productos
@@ -23,7 +17,8 @@ export async function generateStaticParams() {
   return []; 
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+// Define el tipo de los parámetros directamente en la función del componente
+export default async function ProductPage({ params }: { params: { id: string } }) {
   let product: TiendanubeProduct | null = null;
   let error: string | null = null;
 
