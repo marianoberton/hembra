@@ -9,6 +9,20 @@ interface ProductPageProps {
   };
 }
 
+// Ayuda a Next.js a identificar las rutas dinámicas en tiempo de build
+export async function generateStaticParams() {
+  // Idealmente, aquí deberías hacer un fetch de todos los IDs de productos
+  // para que Next.js pueda pre-renderizar cada página de producto.
+  // Por ahora, devolvemos un array vacío o con algunos IDs de ejemplo
+  // si tienes muchos productos, considera no pre-renderizarlos todos.
+  
+  // Ejemplo: si quieres pre-renderizar los productos con ID 1, 2, 3
+  // return [{ id: '1' }, { id: '2' }, { id: '3' }];
+  
+  // Si no quieres pre-renderizar ninguna página de producto en el build:
+  return []; 
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
   let product: TiendanubeProduct | null = null;
   let error: string | null = null;
