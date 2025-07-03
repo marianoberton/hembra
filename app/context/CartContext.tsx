@@ -97,8 +97,10 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 
 function calculateTotals(state: CartState): CartState {
   const total = state.items.reduce((sum, item) => {
-    const price = item.product.promotional_offer?.price || item.product.price;
-    return sum + (price * item.quantity);
+    const firstVariant = item.product.variants?.[0];
+    const price = firstVariant?.promotional_price || firstVariant?.price || '0';
+    const numPrice = typeof price === 'string' ? parseFloat(price) : price;
+    return sum + (numPrice * item.quantity);
   }, 0);
 
   const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0);
@@ -148,7 +150,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const getItemPrice = (item: CartItem): number => {
-    return item.product.promotional_offer?.price || item.product.price;
+    const firstVariant = item.product.variants?.[0];
+    const price = firstVariant?.promotional_price || firstVariant?.price || '0';
+    return typeof price === 'string' ? parseFloat(price) : price;
   };
 
   return (
