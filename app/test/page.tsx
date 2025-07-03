@@ -81,6 +81,36 @@ export default async function TestPage() {
           </p>
         </div>
 
+        {/* Auth Error Helper */}
+        {(results.products?.error?.includes('401') || 
+          results.categories?.error?.includes('401') || 
+          results.store?.error?.includes('401')) && (
+          <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                <span className="text-red-400 text-xl">🔒</span>
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-red-800">
+                  Error de Autenticación Detectado
+                </h3>
+                <p className="mt-1 text-sm text-red-700">
+                  Tu token de acceso no es válido o ha expirado. Necesitas configurar correctamente 
+                  la autenticación OAuth con TiendaNube.
+                </p>
+                <div className="mt-3">
+                  <a
+                    href="/auth/setup"
+                    className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  >
+                    🔧 Configurar Autenticación
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Test Productos */}
           <TestCard

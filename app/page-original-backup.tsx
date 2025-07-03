@@ -23,7 +23,7 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#e9f5db'}}>
+    <div className="min-h-screen bg-white">
       {/* Hero Section - Full Width */}
       <section>
         {/* Full Width Wrapper */}
@@ -39,8 +39,8 @@ export default async function HomePage() {
                 cardNumber={1}
                 label="Studio"
                 title="PROWL is an industrial design studio on a mission to help companies build a regenerative future."
-                backgroundColor="#b3c1a2"
-                textColor="#718355"
+                backgroundColor="bg-gray-50"
+                textColor="text-black"
                 minHeight="min-h-[240px]"
                 showArrow={true}
               />
@@ -65,8 +65,8 @@ export default async function HomePage() {
                 badge="NEW"
                 label="Projections"
                 href="/projections"
-                backgroundColor="#cedbbf"
-                textColor="#7c8e60"
+                backgroundColor="#FFFF00"
+                textColor="text-black"
                 minHeight="min-h-[280px]"
               />
 
@@ -78,7 +78,7 @@ export default async function HomePage() {
                 ]}
                 label="Work"
                 href="/work"
-                backgroundColor="#a8836d"
+                backgroundColor="bg-black"
                 showArrow={true}
               />
 
@@ -97,10 +97,10 @@ export default async function HomePage() {
               <TextCard
                 cardNumber={6}
                 content="We begin with the end.™"
-                backgroundColor="#fefcfb"
-                textColor="#7c8e60"
+                backgroundColor="bg-white border border-gray-200"
+                textColor="text-black"
                 minHeight="min-h-[160px]"
-                className="italic text-center border"
+                className="italic text-center"
                 showArrow={false}
               />
 
@@ -123,7 +123,7 @@ export default async function HomePage() {
                 ]}
                 label="Work"
                 href="/work"
-                backgroundColor="#7c8e60"
+                backgroundColor="bg-black"
                 showArrow={true}
               />
 
@@ -132,8 +132,8 @@ export default async function HomePage() {
                 cardNumber={9}
                 title="Winter 2022"
                 subtitle="Waste Source"
-                backgroundColor="#a2ae92"
-                textColor="#718355"
+                backgroundColor="bg-yellow-400"
+                textColor="text-black"
                 minHeight="min-h-[200px]"
               />
 
@@ -154,8 +154,8 @@ export default async function HomePage() {
                 title="Winter 2022"
                 subtitle="Waste Source"
                 description="Shifting the way we think about 'waste'"
-                backgroundColor="#909b82"
-                textColor="#fefcfb"
+                backgroundColor="#FFFF00"
+                textColor="text-black"
               />
 
               {/* 12. Collaboration Text */}
@@ -163,8 +163,8 @@ export default async function HomePage() {
                 cardNumber={12}
                 title="Collaborate to be stronger, together ⎯ Strategic partnerships increase the capacity to create the regenerative future."
                 label="Studio"
-                backgroundColor="#ae8b77"
-                textColor="#fefcfb"
+                backgroundColor="bg-gray-50"
+                textColor="text-black"
                 showArrow={true}
               />
 
@@ -181,9 +181,9 @@ export default async function HomePage() {
               />
 
               {/* 14. Marquesina */}
-              <div className="h-24 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#94a27f'}}>
-                <p className="text-caption" style={{color: '#fefcfb'}}>Marquesina</p>
-                <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
+              <div className="bg-gray-100 h-24 rounded-xl flex items-center justify-center">
+                <p className="text-caption text-gray-500">Marquesina</p>
+                <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-bold z-20">
                   14
                 </div>
               </div>
@@ -194,13 +194,13 @@ export default async function HomePage() {
                 items={[
                   { text: "HTC Vive Flow" }
                 ]}
-                backgroundColor="#718355"
+                backgroundColor="bg-black"
               />
 
               {/* 16. Video Card */}
-              <div className="h-48 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#cedbbf'}}>
-                <p className="text-caption" style={{color: '#7c8e60'}}>Video Card</p>
-                <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
+              <div className="bg-gray-100 h-48 rounded-xl flex items-center justify-center relative">
+                <p className="text-caption text-gray-500">Video Card</p>
+                <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-bold z-20">
                   16
                 </div>
               </div>
@@ -209,8 +209,6 @@ export default async function HomePage() {
               <TextCard
                 cardNumber={17}
                 title="The partnership between PROWL Studio and Parallel allows both of our businesses to bring our clients further, faster."
-                backgroundColor="#b3c1a2"
-                textColor="#718355"
               />
 
               {/* 18. Work Image */}
@@ -221,9 +219,9 @@ export default async function HomePage() {
               />
 
               {/* 19. Marquesina */}
-              <div className="h-24 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#8e9d75'}}>
-                <p className="text-caption" style={{color: '#fefcfb'}}>Marquesina</p>
-                <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#ab8773', color: '#fefcfb'}}>
+              <div className="bg-gray-100 h-24 rounded-xl flex items-center justify-center relative">
+                <p className="text-caption text-gray-500">Marquesina</p>
+                <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-bold z-20">
                   19
                 </div>
               </div>
@@ -234,8 +232,6 @@ export default async function HomePage() {
                 title="Fall 2022"
                 subtitle="Biome Futures"
                 description="In Collaboration with Biome"
-                backgroundColor="#b2917e"
-                textColor="#fefcfb"
               />
 
               {/* 21. Work Image */}
@@ -249,8 +245,6 @@ export default async function HomePage() {
               <TextCard
                 cardNumber={22}
                 title="News"
-                backgroundColor="#a2ae92"
-                textColor="#718355"
               />
 
               {/* 23. Work Image */}
@@ -272,7 +266,7 @@ export default async function HomePage() {
                   { text: "Haworth" }
                 ]}
                 href="/work"
-                backgroundColor="#b18f7c"
+                backgroundColor="bg-black"
               />
 
               {/* 25. Work Image */}
@@ -286,8 +280,6 @@ export default async function HomePage() {
               <TextCard
                 cardNumber={26}
                 title="News"
-                backgroundColor="#909b82"
-                textColor="#fefcfb"
               />
 
               {/* 27. Work Image */}
@@ -303,8 +295,6 @@ export default async function HomePage() {
                 title="Winter 2022"
                 subtitle="The New Comfort"
                 description="A future of resilience amidst rapid change."
-                backgroundColor="#cedbbf"
-                textColor="#7c8e60"
               />
 
               {/* 29. ByBorre */}
@@ -313,7 +303,7 @@ export default async function HomePage() {
                 items={[
                   { text: "ByBorre" }
                 ]}
-                backgroundColor="#87986a"
+                backgroundColor="bg-black"
               />
 
               {/* 30. Work Image */}
@@ -327,8 +317,6 @@ export default async function HomePage() {
               <TextCard
                 cardNumber={31}
                 title="We are extraordinarily excited to announce that we have moved into Building 12, which is part of the larger Pier 70 project in San Francisco's Dogpatch neighborhood. This space will include an entire prototyping lab, micro material library, and other features that will enable us to do our best work and grow as a team."
-                backgroundColor="#b59582"
-                textColor="#7c8e60"
               />
 
               {/* 32. Work Image */}
@@ -344,7 +332,7 @@ export default async function HomePage() {
                 items={[
                   { text: "Gantri Focal" }
                 ]}
-                backgroundColor="#718355"
+                backgroundColor="bg-black"
               />
 
               {/* 34. Work Image */}
@@ -361,11 +349,11 @@ export default async function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12" style={{backgroundColor: '#fefcfb'}}>
+      <footer className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Client Logos Placeholder */}
-          <div className="h-24 rounded-xl mb-8 flex items-center justify-center" style={{backgroundColor: '#a2ae92'}}>
-            <p className="text-caption" style={{color: '#718355'}}>Client Logos</p>
+          <div className="bg-gray-100 h-24 rounded-xl mb-8 flex items-center justify-center">
+            <p className="text-caption text-gray-500">Client Logos</p>
           </div>
           
           {/* Footer Links */}
@@ -374,15 +362,13 @@ export default async function HomePage() {
             <div className="flex space-x-3">
               <a 
                 href="https://instagram.com" 
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-                style={{backgroundColor: '#b3c1a2', color: '#fefcfb'}}
+                className="bg-gray-100 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
               >
                 IG
               </a>
               <a 
                 href="https://linkedin.com" 
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-                style={{backgroundColor: '#b3c1a2', color: '#fefcfb'}}
+                className="bg-gray-100 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
               >
                 LI
               </a>
@@ -391,8 +377,7 @@ export default async function HomePage() {
             {/* CTA */}
             <a 
               href="/contacto" 
-              className="px-6 py-2 rounded-full text-sm font-medium transition-colors"
-              style={{backgroundColor: '#a8836d', color: '#fefcfb'}}
+              className="bg-yellow-400 text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-yellow-300 transition-colors"
             >
               Get in touch
             </a>
@@ -404,11 +389,11 @@ export default async function HomePage() {
       {error && (
         <section className="py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-lg p-6 text-center border" style={{backgroundColor: '#ede6e2', borderColor: '#a8836d'}}>
-            <h2 className="text-lg font-semibold mb-2" style={{color: '#a8836d'}}>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+            <h2 className="text-lg font-semibold text-red-800 mb-2">
               Error al cargar productos
             </h2>
-            <p style={{color: '#ab8773'}}>{error}</p>
+            <p className="text-red-600">{error}</p>
           </div>
           </div>
         </section>

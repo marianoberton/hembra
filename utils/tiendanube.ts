@@ -12,10 +12,13 @@ export async function tiendanubeFetch<T = any>(
     throw new Error('Faltan las variables de entorno TN_STORE_ID o TN_ACCESS_TOKEN');
   }
 
-  const url = `https://api.tiendanube.com/v1/${STORE_ID}/${endpoint}`;
+  // Usar la versión oficial 2025-03 según documentación
+  const url = `https://api.tiendanube.com/2025-03/${STORE_ID}/${endpoint}`;
   const headers = {
+    // Usar 'Authentication' según documentación oficial (no 'Authorization')
     'Authentication': `bearer ${TN_ACCESS_TOKEN}`,
-    'User-Agent':     'MiAppNextJS/1.0',
+    // User-Agent obligatorio según formato especificado
+    'User-Agent':     'tienda_demo (marianoberton.ds@gmail.com)',
     'Content-Type':   'application/json',
     ...(options.headers || {})
   };

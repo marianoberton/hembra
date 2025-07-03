@@ -14,6 +14,39 @@
   --gray-700: #404040;
   --gray-800: #262626;
   --gray-900: #171717;
+  
+  /* Nueva paleta principal - Verdes orgánicos */
+  --nyanza: #e9f5db;
+  --tea-green: #cedbbf;
+  --sage: #b3c1a2;
+  --sage-alt: #a2ae92;
+  --moss-green: #909b82;
+  --moss-green-alt: #94a27f;
+  --moss-green-alt2: #8e9d75;
+  --moss-green-alt3: #87986a;
+  --moss-green-alt4: #7c8e60;
+  --reseda-green: #718355;
+  
+  /* Nueva paleta de contraste - Beavers/Tierras */
+  --beaver: #a8836d;
+  --beaver-alt: #ab8773;
+  --beaver-alt2: #ae8b77;
+  --beaver-alt3: #b18f7c;
+  --beaver-alt4: #b2917e;
+  --beaver-alt5: #b3927f;
+  --beaver-alt6: #b59582;
+  --beaver-alt7: #b69785;
+  --beaver-alt8: #b99b89;
+  --warm-white: #fefcfb;
+  
+  /* Paleta orgánica para fondos y textos */
+  --bg-primary: var(--nyanza);
+  --bg-secondary: var(--tea-green);
+  --bg-accent: var(--sage);
+  --bg-contrast: var(--beaver);
+  --text-primary: var(--reseda-green);
+  --text-secondary: var(--moss-green-alt4);
+  --text-accent: var(--beaver-alt3);
 }
 
 @theme inline {
@@ -38,6 +71,47 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Nueva paleta - Clases utilitarias */
+.bg-organic-light {
+  background-color: var(--nyanza);
+}
+
+.bg-organic-medium {
+  background-color: var(--tea-green);
+}
+
+.bg-organic-accent {
+  background-color: var(--sage);
+}
+
+.bg-organic-contrast {
+  background-color: var(--beaver);
+}
+
+.bg-organic-warm {
+  background-color: var(--warm-white);
+}
+
+.text-organic-primary {
+  color: var(--reseda-green);
+}
+
+.text-organic-secondary {
+  color: var(--moss-green-alt4);
+}
+
+.text-organic-accent {
+  color: var(--beaver-alt3);
+}
+
+.border-organic-primary {
+  border-color: var(--sage);
+}
+
+.border-organic-accent {
+  border-color: var(--beaver-alt2);
 }
 
 /* Typography */
@@ -296,4 +370,52 @@ body {
   text-align: center;
   color: rgb(51, 51, 51);
   text-decoration: underline;
+}
+
+/* Tienda font utilities */
+.font-serif {
+  font-family: var(--font-lora), serif;
+}
+
+.font-sans {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Paleta orgánica - Nuevas cards de texto */
+.card-organic {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.card-organic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(113, 131, 85, 0.15);
+}
+
+.card-organic-text {
+  background: linear-gradient(135deg, var(--tea-green) 0%, var(--sage) 100%);
+  color: var(--reseda-green);
+}
+
+.card-organic-accent {
+  background: linear-gradient(135deg, var(--beaver-alt2) 0%, var(--beaver) 100%);
+  color: var(--warm-white);
+}
+
+.card-organic-light {
+  background: linear-gradient(135deg, var(--nyanza) 0%, var(--tea-green) 100%);
+  color: var(--moss-green-alt4);
+}
+
+/* Gradient overlays para cards */
+.gradient-organic-primary {
+  background: linear-gradient(135deg, var(--nyanza) 0%, var(--tea-green) 50%, var(--sage) 100%);
+}
+
+.gradient-organic-contrast {
+  background: linear-gradient(135deg, var(--beaver-alt3) 0%, var(--beaver) 50%, var(--beaver-alt2) 100%);
+}
+
+.gradient-organic-subtle {
+  background: linear-gradient(135deg, var(--sage) 0%, var(--moss-green-alt) 100%);
 }
