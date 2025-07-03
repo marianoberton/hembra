@@ -13,11 +13,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [selectedImage, setSelectedImage] = useState<number>(0);
   const [quantity, setQuantity] = useState<number>(1);
 
-  const formatPrice = (price: number): string => {
+  const formatPrice = (price: string | number): string => {
+    const numPrice = typeof price === 'string' ? parseFloat(price) : price;
     return new Intl.NumberFormat('es-AR', {
       style: 'currency',
       currency: 'ARS'
-    }).format(price);
+    }).format(numPrice);
   };
 
   const getProductName = (): string => {
@@ -36,6 +37,15 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
   const images = product.images || [];
   const mainImage = images.length > 0 ? images[selectedImage].src : '/placeholder-product.jpg';
+
+  // Obtener la primera variante para precios
+  const firstVariant = product.variants?.[0];
+  const price = firstVariant?.price || '0';
+  const promotionalPrice = firstVariant?.promotional_price;
+  const stock = firstVariant?.stock || 0;
+  const stockManagement = firstVariant?.stock_management || false;
+  const sku = firstVariant?.sku;
+  const weight = firstVariant?.weight;
 
   const handleAddToCart = () => {
     // TODO: Implementar lógica del carrito
@@ -115,13 +125,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             
             {/* Precio */}
             <div className="mb-4">
-              {product.promotional_offer && product.promotional_offer.price ? (
+              {promotionalPrice ? (
                 <div className="flex items-center space-x-3">
                   <span className="text-3xl font-bold text-red-600">
-                    {formatPrice(product.promotional_offer.price)}
+                    {formatPrice(promotionalPrice)}
                   </span>
                   <span className="text-xl text-gray-500 line-through">
-                    {formatPrice(product.price)}
+                    {formatPrice(price)}
                   </span>
                   <span className="bg-red-100 text-red-800 px-2 py-1 rounded-md text-sm font-medium">
                     ¡Oferta!
@@ -129,19 +139,19 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 </div>
               ) : (
                 <span className="text-3xl font-bold text-gray-900">
-                  {formatPrice(product.price)}
+                  {formatPrice(price)}
                 </span>
               )}
             </div>
 
             {/* Stock */}
             <div className="mb-6">
-              {product.stock_management && product.stock_unlimited === false ? (
-                <span className={`text-sm font-medium ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                  {product.stock > 0 ? `${product.stock} unidades disponibles` : 'Sin stock'}
+              {stockManagement && stock > 0 ? (
+                <span className="text-sm font-medium text-green-600">
+                  {stock} unidades disponibles
                 </span>
               ) : (
-                <span className="text-sm font-medium text-green-600">Disponible</span>
+                <span className="text-sm font-medium text-red-600">Sin stock</span>
               )}
             </div>
           </div>
@@ -171,7 +181,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 onChange={(e) => setQuantity(parseInt(e.target.value))}
                 className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                {[...Array(Math.min(10, product.stock || 10))].map((_, i) => (
+                {[...Array(Math.min(10, stock || 10))].map((_, i) => (
                   <option key={i + 1} value={i + 1}>
                     {i + 1}
                   </option>
@@ -181,13 +191,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
             <button
               onClick={handleAddToCart}
-              disabled={product.stock_management && !product.stock_unlimited && product.stock <= 0}
+              disabled={!stockManagement || stock <= 0}
               className="w-full bg-blue-600 text-white py-3 px-6 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
             >
-              {product.stock_management && !product.stock_unlimited && product.stock <= 0 
-                ? 'Sin stock' 
-                : 'Agregar al carrito'
-              }
+              {stockManagement && stock <= 0 ? 'Sin stock' : 'Agregar al carrito'}
             </button>
           </div>
 
@@ -200,16 +207,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   <dd className="text-sm text-gray-900">{product.brand}</dd>
                 </div>
               )}
-              {product.sku && (
+              {sku && (
                 <div className="flex">
                   <dt className="text-sm font-medium text-gray-500 w-24">SKU:</dt>
-                  <dd className="text-sm text-gray-900">{product.sku}</dd>
+                  <dd className="text-sm text-gray-900">{sku}</dd>
                 </div>
               )}
-              {product.weight && (
+              {weight && (
                 <div className="flex">
                   <dt className="text-sm font-medium text-gray-500 w-24">Peso:</dt>
-                  <dd className="text-sm text-gray-900">{product.weight} kg</dd>
+                  <dd className="text-sm text-gray-900">{weight} kg</dd>
                 </div>
               )}
             </dl>
