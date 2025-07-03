@@ -35,24 +35,22 @@ export const initGSAP = async () => {
 
 export const transitions = {
   // Smooth pero rápido para interacciones
-  quick: { duration: 0.2, ease: "easeOut" },
+  quick: { duration: 0.2 },
   
   // Smooth estándar para la mayoría de elementos
-  smooth: { duration: 0.4, ease: "easeOut" },
+  smooth: { duration: 0.4 },
   
   // Slow para transiciones de página
-  slow: { duration: 0.6, ease: "easeInOut" },
+  slow: { duration: 0.6 },
   
   // Bouncy para success states
   bouncy: { 
-    duration: 0.6, 
-    ease: "backOut" 
+    duration: 0.6
   },
   
   // Elastic para premium interactions
   elastic: {
-    duration: 0.8,
-    ease: "anticipate"
+    duration: 0.8
   }
 };
 
