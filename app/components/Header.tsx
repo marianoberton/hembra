@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useCart } from '../context/CartContext';
 
-export default function Header() {
+function HeaderClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { state } = useCart();
   const pathname = usePathname();
@@ -350,5 +350,28 @@ export default function Header() {
         )}
       </header>
     </>
+  );
+}
+
+export default function Header() {
+  return (
+    <Suspense fallback={
+      <div className="fixed top-0 left-0 right-0 z-[60] border-b" style={{backgroundColor: '#fefcfb', borderColor: '#b3c1a2'}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-10">
+            <div className="flex">
+              <div className="px-4 py-2 text-sm font-medium tracking-wide mx-1" style={{backgroundColor: '#718355', color: '#fefcfb'}}>
+                Taller
+              </div>
+              <div className="px-6 py-2 text-sm font-medium tracking-wide mx-1" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
+                Tienda
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }>
+      <HeaderClient />
+    </Suspense>
   );
 } 

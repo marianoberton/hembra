@@ -16,21 +16,68 @@ export default function TestPremiumPage() {
     description: { es: 'Una planta de prueba para el componente premium' },
     variants: [{
       id: 1,
+      image_id: 1,
+      product_id: 1,
+      position: 1,
       price: '25000',
+      compare_at_price: '28000',
       promotional_price: '22000',
+      stock_management: true,
       stock: 5,
-      stock_management: true
+      weight: '1.0',
+      width: '10',
+      height: '20',
+      depth: '10',
+      sku: 'TEST-001',
+      values: [],
+      barcode: null,
+      mpn: null,
+      age_group: null,
+      gender: null,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      cost: null,
+      visible: true,
+      inventory_levels: []
     }],
     images: [{
       id: 1,
+      product_id: 1,
       src: '/placeholder-product.jpg',
-      alt: 'Planta test'
+      position: 1,
+      alt: ['Planta test'],
+      height: 400,
+      width: 400,
+      thumbnails_generated: 1,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     }],
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     published: true,
-    handle: 'planta-test',
-    category: { id: 1, name: { es: 'Test' } }
+    handle: { es: 'planta-test' },
+    attributes: [],
+    free_shipping: false,
+    requires_shipping: true,
+    canonical_url: '',
+    video_url: null,
+    seo_title: { es: 'Planta Test Premium' },
+    seo_description: { es: 'Una planta de prueba para el componente premium' },
+    brand: null,
+    tags: '',
+    categories: [{ 
+      id: 1, 
+      name: { es: 'Test' },
+      description: { es: 'Categoría de prueba' },
+      handle: { es: 'test' },
+      parent: null,
+      subcategories: [],
+      seo_title: { es: 'Test' },
+      seo_description: { es: 'Categoría de prueba' },
+      google_shopping_category: '',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    }]
   };
 
   useEffect(() => {
