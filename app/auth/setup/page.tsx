@@ -1,10 +1,11 @@
 'use client';
+export const dynamic = "force-dynamic";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { generateAuthUrl, getAuthInstructions } from '../../../utils/tiendanube-auth';
 
-export default function AuthSetupPage() {
+function AuthSetupClient() {
   const [instructions, setInstructions] = useState<any>(null);
   const [authUrl, setAuthUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -163,5 +164,20 @@ export default function AuthSetupPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AuthSetupPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <h2 className="text-xl font-semibold mb-2">Cargando configuración...</h2>
+        </div>
+      </div>
+    }>
+      <AuthSetupClient />
+    </Suspense>
   );
 } 
