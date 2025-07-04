@@ -18,7 +18,7 @@ function HeaderClient() {
   const isTienda = pathname?.startsWith('/tienda');
   
   return (
-    <header className="w-full bg-[#f9f8f6] shadow-sm">
+    <header className="w-full bg-white">
       <div className="w-full px-6">
         {/* Layout inspirado en el ejemplo - Logo pegado a la izquierda */}
         <div className="flex items-center justify-between py-6">
@@ -152,7 +152,7 @@ function HeaderClient() {
 export default function Header() {
   return (
     <Suspense fallback={
-      <header className="w-full bg-[#f9f8f6] shadow-sm">
+      <header className="w-full bg-white">
         <div className="w-full px-6">
           <div className="flex items-center justify-between py-6">
             <div className="flex-shrink-0">

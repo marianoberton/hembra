@@ -32,11 +32,11 @@ export default function RootLayout({
     <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{backgroundColor: '#e9f5db'}}
+        style={{backgroundColor: '#fff'}}
       >
         <CartProvider>
           <Header />
-          <div className="pt-[8.75rem]" style={{backgroundColor: '#e9f5db'}}>
+          <div>
             {children}
           </div>
         </CartProvider>
