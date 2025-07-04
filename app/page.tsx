@@ -37,8 +37,8 @@ export default async function HomePage() {
               {/* 1. PROWL Statement */}
               <TextCard
                 cardNumber={1}
-                label="Studio"
-                title="PROWL is an industrial design studio on a mission to help companies build a regenerative future."
+                label="Estudio"
+                title="Hembra es un estudio de diseño industrial con la misión de transformar residuos en soluciones sustentables."
                 backgroundColor="#b3c1a2"
                 textColor="#718355"
                 minHeight="min-h-[240px]"
