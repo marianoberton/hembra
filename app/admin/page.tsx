@@ -1,13 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function AdminPanel() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const router = useRouter();
+
+  // Verificar autenticación al cargar la página
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const authStatus = localStorage.getItem('admin-auth');
+      if (authStatus === 'true') {
+        setIsAuthenticated(true);
+      }
+    }
+    setIsLoading(false);
+  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,7 +27,9 @@ export default function AdminPanel() {
     if (credentials.username === 'admin' && credentials.password === 'hembra2024') {
       setIsAuthenticated(true);
       setError('');
-      localStorage.setItem('admin-auth', 'true');
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('admin-auth', 'true');
+      }
     } else {
       setError('Credenciales incorrectas');
     }
@@ -23,16 +37,19 @@ export default function AdminPanel() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    localStorage.removeItem('admin-auth');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('admin-auth');
+    }
   };
 
-  // Verificar si ya está autenticado
-  useState(() => {
-    const authStatus = localStorage.getItem('admin-auth');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-    }
-  });
+  // Mostrar loading mientras verificamos autenticación
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#F9F8F6] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3D4A3D]"></div>
+      </div>
+    );
+  }
 
   if (!isAuthenticated) {
     return (
