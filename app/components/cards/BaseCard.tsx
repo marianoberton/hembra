@@ -24,7 +24,7 @@ export default function BaseCard({
   const cardContent = (
     <>
       {cardNumber && (
-        <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-bold z-20">
+        <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20 bg-black bg-opacity-20 text-white">
           {cardNumber}
         </div>
       )}

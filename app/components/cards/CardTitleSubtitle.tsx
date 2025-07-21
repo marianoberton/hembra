@@ -5,7 +5,6 @@ interface CardTitleSubtitleProps {
   title: string;
   subtitle: string;
   description?: string;
-  badge?: string;
   label?: string;
   href?: string;
   backgroundColor?: string;
@@ -20,7 +19,6 @@ export default function CardTitleSubtitle({
   title,
   subtitle,
   description,
-  badge,
   label,
   href,
   backgroundColor = '#FFFF00',
@@ -62,12 +60,6 @@ export default function CardTitleSubtitle({
       style={cardStyle}
       cardNumber={cardNumber}
     >
-      {badge && (
-        <div className="absolute top-6 left-6 border border-black inline-block px-3 py-1 text-xs font-medium rounded-full">
-          {badge}
-        </div>
-      )}
-      
       {label && (
         <div className="absolute top-8 left-1/2 transform -translate-x-1/2 prowl-label">
           {label}

@@ -1,14 +1,31 @@
 import { TextCard, ImageCard, ProjectCard, TypographyCard, CardTitleSubtitle } from './components/cards';
 
+// Mapeo SOLO de ImageCards a proyectos específicos
+const projectCardMappings = [
+  { cardNumber: 2, projectId: 'florero-betty' },         // ImageCard -> Florero Betty
+  { cardNumber: 5, projectId: 'linea-complementos-chapa' }, // ImageCard -> Línea Complementos
+  { cardNumber: 7, projectId: 'upcycled-luminarias' },      // ImageCard -> Upcycled Luminarias  
+  { cardNumber: 10, projectId: 'cooperativa-superarte' },   // ImageCard -> Cooperativa Superarte
+  { cardNumber: 13, projectId: 'linea-vasos' },             // ImageCard -> Línea Vasos
+  { cardNumber: 16, projectId: 'recap' },                   // ImageCard -> RECAP
+  { cardNumber: 18, projectId: 'mesa-bea' }                 // ImageCard -> Mesa Bea
+];
+
+// Función helper para obtener la URL del proyecto o genérica
+function getProjectUrl(cardNumber: number): string {
+  const mapping = projectCardMappings.find(m => m.cardNumber === cardNumber);
+  return mapping ? `/proyectos/${mapping.projectId}?from=home` : '/proyectos';
+}
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Cards grid con margen superior para separar del header/nav */}
       <div className="w-full px-4 sm:px-6 lg:px-8 pb-12 mt-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-none">
-          {/* COLUMN 1 (Left) */}
+          {/* COLUMN 1 (Left) - 6 cards */}
           <div className="space-y-4 md:space-y-6">
-            {/* 1. PROWL Statement */}
+            {/* 1. Hembra Statement */}
             <TextCard
               cardNumber={1}
               label="Estudio"
@@ -19,13 +36,13 @@ export default function HomePage() {
               showArrow={true}
             />
 
-            {/* 2. Work Image - 3work.avif */}
+            {/* 2. Florero Betty - PROYECTO */}
             <ImageCard
               cardNumber={2}
-              src="/images/3work.avif"
-              alt="Work - Design Project"
-              label="Work"
-              href="/work"
+              src="/images/1. Florero Betty/Copia de Betty Vase Colours.jpg"
+              alt="Florero Betty - Diseño Sustentable"
+              label="Proyectos"
+              href={getProjectUrl(2)}
               minHeight="min-h-[280px]"
               showArrow={true}
             />
@@ -36,33 +53,31 @@ export default function HomePage() {
               title="Summer 2023"
               subtitle="Barriers to Entry"
               description="Produced in collaboration with Barriers to Action"
-              badge="NEW"
-              label="Projections"
-              href="/projections"
+              label="Servicios"
+              href="/servicios"
               backgroundColor="#cedbbf"
               textColor="#7c8e60"
               minHeight="min-h-[280px]"
             />
 
-            {/* 4. Air Company */}
+            {/* 4. Upcycling Process */}
             <TypographyCard
               cardNumber={4}
               items={[
-                { text: "Air Company", className: "text-headline" }
+                { text: "Upcycling Process", className: "text-headline" }
               ]}
-              label="Work"
-              href="/work"
+              label="Metodología"
               backgroundColor="#a8836d"
-              showArrow={true}
+              showArrow={false}
             />
 
-            {/* 5. Industrial Image */}
+            {/* 5. Línea de Complementos - PROYECTO */}
             <ImageCard
               cardNumber={5}
-              src="/images/5work.avif"
-              alt="Industrial Design Project"
-              label="Work"
-              href="/work"
+              src="/images/linea-complementos-chapa.jpeg"
+              alt="Línea de Complementos en Chapa - Repusaje Artesanal"
+              label="Proyectos"
+              href={getProjectUrl(5)}
               minHeight="min-h-[240px]"
               showArrow={true}
             />
@@ -77,251 +92,134 @@ export default function HomePage() {
               className="italic text-center border"
               showArrow={false}
             />
+          </div>
 
-            {/* 7. Landscape Image */}
+          {/* COLUMN 2 (Center) - 6 cards */}
+          <div className="space-y-4 md:space-y-6">
+            {/* 7. Upcycled Luminarias - PROYECTO */}
             <ImageCard
               cardNumber={7}
-              src="/images/7work.avif"
-              alt="Landscape Design Project"
-              label="Work"
-              href="/work"
-              minHeight="min-h-[200px]"
+              src="/images/upcycled-luminarias.JPG"
+              alt="Upcycled Luminarias - Iluminación Consciente"
+              label="Proyectos"
+              href={getProjectUrl(7)}
+              minHeight="min-h-[280px]"
               showArrow={true}
             />
 
-            {/* 8. PEEL Chair */}
+            {/* 8. Marquesina */}
+            <div className="h-24 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#94a27f'}}>
+              <p className="text-caption" style={{color: '#fefcfb'}}>Marquesina</p>
+              <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
+                8
+              </div>
+            </div>
+
+            {/* 9. Metodología */}
             <TypographyCard
-              cardNumber={8}
-              items={[
-                { text: "PEEL Chair" }
-              ]}
-              label="Work"
-              href="/work"
-              backgroundColor="#7c8e60"
-              showArrow={true}
-            />
-
-            {/* 9. Winter 2022 */}
-            <TextCard
               cardNumber={9}
-              title="Winter 2022"
-              subtitle="Waste Source"
-              backgroundColor="#a2ae92"
-              textColor="#718355"
-              minHeight="min-h-[200px]"
+              items={[
+                { text: "Metodología Sustentable" }
+              ]}
+              backgroundColor="#718355"
+              label="Estudio"
             />
 
-            {/* 10. Collaboration Image */}
+            {/* 10. Cooperativa Superarte - PROYECTO */}
             <ImageCard
               cardNumber={10}
-              src="/images/10work.avif"
-              alt="Collaboration Project"
-              label="Work"
-              href="/work"
+              src="/images/cooperativa-superarte.JPG"
+              alt="Cooperativa Superarte - Trabajo Colaborativo"
+              label="Proyectos"
+              href={getProjectUrl(10)}
               minHeight="min-h-[200px]"
               showArrow={true}
             />
 
-            {/* 11. Winter 2022 - Waste Source */}
-            <CardTitleSubtitle
-              cardNumber={11}
-              title="Winter 2022"
-              subtitle="Waste Source"
-              description="Shifting the way we think about 'waste'"
-              backgroundColor="#909b82"
-              textColor="#fefcfb"
-            />
-
-            {/* 12. Collaboration Text */}
+            {/* 11. Partnership Text */}
             <TextCard
-              cardNumber={12}
+              cardNumber={11}
               title="Collaborate to be stronger, together ⎯ Strategic partnerships increase the capacity to create the regenerative future."
               label="Estudio"
               backgroundColor="#ae8b77"
               textColor="#fefcfb"
               showArrow={true}
             />
-          </div>
 
-          {/* COLUMN 2 (Center) */}
-          <div className="space-y-4 md:space-y-6">
-            {/* 13. Work Image */}
-            <ImageCard
-              cardNumber={13}
-              src="/images/11work.avif"
-              alt="Work Project"
-            />
-
-            {/* 14. Marquesina */}
-            <div className="h-24 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#94a27f'}}>
-              <p className="text-caption" style={{color: '#fefcfb'}}>Marquesina</p>
-              <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
-                14
-              </div>
-            </div>
-
-            {/* 15. HTC Vive Flow */}
-            <TypographyCard
-              cardNumber={15}
-              items={[
-                { text: "HTC Vive Flow" }
-              ]}
-              backgroundColor="#718355"
-            />
-
-            {/* 16. Video Card */}
-            <div className="h-48 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#cedbbf'}}>
-              <p className="text-caption" style={{color: '#7c8e60'}}>Video Card</p>
-              <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
-                16
-              </div>
-            </div>
-
-            {/* 17. Partnership Text */}
+            {/* 12. Blog */}
             <TextCard
-              cardNumber={17}
-              title="The partnership between PROWL Studio and Parallel allows both of our businesses to bring our clients further, faster."
-              backgroundColor="#b3c1a2"
-              textColor="#718355"
-            />
-
-            {/* 18. Work Image */}
-            <ImageCard
-              cardNumber={18}
-              src="/images/16work.avif"
-              alt="Creative Work Project"
-            />
-
-            {/* 19. Marquesina */}
-            <div className="h-24 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#8e9d75'}}>
-              <p className="text-caption" style={{color: '#fefcfb'}}>Marquesina</p>
-              <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#ab8773', color: '#fefcfb'}}>
-                19
-              </div>
-            </div>
-
-            {/* 20. Fall 2022 - Biome Futures */}
-            <CardTitleSubtitle
-              cardNumber={20}
-              title="Fall 2022"
-              subtitle="Biome Futures"
-              description="In Collaboration with Biome"
-              backgroundColor="#b2917e"
-              textColor="#fefcfb"
-            />
-
-            {/* 21. Work Image */}
-            <ImageCard
-              cardNumber={21}
-              src="/images/19work.avif"
-              alt="Studio Design Project"
-            />
-
-            {/* 22. News */}
-            <TextCard
-              cardNumber={22}
-              title="News"
+              cardNumber={12}
+              title="Blog"
+              label="Contenido"
+              href="/blog"
               backgroundColor="#a2ae92"
               textColor="#718355"
-            />
-
-            {/* 23. Work Image */}
-            <ImageCard
-              cardNumber={23}
-              src="/images/21work.avif"
-              alt="Product Design Project"
+              showArrow={true}
             />
           </div>
 
-          {/* COLUMN 3 (Right) */}
+          {/* COLUMN 3 (Right) - 6 cards */}
           <div className="space-y-4 md:space-y-6">
-            {/* 24. Haworth */}
-            <TypographyCard
-              cardNumber={24}
-              items={[
-                { text: "Haworth" }
-              ]}
-              href="/work"
-              backgroundColor="#b18f7c"
+            {/* 13. Línea Vasos - PROYECTO */}
+            <ImageCard
+              cardNumber={13}
+              src="/images/linea-vasos.JPG"
+              alt="Línea Vasos - Vidrio Recuperado"
+              label="Proyectos"
+              href={getProjectUrl(13)}
+              minHeight="min-h-[280px]"
+              showArrow={true}
             />
 
-            {/* 25. Work Image */}
-            <ImageCard
-              cardNumber={25}
-              src="/images/23work.avif"
-              alt="Minimal Design Project"
-            />
-            
-            {/* 26. News */}
+            {/* 14. Impacto Social */}
             <TextCard
-              cardNumber={26}
-              title="News"
+              cardNumber={14}
+              title="Impacto Social"
+              subtitle="Generamos trabajo con el menor consumo de recursos posible"
               backgroundColor="#909b82"
               textColor="#fefcfb"
+              minHeight="min-h-[200px]"
             />
 
-            {/* 27. Work Image */}
-            <ImageCard
-              cardNumber={27}
-              src="/images/27work.avif"
-              alt="Design Project"
-            />
-
-            {/* 28. Winter 2022 - The New Comfort */}
+            {/* 15. Winter 2022 - The New Comfort */}
             <CardTitleSubtitle
-              cardNumber={28}
+              cardNumber={15}
               title="Winter 2022"
               subtitle="The New Comfort"
               description="A future of resilience amidst rapid change."
               backgroundColor="#cedbbf"
               textColor="#7c8e60"
+              label="Servicios"
             />
 
-            {/* 29. ByBorre */}
-            <TypographyCard
-              cardNumber={29}
-              items={[
-                { text: "ByBorre" }
-              ]}
-              backgroundColor="#87986a"
-            />
-
-            {/* 30. Work Image */}
+            {/* 16. RECAP - PROYECTO */}
             <ImageCard
-              cardNumber={30}
-              src="/images/30work.avif"
-              alt="Fabric Design Project"
+              cardNumber={16}
+              src="/images/recap.jpg"
+              alt="RECAP - Proyecto Integral"
+              label="Proyectos"
+              href={getProjectUrl(16)}
+              minHeight="min-h-[240px]"
+              showArrow={true}
             />
 
-            {/* 31. Building 12 Announcement */}
+            {/* 17. Building 12 Announcement */}
             <TextCard
-              cardNumber={31}
+              cardNumber={17}
               title="We are extraordinarily excited to announce that we have moved into Building 12, which is part of the larger Pier 70 project in San Francisco's Dogpatch neighborhood. This space will include an entire prototyping lab, micro material library, and other features that will enable us to do our best work and grow as a team."
               backgroundColor="#b59582"
               textColor="#7c8e60"
             />
 
-            {/* 32. Work Image */}
+            {/* 18. Mesa Bea - PROYECTO */}
             <ImageCard
-              cardNumber={32}
-              src="/images/32work.avif"
-              alt="Textile Design Project"
-            />
-
-            {/* 33. Gantri Focal */}
-            <TypographyCard
-              cardNumber={33}
-              items={[
-                { text: "Gantri Focal" }
-              ]}
-              backgroundColor="#718355"
-            />
-
-            {/* 34. Work Image */}
-            <ImageCard
-              cardNumber={34}
-              src="/images/34work.avif"
-              alt="Architecture Design Project"
+              cardNumber={18}
+              src="/images/mesa-bea.jpg"
+              alt="Mesa Bea - Mobiliario Upcycled"
+              label="Proyectos"
+              href={getProjectUrl(18)}
+              minHeight="min-h-[200px]"
+              showArrow={true}
             />
           </div>
         </div>

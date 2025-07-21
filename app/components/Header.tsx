@@ -24,23 +24,25 @@ function HeaderClient() {
         <div className="flex items-center justify-between py-6">
           {/* Logo - Pegado al borde izquierdo */}
           <div className="flex-shrink-0">
-            <div className="relative w-44 h-14">
-              <Image
-                src="/images/logo.jpg"
-                alt="Hembra"
-                fill
-                className="object-contain"
-                priority
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  const parent = target.parentElement;
-                  if (parent) {
-                    parent.innerHTML = '<span class="text-3xl font-bold text-[#2C2C2C] font-serif tracking-wide">HEMBRA</span>';
-                  }
-                }}
-              />
-            </div>
+            <a href="/" aria-label="Ir al inicio">
+              <div className="relative w-44 h-14">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="Hembra"
+                  fill
+                  className="object-contain"
+                  priority
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = '<span class="text-3xl font-bold text-[#2C2C2C] font-serif tracking-wide">HEMBRA</span>';
+                    }
+                  }}
+                />
+              </div>
+            </a>
           </div>
           
           {/* Navigation Central - Con Contacto incluido */}

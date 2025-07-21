@@ -62,7 +62,6 @@ export default async function HomePage() {
                 title="Summer 2023"
                 subtitle="Barriers to Entry"
                 description="Produced in collaboration with Barriers to Action"
-                badge="NEW"
                 label="Projections"
                 href="/projections"
                 backgroundColor="#FFFF00"
