@@ -119,9 +119,11 @@ export default function ThreeDTextCard({
           }}
         >
           {title && (
-            <h2 className="text-headline mb-2 w-full">
-              {title}
-            </h2>
+            <h2 
+              className="text-headline mb-2 w-full"
+              dangerouslySetInnerHTML={{ __html: title }}
+              style={{ fontWeight: '300' }}
+            />
           )}
           
           {subtitle && (

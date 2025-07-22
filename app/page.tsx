@@ -34,7 +34,7 @@ export default function HomePage() {
             <ThreeDTextCard
               cardNumber={1}
               label="Estudio"
-              title="Hembra es un estudio de diseño industrial con la misión de transformar residuos en soluciones sustentables."
+              title="<strong>Hembra</strong> es un estudio de <strong>diseño industrial</strong> con la misión de <strong>transformar residuos</strong> en soluciones sustentables."
               backgroundColor="#b3c1a2"
               textColor="#718355"
               minHeight="min-h-[140px] sm:min-h-[160px]"
@@ -82,7 +82,7 @@ export default function HomePage() {
             <ThreeDTextCard
               cardNumber={5}
               label="Estudio"
-              title="Diseñamos con la convicción de que la sustentabilidad no es una opción, sino una responsabilidad"
+              title="Diseñamos con la <strong>convicción</strong> de que la <strong>sustentabilidad</strong> no es una opción, sino una <strong>responsabilidad</strong>"
               backgroundColor="#fefcfb"
               textColor="#7c8e60"
               minHeight="min-h-[140px] sm:min-h-[160px]"
@@ -263,7 +263,7 @@ export default function HomePage() {
             {/* 18. Propósito Creativo - 3D TEXT (TIPO 1) */}
             <ThreeDTextCard
               cardNumber={18}
-              title="Reimaginamos los materiales descartados como oportunidades para un futuro más consciente"
+              title="<strong>Reimaginamos</strong> los materiales descartados como <strong>oportunidades</strong> para un futuro más <strong>consciente</strong>"
               label="Estudio"
               backgroundColor="#93a584"
               textColor="#fefcfb"
@@ -287,7 +287,7 @@ export default function HomePage() {
             {/* 20. Impacto Social - 3D TEXT (TIPO 1) */}
             <ThreeDTextCard
               cardNumber={20}
-              title="Creamos productos con propósito, integrando diseño, impacto social y compromiso ambiental."
+              title="Creamos <strong>productos con propósito</strong>, integrando <strong>diseño</strong>, <strong>impacto social</strong> y <strong>compromiso ambiental</strong>."
               label="Estudio"
               backgroundColor="#b3927f"
               textColor="#fefcfb"

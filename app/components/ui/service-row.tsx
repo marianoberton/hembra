@@ -28,23 +28,18 @@ export default function ServiceRow({
         className={`p-6 lg:p-8 rounded-xl ${isReversed ? 'lg:order-2' : 'lg:order-1'} flex flex-col justify-center`}
         style={{ backgroundColor }}
       >
-        {/* Título con tipografía del proyecto */}
-        <h2 className="text-display mb-4 text-black" style={{ 
-          fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
-          lineHeight: '1.2',
-          letterSpacing: '-0.02em',
-          textAlign: 'left'
-        }}>
+        {/* Título con tipografía text-headline como bloques de proyectos */}
+        <h2 className="text-headline mb-4 text-black">
           {title}
         </h2>
 
-        {/* Descripción con tipografía mejorada */}
+        {/* Descripción con tipografía light */}
         <div>
-          <p className="text-body text-black leading-relaxed" style={{
-            fontSize: '1rem',
+          <p className="text-black leading-relaxed" style={{
+            fontSize: '18px',
             lineHeight: '1.6',
             letterSpacing: '-0.01em',
-            fontWeight: '400'
+            fontWeight: '300'
           }}>
             {description}
           </p>

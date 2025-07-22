@@ -1,4 +1,5 @@
 import ServiceRow from '../components/ui/service-row';
+import Footer from '../components/Footer';
 
 export default function ServiciosPage() {
   return (
@@ -57,6 +58,9 @@ export default function ServiciosPage() {
           />
 
       </div>
+
+      {/* Footer con logo gigante */}
+      <Footer />
     </div>
   );
 } 

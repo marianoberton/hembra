@@ -1,4 +1,5 @@
 import { BlogPreviewCard, BlogPreviewImageCard } from '../components/blog';
+import Footer from '../components/Footer';
 
 const mockPosts = [
   {
@@ -208,6 +209,9 @@ export default function BlogPage() {
         </div>
 
       </div>
+
+      {/* Footer con logo gigante */}
+      <Footer />
     </div>
   );
 } 

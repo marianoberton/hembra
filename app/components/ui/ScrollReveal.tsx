@@ -36,14 +36,48 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
   const splitText = useMemo(() => {
     const text = typeof children === "string" ? children : "";
-    return text.split(/(\s+)/).map((word, index) => {
-      if (word.match(/^\s+$/)) return word;
-      return (
-        <span className="inline-block word" key={index}>
-          {word}
-        </span>
-      );
-    });
+    
+    // Check if text contains HTML tags
+    if (text.includes('<strong>')) {
+      // Parse HTML and split by words while preserving tags
+      const parts = text.split(/(<strong>.*?<\/strong>)/g);
+      let wordIndex = 0;
+      
+      return parts.map((part, partIndex) => {
+        if (part.startsWith('<strong>')) {
+          // Handle strong tags
+          const content = part.replace(/<\/?strong>/g, '');
+          return content.split(/(\s+)/).map((word, index) => {
+            if (word.match(/^\s+$/)) return word;
+            return (
+              <strong className="inline-block word" key={`${partIndex}-${index}`}>
+                {word}
+              </strong>
+            );
+          });
+        } else {
+          // Handle regular text
+          return part.split(/(\s+)/).map((word, index) => {
+            if (word.match(/^\s+$/)) return word;
+            return (
+              <span className="inline-block word" key={`${partIndex}-${index}`}>
+                {word}
+              </span>
+            );
+          });
+        }
+      }).flat();
+    } else {
+      // Original logic for plain text
+      return text.split(/(\s+)/).map((word, index) => {
+        if (word.match(/^\s+$/)) return word;
+        return (
+          <span className="inline-block word" key={index}>
+            {word}
+          </span>
+        );
+      });
+    }
   }, [children]);
 
   useEffect(() => {
@@ -132,9 +166,11 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   if (!isClient) {
     return (
       <h2 className={`my-5 ${containerClassName}`}>
-        <p className={`text-[clamp(1.2rem,3vw,2rem)] leading-[1.4] font-medium ${textClassName}`}>
-          {children}
-        </p>
+        <p 
+          className={`text-[clamp(1.2rem,3vw,2rem)] leading-[1.4] ${textClassName}`}
+          style={{ fontWeight: '300' }}
+          dangerouslySetInnerHTML={{ __html: typeof children === "string" ? children : "" }}
+        />
       </h2>
     );
   }
@@ -142,7 +178,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   return (
     <h2 ref={containerRef} className={`my-5 ${containerClassName}`}>
       <p
-        className={`text-[clamp(1.2rem,3vw,2rem)] leading-[1.4] font-medium ${textClassName}`}
+        className={`text-[clamp(1.2rem,3vw,2rem)] leading-[1.4] ${textClassName}`}
+        style={{ fontWeight: '300' }}
       >
         {splitText}
       </p>
