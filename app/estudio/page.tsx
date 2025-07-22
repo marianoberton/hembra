@@ -1,161 +1,276 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+
+interface AccordionItemProps {
+  title: string;
+  content: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+function AccordionItem({ title, content, isOpen, onToggle }: AccordionItemProps) {
+  return (
+    <div className="border-b border-gray-200">
+      <button
+        onClick={onToggle}
+        className="flex items-center justify-between w-full py-6 text-left"
+      >
+        <span className="text-lg font-medium text-gray-900 font-sans">{title}</span>
+        <span className="text-xl text-gray-500 font-sans">
+          {isOpen ? '−' : '+'}
+        </span>
+      </button>
+      {isOpen && (
+        <div className="pb-6">
+          <p className="text-body text-gray-600">{content}</p>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function EstudioPage() {
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+
+  const toggleAccordion = (id: string) => {
+    setOpenAccordion(openAccordion === id ? null : id);
+  };
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero2.jpg"
-            alt="Hembra Estudio"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/30"></div>
+      
+      {/* Main Header Section */}
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+          {/* Left - About Section */}
+          <div>
+            <h1 className="prowl-label mb-4 uppercase">
+              Estudio
+            </h1>
+            
+            <h2 className="text-display mb-8">
+              Comenzamos con el diseño regenerativo.
+            </h2>
+          </div>
+
+          {/* Right - Main Description */}
+          <div className="space-y-6">
+            <p className="text-body text-gray-600">
+              <strong>HEMBRA</strong> es un estudio de diseño industrial con la misión de ayudar a empresas, 
+              instituciones y organizaciones a construir un futuro más sostenible.
+            </p>
+            
+            <p className="text-body text-gray-600">
+              Hemos visto el daño causado por el pensamiento a corto plazo que se detiene en el 
+              producto final, diseños que involuntariamente dañan los sistemas naturales y humanos 
+              a través de su producción, uso o eliminación. Creemos que tiene que haber una mejor manera.
+            </p>
+            
+            <p className="text-body text-gray-600">
+              Fundado en 2021, HEMBRA fue construido para ser un tipo diferente de estudio de diseño industrial. 
+              Uno donde la sustentabilidad no fuera una reflexión tardía, sino inherente a todo lo que hacemos. 
+              No nos dedicamos a crear productos o elaborar investigación y narrativas convincentes; 
+              hemos visto surgir adherencias a nuestra misión donde el impacto y la innovación se refuerzan mutuamente.
+            </p>
+            
+            <p className="text-body text-gray-600">
+              Para crear de manera diferente, pensamos de manera diferente. <strong>Comenzamos con el final</strong> de 
+              cada proyecto que tocamos, retrocediendo desde los residuos hasta las raíces de la vida. Este método 
+              regenerativo produce soluciones significativas a escala que también respetan a las generaciones venideras. 
+              También nos asociamos con diversos expertos, desde científicos materiales hasta filósofos del diseño, 
+              para asegurar que nuestros proyectos tengan el mayor impacto posible.
+            </p>
+            
+            <p className="text-body text-gray-600">
+              Si estás listo para construir un futuro regenerativo con nosotros, ponte en contacto hoy.
+            </p>
+          </div>
+          
         </div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-6">
-            HEMBRA
-          </h1>
-          <p className="text-xl md:text-2xl font-light tracking-wide max-w-2xl mx-auto">
-            Estudio de diseño industrial con la misión de transformar residuos en soluciones sustentables
+      </div>
+
+      {/* Principles Section */}
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="prowl-label mb-8 uppercase">
+          Principios
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <div className="space-y-1">
+              <AccordionItem
+                title="¿Qué es el Diseño Regenerativo?"
+                content="El diseño regenerativo es un enfoque que va más allá de la sostenibilidad. Mientras la sostenibilidad busca mantener el status quo, el diseño regenerativo busca mejorar y restaurar los sistemas naturales y sociales. Es diseñar con la intención de crear impactos positivos duraderos."
+                isOpen={openAccordion === 'regenerative'}
+                onToggle={() => toggleAccordion('regenerative')}
+              />
+              
+              <AccordionItem
+                title="¿Qué significa 'Comenzar con el Final'?"
+                content="Comenzamos cada proyecto considerando su ciclo de vida completo, desde la concepción hasta su disposición final. Esto significa pensar en cómo se desarmará, reciclará o compostará el producto antes de diseñar cómo se construirá."
+                isOpen={openAccordion === 'end'}
+                onToggle={() => toggleAccordion('end')}
+              />
+              
+              <AccordionItem
+                title="¿Qué es el Proceso de HEMBRA?"
+                content="Nuestro proceso se basa en tres pilares: Investigación regenerativa (entender el impacto completo), Diseño circular (crear sistemas cerrados), y Implementación consciente (producción responsable con materiales locales y técnicas sustentables)."
+                isOpen={openAccordion === 'process'}
+                onToggle={() => toggleAccordion('process')}
+              />
+              
+              <AccordionItem
+                title="¿Cuáles son los Servicios de HEMBRA?"
+                content="Ofrecemos consultoría en diseño regenerativo, desarrollo de productos sustentables, estrategias de economía circular, upcycling de materiales, y educación en diseño consciente. Trabajamos con empresas para transformar sus procesos productivos hacia modelos más regenerativos."
+                isOpen={openAccordion === 'services'}
+                onToggle={() => toggleAccordion('services')}
+              />
+            </div>
+          </div>
+          
+          <div className="space-y-8">
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <h3 className="card-title-subtitle-main text-gray-900 mb-4 text-left">
+                Nuestro enfoque integra diseño, conciencia ambiental y perspectiva social.
+              </h3>
+              <p className="text-body text-gray-600">
+                Cada proyecto es una oportunidad para demostrar que el diseño puede ser hermoso y responsable, 
+                creando soluciones que nutren tanto a las personas como al planeta.
+              </p>
+            </div>
+            
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <h3 className="card-title-subtitle-main text-gray-900 mb-4 text-left">
+                Transformamos materiales descartados en soluciones innovadoras.
+              </h3>
+              <p className="text-body text-gray-600">
+                El upcycling está en el corazón de nuestra práctica, convirtiendo residuos en productos 
+                de valor agregado que extienden la vida útil de los materiales.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Images Section */}
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
+            <Image
+              src="/images/hero1.jpg"
+              alt="Proceso de diseño en el estudio"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
+            <Image
+              src="/images/hero2.jpg"
+              alt="Materiales y trabajo sustentable"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Studio Section */}
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="prowl-label mb-8 uppercase">
+          Estudio
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <h3 className="text-headline mb-6 text-left">
+              Hola! Soy Ornella Casoy, Diseñadora Industrial especializada en Economía Circular.
+            </h3>
+            <p className="text-body text-gray-600 mb-6">
+              Soy apasionada por crear productos sustentables con impacto positivo. Soy profesora de 
+              Diseño Sustentable en la Universidad Torcuato Di Tella y fundadora de Hembra, un estudio 
+              que fusiona diseño, conciencia ambiental y perspectiva social para desarrollar objetos con propósito.
+            </p>
+            <p className="text-body text-gray-600">
+              El estudio/taller Hembra está basado en Buenos Aires, Argentina. Nos enfocamos en crear 
+              proyectos con un profundo compromiso hacia la sustentabilidad. Nuestros diseños están 
+              arraigados en el concepto de upcycling, transformando materiales descartados en nuevos 
+              productos, impulsados por un compromiso con la responsabilidad social.
+            </p>
+          </div>
+          
+          <div>
+            <h3 className="card-title-subtitle-main text-gray-900 mb-4 text-left">
+              Nuestra misión es clara:
+            </h3>
+            <p className="text-body text-gray-600 mb-8">
+              Ayudar a nuestros clientes a transmitir su compromiso con la sostenibilidad, 
+              integrando este concepto desde la concepción de cada proyecto. Cada propuesta 
+              de diseño está pensada para ser parte de un sistema circular, donde los materiales 
+              extienden su durabilidad y se ahorran recursos.
+            </p>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-body font-medium text-gray-900 mb-2">Residuos Actuales</h4>
+                <p className="text-caption text-gray-600">
+                  Planificamos soluciones innovadoras para los residuos que se generan hoy, 
+                  ofreciendo alternativas creativas para optimizar su gestión.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="text-body font-medium text-gray-900 mb-2">Producciones Futuras</h4>
+                <p className="text-caption text-gray-600">
+                  Alineamos la creatividad con principios de Ecodiseño, Biodiseño y Biomímesis, 
+                  considerando la "etapa cero" del diseño para evitar residuos desde el origen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Studio Images */}
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="aspect-[3/4] relative rounded-lg overflow-hidden">
+            <Image
+              src="/images/1work.avif"
+              alt="Trabajo en el estudio Hembra"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="aspect-[3/4] relative rounded-lg overflow-hidden">
+            <Image
+              src="/images/2work.avif"
+              alt="Proceso de upcycling"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Final Philosophy Section */}
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="bg-gray-50 p-12 rounded-lg">
+          <h2 className="text-headline mb-6 text-left">
+            El pensamiento circular es una necesidad urgente, no una opción.
+          </h2>
+          <p className="text-body text-gray-600">
+            Reconocemos que el reciclaje es vital para abordar los problemas actuales de residuos, 
+            pero nuestro objetivo final es trascender este modelo. Nos enfocamos en la "etapa cero" 
+            del ciclo de vida: el diseño, para evitar la generación de desechos desde su origen. 
+            En Hembra, no solo buscamos solucionar los problemas existentes, sino reeducar y asumir 
+            la responsabilidad de un compromiso ineludible con el futuro.
           </p>
         </div>
       </div>
 
-      {/* Mission Section */}
-      <section className="py-20 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-8 tracking-wide">
-                Nuestra Misión
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Creamos productos con propósito, integrando diseño, impacto social y compromiso ambiental. 
-                Reimaginamos los materiales descartados como oportunidades para un futuro más consciente.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Diseñamos con la convicción de que la sustentabilidad no es una opción, sino una responsabilidad.
-              </p>
-            </div>
-            <div className="relative h-96 rounded-xl overflow-hidden">
-              <Image
-                src="/images/hero1.jpg"
-                alt="Proceso de diseño sustentable"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 px-4 md:px-8 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-16 text-center tracking-wide">
-            Nuestros Valores
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#b3c1a2] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">♻️</span>
-              </div>
-              <h3 className="text-xl font-medium text-gray-800 mb-4">Sustentabilidad</h3>
-              <p className="text-gray-600">
-                Fusionamos creatividad, oficio y estrategia para dar nueva vida a lo que otros descartan.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#a8836d] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">🤝</span>
-              </div>
-              <h3 className="text-xl font-medium text-gray-800 mb-4">Impacto Social</h3>
-              <p className="text-gray-600">
-                Generamos trabajo con el menor consumo de recursos posible, creando valor para la comunidad.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#909b82] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl">🎨</span>
-              </div>
-              <h3 className="text-xl font-medium text-gray-800 mb-4">Diseño Consciente</h3>
-              <p className="text-gray-600">
-                Cada producto es una oportunidad para demostrar que el diseño puede ser hermoso y responsable.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-20 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-16 text-center tracking-wide">
-            Nuestro Proceso
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#a8836d] mb-4">01</div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">Identificación</h3>
-              <p className="text-gray-600 text-sm">
-                Detectamos materiales descartados con potencial de transformación
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#a8836d] mb-4">02</div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">Análisis</h3>
-              <p className="text-gray-600 text-sm">
-                Estudiamos las propiedades y posibilidades de cada material
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#a8836d] mb-4">03</div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">Diseño</h3>
-              <p className="text-gray-600 text-sm">
-                Creamos soluciones que maximizan el valor del material recuperado
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#a8836d] mb-4">04</div>
-              <h3 className="text-lg font-medium text-gray-800 mb-2">Producción</h3>
-              <p className="text-gray-600 text-sm">
-                Fabricamos con técnicas artesanales y procesos sustentables
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 md:px-8 bg-[#3D4A3D]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-light text-white mb-8 tracking-wide">
-            ¿Tienes un proyecto en mente?
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Colaboramos con empresas y organizaciones que comparten nuestra visión de un futuro más sustentable.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contacto"
-              className="px-8 py-3 bg-white text-[#3D4A3D] font-medium tracking-wider hover:bg-gray-100 transition-colors duration-300 rounded-lg"
-            >
-              Contactar
-            </Link>
-            <Link 
-              href="/proyectos"
-              className="px-8 py-3 border-2 border-white text-white font-medium tracking-wider hover:bg-white hover:text-[#3D4A3D] transition-colors duration-300 rounded-lg"
-            >
-              Ver Proyectos
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 } 

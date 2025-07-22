@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { proyectos } from '../../../data/proyectos';
 import { Proyecto } from '../../../types/proyectos';
 import { TextCard, SimpleTextCard, VerticalImageCard, HorizontalImageCard } from '../../components/cards';
+import ScrollReveal from '../../components/ui/ScrollReveal';
 
 export default function ProyectoDetailPage() {
   const params = useParams();
@@ -55,29 +56,31 @@ export default function ProyectoDetailPage() {
     );
   }
 
-  // Text blocks for Florero Betty
-  const textBlocks = [
-    {
-      title: "Un problema que elegimos transformar",
-      content: "Las botellas de vino desechadas constituyen una gran parte de los residuos de vidrio de nuestro planeta. Pero, ¿y si pudiéramos darles una segunda vida y transformarlas en algo realmente hermoso?"
-    },
-    {
-      title: "Así nace el Florero Betty",
-      content: "Nos enorgullece presentar nuestro tan preciado Florero Betty. Este jarrón no solo es una pieza decorativa, sino también un símbolo de sostenibilidad y compromiso social."
-    },
-    {
-      title: "Diseño con conciencia",
-      content: "Lo diseñamos bajo el concepto de upcycling, dándole un nuevo valor a materiales que de otra manera serían desechados. Está elaborado 100% a mano: su cuerpo está hecho a partir de botellas de vino reutilizadas, y su base se fabrica con retazos de chapa recuperada de chatarreras."
-    },
-    {
-      title: "Una red que genera impacto",
-      content: "Al reutilizar estas botellas, no solo estamos reduciendo significativamente los residuos, sino que también estamos creando oportunidades laborales en nuestra comunidad local."
-    },
-    {
-      title: "Trabajo colectivo y economía circular",
-      content: "Trabajamos de cerca con una red de talleres en el conurbano y con la cooperativa Supercrea, quienes se encargan de proveernos estos envases de vidrio recuperados. Así, hemos logrado construir una red de actores comprometidos con el medio ambiente y el desarrollo social."
+  // Generate dynamic text blocks based on project content
+  const generateTextBlocks = (proyecto: Proyecto) => {
+    // Split the detail description into meaningful chunks
+    const sentences = proyecto.detailDescription.split('. ');
+    const chunks: string[] = [];
+    
+    // Group sentences into chunks of roughly equal length
+    const targetChunkSize = Math.ceil(sentences.length / 5);
+    for (let i = 0; i < sentences.length; i += targetChunkSize) {
+      const chunk = sentences.slice(i, i + targetChunkSize).join('. ');
+      chunks.push(chunk.endsWith('.') ? chunk : chunk + '.');
     }
-  ];
+    
+    // Ensure we have exactly 5 chunks
+    while (chunks.length < 5) {
+      chunks.push(chunks[chunks.length - 1]);
+    }
+    while (chunks.length > 5) {
+      chunks[chunks.length - 2] += ' ' + chunks.pop();
+    }
+    
+    return chunks;
+  };
+
+  const textBlocks = generateTextBlocks(proyecto);
 
   return (
     <div className="min-h-screen" style={{backgroundColor: '#F9F8F6'}}>
@@ -138,12 +141,18 @@ export default function ProyectoDetailPage() {
               alt={proyecto.title}
             />
             
-            {/* Text Block 1 */}
-            <SimpleTextCard
-              title={textBlocks[0].title}
-              content={textBlocks[0].content}
-              minHeight="min-h-[400px]"
-            />
+            {/* Text Block 1 - ScrollReveal */}
+            <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
+              <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={10}
+                textClassName="text-black"
+              >
+                {textBlocks[0]}
+              </ScrollReveal>
+            </div>
             
             {/* Hero Image 2 - VERTICAL */}
             <VerticalImageCard
@@ -151,12 +160,18 @@ export default function ProyectoDetailPage() {
               alt={`${proyecto.title} - Vista 2`}
             />
             
-            {/* Text Block 2 */}
-            <SimpleTextCard
-              title={textBlocks[1].title}
-              content={textBlocks[1].content}
-              minHeight="min-h-[400px]"
-            />
+            {/* Text Block 2 - ScrollReveal */}
+            <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
+              <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={3}
+                blurStrength={8}
+                textClassName="text-black"
+              >
+                {textBlocks[1]}
+              </ScrollReveal>
+            </div>
             
             {/* Process Image - VERTICAL */}
             <VerticalImageCard
@@ -164,12 +179,18 @@ export default function ProyectoDetailPage() {
               alt={`${proyecto.title} - Proceso`}
             />
             
-            {/* Text Block 3 */}
-            <SimpleTextCard
-              title={textBlocks[2].title}
-              content={textBlocks[2].content}
-              minHeight="min-h-[450px]"
-            />
+            {/* Text Block 3 - ScrollReveal */}
+            <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
+              <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={6}
+                blurStrength={9}
+                textClassName="text-black"
+              >
+                {textBlocks[2]}
+              </ScrollReveal>
+            </div>
             
             {/* Detail Image - VERTICAL */}
             <VerticalImageCard
@@ -177,12 +198,18 @@ export default function ProyectoDetailPage() {
               alt={`${proyecto.title} - Detalle`}
             />
             
-            {/* Text Block 4 */}
-            <SimpleTextCard
-              title={textBlocks[3].title}
-              content={textBlocks[3].content}
-              minHeight="min-h-[400px]"
-            />
+            {/* Text Block 4 - ScrollReveal */}
+            <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
+              <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={4}
+                blurStrength={12}
+                textClassName="text-black"
+              >
+                {textBlocks[3]}
+              </ScrollReveal>
+            </div>
             
             {/* Cycle Image - VERTICAL */}
             <VerticalImageCard
@@ -190,12 +217,18 @@ export default function ProyectoDetailPage() {
               alt={`${proyecto.title} - Ciclo`}
             />
             
-            {/* Text Block 5 */}
-            <SimpleTextCard
-              title={textBlocks[4].title}
-              content={textBlocks[4].content}
-              minHeight="min-h-[450px]"
-            />
+            {/* Text Block 5 - ScrollReveal */}
+            <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
+              <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={2}
+                blurStrength={11}
+                textClassName="text-black"
+              >
+                {textBlocks[4]}
+              </ScrollReveal>
+            </div>
             
             {/* Final Image - HORIZONTAL */}
             <HorizontalImageCard
@@ -215,12 +248,18 @@ export default function ProyectoDetailPage() {
                 alt={proyecto.title}
               />
               
-              {/* Text Block 1 */}
-              <SimpleTextCard
-                title={textBlocks[0].title}
-                content={textBlocks[0].content}
-                minHeight="min-h-[400px]"
-              />
+              {/* Text Block 1 - ScrollReveal */}
+              <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
+                <ScrollReveal
+                  baseOpacity={0}
+                  enableBlur={true}
+                  baseRotation={5}
+                  blurStrength={10}
+                  textClassName="text-black"
+                >
+                  {textBlocks[0]}
+                </ScrollReveal>
+              </div>
               
               {/* Process Image - VERTICAL */}
               <VerticalImageCard
@@ -228,19 +267,31 @@ export default function ProyectoDetailPage() {
                 alt={`${proyecto.title} - Proceso`}
               />
               
-              {/* Text Block 3 */}
-              <SimpleTextCard
-                title={textBlocks[2].title}
-                content={textBlocks[2].content}
-                minHeight="min-h-[450px]"
-              />
+              {/* Text Block 3 - ScrollReveal */}
+              <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
+                <ScrollReveal
+                  baseOpacity={0}
+                  enableBlur={true}
+                  baseRotation={6}
+                  blurStrength={9}
+                  textClassName="text-black"
+                >
+                  {textBlocks[2]}
+                </ScrollReveal>
+              </div>
               
-              {/* Text Block 5 */}
-              <SimpleTextCard
-                title={textBlocks[4].title}
-                content={textBlocks[4].content}
-                minHeight="min-h-[450px]"
-              />
+              {/* Text Block 5 - ScrollReveal */}
+              <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
+                <ScrollReveal
+                  baseOpacity={0}
+                  enableBlur={true}
+                  baseRotation={2}
+                  blurStrength={11}
+                  textClassName="text-black"
+                >
+                  {textBlocks[4]}
+                </ScrollReveal>
+              </div>
             </div>
 
             {/* COLUMNA DERECHA */}
@@ -251,12 +302,18 @@ export default function ProyectoDetailPage() {
                 alt={`${proyecto.title} - Vista 2`}
               />
               
-              {/* Text Block 2 */}
-              <SimpleTextCard
-                title={textBlocks[1].title}
-                content={textBlocks[1].content}
-                minHeight="min-h-[400px]"
-              />
+              {/* Text Block 2 - ScrollReveal */}
+              <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
+                <ScrollReveal
+                  baseOpacity={0}
+                  enableBlur={true}
+                  baseRotation={3}
+                  blurStrength={8}
+                  textClassName="text-black"
+                >
+                  {textBlocks[1]}
+                </ScrollReveal>
+              </div>
               
               {/* Detail Image - VERTICAL */}
               <VerticalImageCard
@@ -264,12 +321,18 @@ export default function ProyectoDetailPage() {
                 alt={`${proyecto.title} - Detalle`}
               />
               
-              {/* Text Block 4 */}
-              <SimpleTextCard
-                title={textBlocks[3].title}
-                content={textBlocks[3].content}
-                minHeight="min-h-[400px]"
-              />
+              {/* Text Block 4 - ScrollReveal */}
+              <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
+                <ScrollReveal
+                  baseOpacity={0}
+                  enableBlur={true}
+                  baseRotation={4}
+                  blurStrength={12}
+                  textClassName="text-black"
+                >
+                  {textBlocks[3]}
+                </ScrollReveal>
+              </div>
               
               {/* Cycle Image - VERTICAL */}
               <VerticalImageCard

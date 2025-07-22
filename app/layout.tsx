@@ -19,8 +19,12 @@ export const metadata: Metadata = {
   description: "HEMBRA es una marca de diseño industrial en una misión para ayudar a las empresas a construir un futuro regenerativo. Descubre productos innovadores y sostenibles.",
   keywords: "diseño industrial, sostenible, regenerativo, productos ecológicos, HEMBRA",
   authors: [{ name: "HEMBRA Studio" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -31,8 +35,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{backgroundColor: '#fff'}}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <CartProvider>
           <Header />

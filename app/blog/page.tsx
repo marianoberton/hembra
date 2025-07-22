@@ -76,10 +76,18 @@ const mockPosts = [
 ];
 
 export default function BlogPage() {
+  // Distribute posts into 3 rows for desktop
+  const postsRow1 = mockPosts.slice(0, 2); // First 2 posts
+  const postsRow2 = mockPosts.slice(2, 4); // Next 2 posts  
+  const postsRow3 = mockPosts.slice(4, 6); // Last 2 posts
+
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* Full width container without wrapper */}
+      <div className="w-full px-2 sm:px-4 lg:px-6 py-4 space-y-3 sm:space-y-4 lg:space-y-6">
+        
+        {/* Mobile: Single column stack */}
+        <div className="block lg:hidden space-y-4">
           {mockPosts.map((post) => (
             post.type === 'image' ? (
               <BlogPreviewImageCard
@@ -106,6 +114,99 @@ export default function BlogPage() {
             )
           ))}
         </div>
+
+        {/* Desktop: 3 rows, 2 columns each */}
+        <div className="hidden lg:block space-y-6">
+          
+          {/* Row 1 */}
+          <div className="grid grid-cols-2 gap-6">
+            {postsRow1.map((post) => (
+              post.type === 'image' ? (
+                <BlogPreviewImageCard
+                  key={post.id}
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  description={post.description}
+                  excerpt={post.excerpt}
+                  href={post.href}
+                  imageUrl={post.imageUrl!}
+                  imageAlt={post.imageAlt}
+                />
+              ) : (
+                <BlogPreviewCard
+                  key={post.id}
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  description={post.description}
+                  excerpt={post.excerpt}
+                  href={post.href}
+                  backgroundColor={post.backgroundColor}
+                  textColor={post.textColor}
+                />
+              )
+            ))}
+          </div>
+
+          {/* Row 2 */}
+          <div className="grid grid-cols-2 gap-6">
+            {postsRow2.map((post) => (
+              post.type === 'image' ? (
+                <BlogPreviewImageCard
+                  key={post.id}
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  description={post.description}
+                  excerpt={post.excerpt}
+                  href={post.href}
+                  imageUrl={post.imageUrl!}
+                  imageAlt={post.imageAlt}
+                />
+              ) : (
+                <BlogPreviewCard
+                  key={post.id}
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  description={post.description}
+                  excerpt={post.excerpt}
+                  href={post.href}
+                  backgroundColor={post.backgroundColor}
+                  textColor={post.textColor}
+                />
+              )
+            ))}
+          </div>
+
+          {/* Row 3 */}
+          <div className="grid grid-cols-2 gap-6">
+            {postsRow3.map((post) => (
+              post.type === 'image' ? (
+                <BlogPreviewImageCard
+                  key={post.id}
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  description={post.description}
+                  excerpt={post.excerpt}
+                  href={post.href}
+                  imageUrl={post.imageUrl!}
+                  imageAlt={post.imageAlt}
+                />
+              ) : (
+                <BlogPreviewCard
+                  key={post.id}
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  description={post.description}
+                  excerpt={post.excerpt}
+                  href={post.href}
+                  backgroundColor={post.backgroundColor}
+                  textColor={post.textColor}
+                />
+              )
+            ))}
+          </div>
+
+        </div>
+
       </div>
     </div>
   );
