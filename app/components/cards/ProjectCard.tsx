@@ -35,13 +35,13 @@ export default function ProjectCard({
       cardNumber={cardNumber}
     >
       {badge && (
-        <div className="absolute top-6 left-6 border border-black inline-block px-3 py-1 text-xs font-medium rounded-full">
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 border border-black inline-block px-3 py-1 prowl-label rounded-full">
           {badge}
         </div>
       )}
       
       {label && (
-        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 prowl-label text-black">
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 prowl-label">
           {label}
         </div>
       )}

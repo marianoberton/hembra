@@ -1,14 +1,19 @@
-import { TextCard, ImageCard, ProjectCard, TypographyCard, CardTitleSubtitle } from './components/cards';
+import { TextCard, TypographyCard, CardTitleSubtitle } from './components/cards';
+import ThreeDTextCard from './components/ui/3d-text-card';
+import ImageCardHover from './components/ui/image-card-hover';
+import ImageCardHorizontal from './components/ui/image-card-horizontal';
+import Image from 'next/image';
+import Footer from './components/Footer';
 
-// Mapeo SOLO de ImageCards a proyectos específicos
+// Mapeo SOLO de ImageCards a proyectos específicos - ACTUALIZADO
 const projectCardMappings = [
   { cardNumber: 2, projectId: 'florero-betty' },         // ImageCard -> Florero Betty
-  { cardNumber: 5, projectId: 'linea-complementos-chapa' }, // ImageCard -> Línea Complementos
-  { cardNumber: 7, projectId: 'upcycled-luminarias' },      // ImageCard -> Upcycled Luminarias  
-  { cardNumber: 10, projectId: 'cooperativa-superarte' },   // ImageCard -> Cooperativa Superarte
-  { cardNumber: 13, projectId: 'linea-vasos' },             // ImageCard -> Línea Vasos
-  { cardNumber: 16, projectId: 'recap' },                   // ImageCard -> RECAP
-  { cardNumber: 18, projectId: 'mesa-bea' }                 // ImageCard -> Mesa Bea
+  { cardNumber: 6, projectId: 'linea-complementos-chapa' }, // ImageCard -> Línea Complementos (horizontal)
+  { cardNumber: 8, projectId: 'cooperativa-superarte' },    // ImageCard -> Cooperativa Superarte
+  { cardNumber: 9, projectId: 'upcycled-luminarias' },      // ImageCard -> Upcycled Luminarias  
+  { cardNumber: 13, projectId: 'mesa-bea' },                // ImageCard -> Mesa Bea (horizontal)
+  { cardNumber: 17, projectId: 'recap' },                   // ImageCard -> RECAP (horizontal)
+  { cardNumber: 21, projectId: 'linea-vasos' }              // ImageCard -> Línea Vasos (horizontal)
 ];
 
 // Función helper para obtener la URL del proyecto o genérica
@@ -20,247 +25,317 @@ function getProjectUrl(cardNumber: number): string {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Cards grid con margen superior para separar del header/nav */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 pb-12 mt-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-none">
-          {/* COLUMN 1 (Left) - 6 cards */}
-          <div className="space-y-4 md:space-y-6">
-            {/* 1. Hembra Statement */}
-            <TextCard
+      {/* Cards grid responsive */}
+      <div className="w-full px-2 sm:px-4 lg:px-6 pb-12 pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-none">
+          {/* COLUMN 1 (Left) - 8 cards */}
+          <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+            {/* 1. Hembra Statement - 3D TEXT */}
+            <ThreeDTextCard
               cardNumber={1}
               label="Estudio"
               title="Hembra es un estudio de diseño industrial con la misión de transformar residuos en soluciones sustentables."
               backgroundColor="#b3c1a2"
               textColor="#718355"
-              minHeight="min-h-[240px]"
+              minHeight="min-h-[140px] sm:min-h-[160px]"
               showArrow={true}
+              href="/estudio"
             />
 
-            {/* 2. Florero Betty - PROYECTO */}
-            <ImageCard
+            {/* 2. Florero Betty - IMAGE HOVER */}
+            <ImageCardHover
               cardNumber={2}
               src="/images/1. Florero Betty/Copia de Betty Vase Colours.jpg"
               alt="Florero Betty - Diseño Sustentable"
+              title="Florero Betty"
               label="Proyectos"
               href={getProjectUrl(2)}
-              minHeight="min-h-[280px]"
               showArrow={true}
             />
 
-            {/* 3. Summer 2023 Project */}
-            <CardTitleSubtitle
-              cardNumber={3}
-              title="Summer 2023"
-              subtitle="Barriers to Entry"
-              description="Produced in collaboration with Barriers to Action"
-              label="Servicios"
-              href="/servicios"
-              backgroundColor="#cedbbf"
-              textColor="#7c8e60"
-              minHeight="min-h-[280px]"
-            />
-
-            {/* 4. Upcycling Process */}
+            {/* 3. Estrategia Circular - TYPOGRAPHY (TIPO 4) */}
             <TypographyCard
-              cardNumber={4}
+              cardNumber={3}
               items={[
-                { text: "Upcycling Process", className: "text-headline" }
+                { text: "Estrategia Circular", className: "text-headline", color: "#000000" }
               ]}
-              label="Metodología"
-              backgroundColor="#a8836d"
-              showArrow={false}
-            />
-
-            {/* 5. Línea de Complementos - PROYECTO */}
-            <ImageCard
-              cardNumber={5}
-              src="/images/linea-complementos-chapa.jpeg"
-              alt="Línea de Complementos en Chapa - Repusaje Artesanal"
-              label="Proyectos"
-              href={getProjectUrl(5)}
-              minHeight="min-h-[240px]"
+              label="Servicios"
+              backgroundColor="#718355"
               showArrow={true}
+              href="/servicios"
             />
 
-            {/* 6. Quote Block */}
-            <TextCard
-              cardNumber={6}
-              content="We begin with the end.™"
+            {/* 4. Blog Post - CARDTITLE (TIPO 3) */}
+            <CardTitleSubtitle
+              cardNumber={4}
+              title="Cómo diseñar productos sustentables"
+              subtitle="Guía completa para principiantes"
+              description="Estrategias y ejemplos prácticos para crear productos que respeten el medio ambiente sin comprometer la funcionalidad."
+              label="Blog"
+              href="/blog"
+              backgroundColor="#cedbbf"
+              textColor="#3D4A3D"
+              minHeight="min-h-[140px] sm:min-h-[160px]"
+            />
+
+            {/* 5. Sustainability Statement - 3D TEXT (TIPO 1) */}
+            <ThreeDTextCard
+              cardNumber={5}
+              label="Estudio"
+              title="Diseñamos con la convicción de que la sustentabilidad no es una opción, sino una responsabilidad"
               backgroundColor="#fefcfb"
               textColor="#7c8e60"
-              minHeight="min-h-[160px]"
-              className="italic text-center border"
-              showArrow={false}
+              minHeight="min-h-[140px] sm:min-h-[160px]"
+              showArrow={true}
+              href="/estudio"
+            />
+
+            {/* 6. Línea de Complementos - IMAGE HORIZONTAL */}
+            <ImageCardHorizontal
+              cardNumber={6}
+              src="/images/linea-complementos-chapa.jpeg"
+              alt="Línea de Complementos en Chapa - Repusaje Artesanal"
+              title="Línea de Complementos en Chapa"
+              label="Proyectos"
+              href={getProjectUrl(6)}
+              showArrow={true}
+            />
+
+            {/* 7. Diseño de Objetos con Alma - TYPOGRAPHY (TIPO 4) */}
+            <TypographyCard
+              cardNumber={7}
+              items={[
+                { text: "Diseño de Objetos con Alma", className: "text-headline", color: "#000000" }
+              ]}
+              label="Servicios"
+              backgroundColor="#7c8e60"
+              showArrow={true}
+              href="/servicios"
+            />
+
+            {/* 8. Cooperativa Superarte - IMAGE HORIZONTAL */}
+            <ImageCardHorizontal
+              cardNumber={8}
+              src="/images/cooperativa-superarte.JPG"
+              alt="Cooperativa Superarte - Trabajo Colaborativo"
+              title="Cooperativa Superarte"
+              label="Proyectos"
+              href={getProjectUrl(8)}
+              showArrow={true}
             />
           </div>
 
-          {/* COLUMN 2 (Center) - 6 cards */}
-          <div className="space-y-4 md:space-y-6">
-            {/* 7. Upcycled Luminarias - PROYECTO */}
-            <ImageCard
-              cardNumber={7}
+          {/* COLUMN 2 (Center) - 5 cards + 3 elementos especiales = 8 elementos */}
+          <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+            {/* 9. Upcycled Luminarias - IMAGE HOVER */}
+            <ImageCardHover
+              cardNumber={9}
               src="/images/upcycled-luminarias.JPG"
               alt="Upcycled Luminarias - Iluminación Consciente"
+              title="Upcycled Luminarias"
               label="Proyectos"
-              href={getProjectUrl(7)}
-              minHeight="min-h-[280px]"
+              href={getProjectUrl(9)}
               showArrow={true}
             />
 
-            {/* 8. Marquesina */}
-            <div className="h-24 rounded-xl flex items-center justify-center relative" style={{backgroundColor: '#94a27f'}}>
-              <p className="text-caption" style={{color: '#fefcfb'}}>Marquesina</p>
+            {/* 10. Marquesina Superior */}
+            <div className="h-32 sm:h-40 lg:h-48 rounded-xl relative overflow-hidden">
+              <Image
+                src="https://framerusercontent.com/images/ORcrWDmgvL8vrAJjyE7jwI4lbLo.gif?scale-down-to=1024"
+                alt="Marquesina"
+                fill
+                className="object-cover"
+                unoptimized
+              />
               <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
-                8
+                10
               </div>
             </div>
 
-            {/* 9. Metodología */}
-            <TypographyCard
-              cardNumber={9}
-              items={[
-                { text: "Metodología Sustentable" }
-              ]}
-              backgroundColor="#718355"
-              label="Estudio"
-            />
-
-            {/* 10. Cooperativa Superarte - PROYECTO */}
-            <ImageCard
-              cardNumber={10}
-              src="/images/cooperativa-superarte.JPG"
-              alt="Cooperativa Superarte - Trabajo Colaborativo"
-              label="Proyectos"
-              href={getProjectUrl(10)}
-              minHeight="min-h-[200px]"
-              showArrow={true}
-            />
-
-            {/* 11. Partnership Text */}
-            <TextCard
+            {/* 11. Blog Post - CARDTITLE (TIPO 3) */}
+            <CardTitleSubtitle
               cardNumber={11}
-              title="Collaborate to be stronger, together ⎯ Strategic partnerships increase the capacity to create the regenerative future."
-              label="Estudio"
-              backgroundColor="#ae8b77"
+              title="Tendencias en diseño industrial 2024"
+              subtitle="Lo que viene este año"
+              description="Análisis profundo de las tendencias más relevantes en materiales, procesos y estilos que marcarán el diseño industrial."
+              backgroundColor="#b59582"
               textColor="#fefcfb"
-              showArrow={true}
+              label="Blog"
+              minHeight="min-h-[140px] sm:min-h-[160px]"
             />
 
-            {/* 12. Blog */}
-            <TextCard
-              cardNumber={12}
-              title="Blog"
-              label="Contenido"
-              href="/blog"
-              backgroundColor="#a2ae92"
-              textColor="#718355"
-              showArrow={true}
-            />
-          </div>
+            {/* 12. VIDEO CENTRAL - Solo desktop */}
+            <div className="hidden lg:block">
+              <div className="h-80 sm:h-96 lg:h-[500px] rounded-xl relative overflow-hidden">
+                <video
+                  src="https://framerusercontent.com/assets/nOkG5qcPPOVv5BSHdgfLxtLTEE.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  style={{ borderRadius: '12px' }}
+                />
+                <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
+                  12
+                </div>
+              </div>
+            </div>
 
-          {/* COLUMN 3 (Right) - 6 cards */}
-          <div className="space-y-4 md:space-y-6">
-            {/* 13. Línea Vasos - PROYECTO */}
-            <ImageCard
+            {/* 12. Mobile: Cooperativa Superarte en lugar del video - IMAGE HOVER */}
+            <div className="block lg:hidden">
+              <ImageCardHover
+                cardNumber={12}
+                src="/images/cooperativa-superarte.JPG"
+                alt="Cooperativa Superarte - Trabajo Colaborativo"
+                title="Cooperativa Superarte"
+                label="Proyectos"
+                href="/proyectos/cooperativa-superarte?from=home"
+                showArrow={true}
+              />
+            </div>
+
+            {/* 13. Mesa Bea - IMAGE HOVER */}
+            <ImageCardHover
               cardNumber={13}
-              src="/images/linea-vasos.JPG"
-              alt="Línea Vasos - Vidrio Recuperado"
+              src="/images/mesa-bea.jpg"
+              alt="Mesa Bea - Diseño Funcional"
+              title="Mesa Bea"
               label="Proyectos"
               href={getProjectUrl(13)}
-              minHeight="min-h-[280px]"
               showArrow={true}
             />
 
-            {/* 14. Impacto Social */}
-            <TextCard
+            {/* 14. Innovación Sostenible - TYPOGRAPHY (TIPO 4) */}
+            <TypographyCard
               cardNumber={14}
-              title="Impacto Social"
-              subtitle="Generamos trabajo con el menor consumo de recursos posible"
-              backgroundColor="#909b82"
-              textColor="#fefcfb"
-              minHeight="min-h-[200px]"
-            />
-
-            {/* 15. Winter 2022 - The New Comfort */}
-            <CardTitleSubtitle
-              cardNumber={15}
-              title="Winter 2022"
-              subtitle="The New Comfort"
-              description="A future of resilience amidst rapid change."
-              backgroundColor="#cedbbf"
-              textColor="#7c8e60"
+              items={[
+                { text: "Innovación Sostenible", className: "text-headline", color: "#000000" }
+              ]}
               label="Servicios"
+              backgroundColor="#b3c1a2"
+              showArrow={true}
+              href="/servicios"
             />
 
-            {/* 16. RECAP - PROYECTO */}
-            <ImageCard
+            {/* 15. Marquesina Inferior */}
+            <div className="h-32 sm:h-40 lg:h-48 rounded-xl relative overflow-hidden">
+              <Image
+                src="https://framerusercontent.com/images/ORcrWDmgvL8vrAJjyE7jwI4lbLo.gif?scale-down-to=1024"
+                alt="Marquesina"
+                fill
+                className="object-cover"
+                unoptimized
+              />
+              <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
+                15
+              </div>
+            </div>
+
+
+          </div>
+
+          {/* COLUMN 3 (Right) - 8 cards */}
+          <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+            {/* 16. Prototipado y Desarrollo - TYPOGRAPHY (TIPO 4) */}
+            <TypographyCard
               cardNumber={16}
+              items={[
+                { text: "Prototipado y Desarrollo", className: "text-headline", color: "#000000" }
+              ]}
+              label="Servicios"
+              backgroundColor="#909b82"
+              showArrow={true}
+              href="/servicios"
+            />
+
+            {/* 17. RECAP - IMAGE HORIZONTAL */}
+            <ImageCardHorizontal
+              cardNumber={17}
               src="/images/recap.jpg"
               alt="RECAP - Proyecto Integral"
+              title="RECAP"
               label="Proyectos"
-              href={getProjectUrl(16)}
-              minHeight="min-h-[240px]"
+              href={getProjectUrl(17)}
               showArrow={true}
             />
 
-            {/* 17. Building 12 Announcement */}
-            <TextCard
-              cardNumber={17}
-              title="We are extraordinarily excited to announce that we have moved into Building 12, which is part of the larger Pier 70 project in San Francisco's Dogpatch neighborhood. This space will include an entire prototyping lab, micro material library, and other features that will enable us to do our best work and grow as a team."
-              backgroundColor="#b59582"
-              textColor="#7c8e60"
-            />
-
-            {/* 18. Mesa Bea - PROYECTO */}
-            <ImageCard
+            {/* 18. Propósito Creativo - 3D TEXT (TIPO 1) */}
+            <ThreeDTextCard
               cardNumber={18}
-              src="/images/mesa-bea.jpg"
-              alt="Mesa Bea - Mobiliario Upcycled"
-              label="Proyectos"
-              href={getProjectUrl(18)}
-              minHeight="min-h-[200px]"
+              title="Reimaginamos los materiales descartados como oportunidades para un futuro más consciente"
+              label="Estudio"
+              backgroundColor="#93a584"
+              textColor="#fefcfb"
+              minHeight="min-h-[180px] sm:min-h-[200px]"
               showArrow={true}
+              href="/estudio"
+            />
+
+            {/* 19. Blog Post - CARDTITLE (TIPO 3) */}
+            <CardTitleSubtitle
+              cardNumber={19}
+              title="Colaboraciones que inspiran"
+              subtitle="Alianzas estratégicas"
+              description="Historias reales de colaboraciones exitosas y cómo las alianzas estratégicas potencian la innovación."
+              backgroundColor="#718355"
+              textColor="#fefcfb"
+              label="Blog"
+              minHeight="min-h-[140px] sm:min-h-[160px]"
+            />
+
+            {/* 20. Impacto Social - 3D TEXT (TIPO 1) */}
+            <ThreeDTextCard
+              cardNumber={20}
+              title="Creamos productos con propósito, integrando diseño, impacto social y compromiso ambiental."
+              label="Estudio"
+              backgroundColor="#b3927f"
+              textColor="#fefcfb"
+              minHeight="min-h-[160px] sm:min-h-[200px]"
+              showArrow={true}
+              href="/estudio"
+            />
+
+            {/* 21. Línea Vasos - IMAGE HORIZONTAL */}
+            <ImageCardHorizontal
+              cardNumber={21}
+              src="/images/linea-vasos.JPG"
+              alt="Línea Vasos - Vidrio Recuperado"
+              title="Línea Vasos"
+              label="Proyectos"
+              href={getProjectUrl(21)}
+              showArrow={true}
+            />
+
+            {/* 22. Producción Responsable - TYPOGRAPHY (TIPO 4) */}
+            <TypographyCard
+              cardNumber={22}
+              items={[
+                { text: "Producción Responsable", className: "text-headline", color: "#000000" }
+              ]}
+              label="Servicios"
+              backgroundColor="#a2ae92"
+              showArrow={true}
+              href="/servicios"
+            />
+
+            {/* 23. Blog Post - CARDTITLE (TIPO 3) */}
+            <CardTitleSubtitle
+              cardNumber={23}
+              title="Diseño circular en acción"
+              subtitle="Casos de éxito"
+              description="Ejemplos reales de cómo implementamos principios de economía circular en proyectos tangibles y exitosos."
+              backgroundColor="#cedbbf"
+              textColor="#3D4A3D"
+              label="Blog"
+              minHeight="min-h-[140px] sm:min-h-[160px]"
             />
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="py-12" style={{backgroundColor: '#fefcfb'}}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Client Logos Placeholder */}
-          <div className="h-24 rounded-xl mb-8 flex items-center justify-center" style={{backgroundColor: '#a2ae92'}}>
-            <p className="text-caption" style={{color: '#718355'}}>Client Logos</p>
-          </div>
-          
-          {/* Footer Links */}
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-            {/* Social Links */}
-            <div className="flex space-x-3">
-              <a 
-                href="https://instagram.com" 
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-                style={{backgroundColor: '#b3c1a2', color: '#fefcfb'}}>
-                IG
-              </a>
-              <a 
-                href="https://linkedin.com" 
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-                style={{backgroundColor: '#b3c1a2', color: '#fefcfb'}}>
-                LI
-              </a>
-            </div>
-
-            {/* CTA */}
-            <a 
-              href="/contacto" 
-              className="px-6 py-2 rounded-full text-sm font-medium transition-colors"
-              style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
-              Get in touch
-            </a>
-          </div>
-        </div>
-      </footer>
+      {/* Footer con logo gigante */}
+      <Footer />
     </div>
   );
 } 

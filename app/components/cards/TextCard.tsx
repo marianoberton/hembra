@@ -71,7 +71,7 @@ export default function TextCard({
       )}
       
       {badge && (
-        <div className="absolute top-6 left-6 border border-white inline-block px-3 py-1 text-xs font-medium rounded-full">
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 border border-white inline-block px-3 py-1 prowl-label-white rounded-full">
           {badge}
         </div>
       )}

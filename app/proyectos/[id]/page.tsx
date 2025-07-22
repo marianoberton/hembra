@@ -204,16 +204,15 @@ export default function ProyectoDetailPage() {
             />
           </div>
 
-          {/* Desktop: 2 columnas apiladas sin espacios */}
-          <div className="hidden md:grid md:grid-cols-2">
+          {/* Desktop: 2 columnas apiladas con espaciado reducido */}
+          <div className="hidden md:grid md:grid-cols-2 gap-3">
             
             {/* COLUMNA IZQUIERDA */}
-            <div className="space-y-0">
+            <div className="space-y-3">
               {/* Hero Image 1 - HORIZONTAL */}
               <HorizontalImageCard
                 src={proyecto.image}
                 alt={proyecto.title}
-                className="rounded-none"
               />
               
               {/* Text Block 1 */}
@@ -221,14 +220,12 @@ export default function ProyectoDetailPage() {
                 title={textBlocks[0].title}
                 content={textBlocks[0].content}
                 minHeight="min-h-[400px]"
-                className="rounded-none"
               />
               
               {/* Process Image - VERTICAL */}
               <VerticalImageCard
                 src={proyecto.gallery[2] || proyecto.image}
                 alt={`${proyecto.title} - Proceso`}
-                className="rounded-none"
               />
               
               {/* Text Block 3 */}
@@ -236,7 +233,6 @@ export default function ProyectoDetailPage() {
                 title={textBlocks[2].title}
                 content={textBlocks[2].content}
                 minHeight="min-h-[450px]"
-                className="rounded-none"
               />
               
               {/* Text Block 5 */}
@@ -244,17 +240,15 @@ export default function ProyectoDetailPage() {
                 title={textBlocks[4].title}
                 content={textBlocks[4].content}
                 minHeight="min-h-[450px]"
-                className="rounded-none"
               />
             </div>
 
             {/* COLUMNA DERECHA */}
-            <div className="space-y-0">
+            <div className="space-y-3">
               {/* Hero Image 2 - VERTICAL */}
               <VerticalImageCard
                 src={proyecto.gallery[1] || proyecto.image}
                 alt={`${proyecto.title} - Vista 2`}
-                className="rounded-none"
               />
               
               {/* Text Block 2 */}
@@ -262,14 +256,12 @@ export default function ProyectoDetailPage() {
                 title={textBlocks[1].title}
                 content={textBlocks[1].content}
                 minHeight="min-h-[400px]"
-                className="rounded-none"
               />
               
               {/* Detail Image - VERTICAL */}
               <VerticalImageCard
                 src={proyecto.gallery[0] || proyecto.image}
                 alt={`${proyecto.title} - Detalle`}
-                className="rounded-none"
               />
               
               {/* Text Block 4 */}
@@ -277,21 +269,18 @@ export default function ProyectoDetailPage() {
                 title={textBlocks[3].title}
                 content={textBlocks[3].content}
                 minHeight="min-h-[400px]"
-                className="rounded-none"
               />
               
               {/* Cycle Image - VERTICAL */}
               <VerticalImageCard
                 src={proyecto.gallery[3] || proyecto.image}
                 alt={`${proyecto.title} - Ciclo`}
-                className="rounded-none"
               />
               
               {/* Final Image - HORIZONTAL */}
               <HorizontalImageCard
                 src={proyecto.gallery[4] || proyecto.image}
                 alt={`${proyecto.title} - Final`}
-                className="rounded-none"
               />
             </div>
           </div>

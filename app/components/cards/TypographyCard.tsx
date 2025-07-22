@@ -44,7 +44,7 @@ export default function TypographyCard({
   const arrowClass = isDarkBackground ? 'prowl-arrow-white' : 'prowl-arrow';
 
   // Card styling with consistent padding and height
-  const cardClasses = `${isHexColor ? '' : backgroundColor} p-4 md:p-6 flex flex-col justify-center ${className}`;
+  const cardClasses = `${isHexColor ? '' : backgroundColor} p-4 md:p-6 pb-16 flex flex-col justify-center ${className}`;
   
   const cardStyle: React.CSSProperties = {
     minHeight: '200px',
@@ -68,7 +68,7 @@ export default function TypographyCard({
       )}
 
       {/* Main content area with consistent spacing */}
-      <div className="space-y-2 text-center mt-8 mb-8">
+      <div className="space-y-2 text-center mt-8 mb-4">
         {items.map((item, index) => (
           <div 
             key={index} 

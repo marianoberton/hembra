@@ -119,7 +119,7 @@ body {
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 500;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
 }
 
@@ -128,10 +128,23 @@ body {
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
-  letter-spacing: 0em;
+  letter-spacing: -0.02em;
   line-height: 108%;
   text-align: center;
   color: #000000;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.text-headline-white {
+  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 108%;
+  text-align: center;
+  color: #ffffff;
   text-decoration: none;
   text-transform: none;
 }
@@ -140,6 +153,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
+  letter-spacing: -0.01em;
   font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
 }
 
@@ -147,8 +161,23 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--gray-600);
   font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+}
+
+/* Navigation and UI Elements - Refined Letter Spacing */
+.text-nav {
+  letter-spacing: -0.01em;
+}
+
+.text-button {
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+.text-elegant {
+  letter-spacing: -0.02em;
 }
 
 /* Grid System */
@@ -291,7 +320,7 @@ body {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  letter-spacing: 0em;
+  letter-spacing: 0.08em;
   line-height: 102%;
   text-align: start;
   color: #333333;
@@ -304,7 +333,20 @@ body {
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  letter-spacing: 0em;
+  letter-spacing: 0.08em;
+  line-height: 102%;
+  text-align: start;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.prowl-label-hover {
+  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   line-height: 102%;
   text-align: start;
   color: #ffffff;

@@ -3,7 +3,7 @@ export { default as ImageCard } from './ImageCard';
 export { default as TextCard } from './TextCard';
 export { default as ProjectCard } from './ProjectCard';
 export { default as TypographyCard } from './TypographyCard';
-export { default as CardTitleSubtitle } from './CardTitleSubtitle';
+export { default as CardTitleSubtitle } from './CardTitleSubtitle'; 
 export { default as SimpleTextCard } from './SimpleTextCard';
 export { default as VerticalImageCard } from './VerticalImageCard';
 export { default as HorizontalImageCard } from './HorizontalImageCard'; 

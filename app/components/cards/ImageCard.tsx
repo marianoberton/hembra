@@ -44,11 +44,7 @@ export default function ImageCard({
 
   const cardContent = (
     <div 
-      className={`bg-gray-100 relative overflow-hidden rounded-xl ${href ? 'group cursor-pointer' : ''} ${className}`}
-      style={{ 
-        width: '100%',
-        height: '620px' // Exact height as specified
-      }}
+      className={`bg-gray-100 relative overflow-hidden rounded-xl w-full ${href ? 'group cursor-pointer' : ''} ${className}`}
     >
       {cardNumber && (
         <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-bold z-20">
@@ -57,11 +53,7 @@ export default function ImageCard({
       )}
 
       {label && (
-        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30" style={{ 
-          fontFamily: '"Helvetica Neue LT Pro 55 Roman", sans-serif',
-          fontSize: '14px',
-          fontWeight: 400,
-          color: '#ffffff',
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30 prowl-label-white" style={{ 
           textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
         }}>
           {label}
@@ -69,17 +61,21 @@ export default function ImageCard({
       )}
 
       {src ? (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="max((min(100vw, 1920px) - 56px) / 3, 1px)"
-          className={`object-cover ${href ? 'group-hover:scale-105 transition-transform duration-500' : ''}`}
-          priority={!!(cardNumber && cardNumber <= 12)}
-        />
+        <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="max((min(100vw, 1920px) - 56px) / 3, 1px)"
+            className={`object-cover ${href ? 'group-hover:scale-105 transition-transform duration-500' : ''}`}
+            priority={!!(cardNumber && cardNumber <= 12)}
+          />
+        </div>
       ) : (
-        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-          <p className="text-gray-600 text-sm">{placeholder || 'Image Placeholder'}</p>
+        <div className="w-full" style={{ aspectRatio: '4/3' }}>
+          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+            <p className="text-gray-600 text-sm">{placeholder || 'Image Placeholder'}</p>
+          </div>
         </div>
       )}
 
