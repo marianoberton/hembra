@@ -26,7 +26,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Cards grid responsive */}
-      <div className="w-full px-2 sm:px-4 lg:px-6 pb-12 pt-4">
+      <div className="w-full px-2 sm:px-4 lg:px-6 pb-12 pt-4" style={{ paddingTop: '75px' }}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-none">
           {/* COLUMN 1 (Left) - 8 cards */}
           <div className="space-y-3 sm:space-y-4 lg:space-y-6">

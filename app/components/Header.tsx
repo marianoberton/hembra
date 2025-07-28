@@ -23,17 +23,17 @@ function HeaderClient() {
   };
   
   return (
-    <header className="w-full bg-white border-b border-gray-100 overflow-hidden">
+    <header className="w-full bg-white overflow-hidden" style={{ marginTop: '8px' }}>
       <div className="w-full overflow-hidden">
         
         {/* Desktop Layout - PROWL Style with Full Width */}
-        <div className="hidden lg:flex items-center justify-between py-3 px-8">
+        <div className="hidden lg:flex items-center justify-between py-3 px-4">
           
           {/* Logo Left */}
           <div className="flex-shrink-0">
             <Link href="/" className="block">
-              <div className="text-white px-8 py-2 rounded-full flex items-center" style={{ backgroundColor: '#969697' }}>
-                <span className="text-sm font-medium tracking-wide" style={{ fontFamily: 'neue-haas-grotesk-text, sans-serif' }}>
+              <div className="text-white px-12 py-2 rounded-full flex items-center" style={{ backgroundColor: '#969697' }}>
+                <span className="text-sm font-medium tracking-wide" style={{ fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif' }}>
                   HEMBRA
                 </span>
               </div>
@@ -44,7 +44,7 @@ function HeaderClient() {
           <nav className="flex items-center space-x-2">
             <Link 
               href="/proyectos"
-              className="flex items-center justify-center rounded-full font-normal nav-button"
+              className="flex items-center justify-center rounded-full nav-button"
               style={{ 
                 backgroundColor: '#F5F5F5', 
                 color: '#000', 
@@ -52,14 +52,15 @@ function HeaderClient() {
                 minWidth: '95px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: 'neue-haas-grotesk-text, sans-serif'
+                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontWeight: '400'
               }}
             >
               Proyectos
             </Link>
             <Link 
               href="/estudio"
-              className="flex items-center justify-center rounded-full font-normal nav-button"
+              className="flex items-center justify-center rounded-full nav-button"
               style={{ 
                 backgroundColor: '#F5F5F5', 
                 color: '#000', 
@@ -67,14 +68,15 @@ function HeaderClient() {
                 minWidth: '85px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: 'neue-haas-grotesk-text, sans-serif'
+                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontWeight: '400'
               }}
             >
               Estudio
             </Link>
             <Link 
               href="/servicios"
-              className="flex items-center justify-center rounded-full font-normal nav-button"
+              className="flex items-center justify-center rounded-full nav-button"
               style={{ 
                 backgroundColor: '#F5F5F5', 
                 color: '#000', 
@@ -82,14 +84,15 @@ function HeaderClient() {
                 minWidth: '95px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: 'neue-haas-grotesk-text, sans-serif'
+                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontWeight: '400'
               }}
             >
               Servicios
             </Link>
             <Link 
               href="/blog"
-              className="flex items-center justify-center rounded-full font-normal nav-button"
+              className="flex items-center justify-center rounded-full nav-button"
               style={{ 
                 backgroundColor: '#F5F5F5', 
                 color: '#000', 
@@ -97,14 +100,15 @@ function HeaderClient() {
                 minWidth: '75px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: 'neue-haas-grotesk-text, sans-serif'
+                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontWeight: '400'
               }}
             >
               Blog
             </Link>
             <Link 
               href="/contacto"
-              className="flex items-center justify-center rounded-full font-normal nav-button"
+              className="flex items-center justify-center rounded-full nav-button"
               style={{ 
                 backgroundColor: '#F5F5F5', 
                 color: '#000', 
@@ -112,7 +116,8 @@ function HeaderClient() {
                 minWidth: '95px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: 'neue-haas-grotesk-text, sans-serif'
+                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontWeight: '400'
               }}
             >
               Contacto
@@ -120,10 +125,10 @@ function HeaderClient() {
           </nav>
 
           {/* Tienda Button Right */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center">
             <Link 
               href="/tienda"
-              className="flex items-center justify-center rounded-full font-normal tienda-button"
+              className="flex items-center justify-center rounded-full tienda-button"
               style={{ 
                 backgroundColor: '#d0ddc3', 
                 color: '#000', 
@@ -131,7 +136,8 @@ function HeaderClient() {
                 minWidth: '85px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: 'neue-haas-grotesk-text, sans-serif'
+                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontWeight: '400'
               }}
             >
               <span>Tienda</span>
