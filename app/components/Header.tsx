@@ -9,13 +9,22 @@ import { useCart } from '../context/CartContext';
 function HeaderClient() {
   const { state } = useCart();
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Detectar si estamos en la tienda (e-commerce)
   const isEcommerce = pathname?.includes('tienda') || pathname?.includes('carrito') || pathname?.includes('producto');
   
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+  
   return (
-    <header className="w-full bg-white border-b border-gray-100">
-      <div className="w-full">
+    <header className="w-full bg-white border-b border-gray-100 overflow-hidden">
+      <div className="w-full overflow-hidden">
         
         {/* Desktop Layout - PROWL Style with Full Width */}
         <div className="hidden lg:flex items-center justify-between py-3 px-8">
@@ -145,102 +154,262 @@ function HeaderClient() {
           </div>
         </div>
 
-        {/* Mobile Layout - Full Width */}
-        <div className="lg:hidden">
-          <div className="flex items-center justify-between py-4 px-6">
-            
-            {/* Logo Left */}
-            <div className="flex-shrink-0">
-              <Link href="/" className="block">
-                <div className="bg-black text-white px-4 py-2 rounded-full flex items-center">
-                  <div className="relative w-16 h-5">
-                    <Image
-                      src="/images/logo.jpg"
-                      alt="Hembra"
-                      fill
-                      className="object-contain brightness-0 invert"
-                      priority
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent) {
-                          parent.innerHTML = '<span class="text-xs font-medium tracking-wide text-white">HEMBRA</span>';
-                        }
-                      }}
-                    />
-                  </div>
-                </div>
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button Right */}
-            <div className="flex items-center space-x-3">
-              <Link 
-                href="/tienda"
-                className="px-6 py-2 rounded-full text-xs font-medium"
-                style={{ backgroundColor: '#d0ddc3', color: '#333' }}
-              >
-                Tienda
-              </Link>
-              
-              {/* Simple Menu Button */}
-              <button className="p-2">
-                <div className="w-5 h-0.5 bg-gray-600 mb-1"></div>
-                <div className="w-5 h-0.5 bg-gray-600 mb-1"></div>
-                <div className="w-5 h-0.5 bg-gray-600"></div>
-              </button>
-            </div>
+        {/* Mobile Layout */}
+        <div className="lg:hidden flex items-center justify-center space-x-2 py-4 px-4 overflow-hidden">
+          
+          {/* Logo Button */}
+          <div className="px-6 py-2 rounded-full flex items-center justify-center"
+               style={{ 
+                 backgroundColor: '#969697', 
+                 color: '#FFF', 
+                 fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                 height: '36px', 
+                 fontWeight: '400',
+                 fontSize: '10px',
+                 letterSpacing: '0',
+                 lineHeight: '1.2em',
+                 textAlign: 'center',
+                 textTransform: 'none',
+                 textDecoration: 'none',
+                 display: 'flex',
+                 alignItems: 'center',
+                 justifyContent: 'center',
+                 flex: '1 1 35%'
+               }}>
+            HEMBRA
           </div>
-
-          {/* Mobile Navigation */}
-          <div className="border-t border-gray-100 px-6 py-4">
-            <nav className="flex flex-wrap gap-2">
-              <Link 
-                href="/"
-                className="px-4 py-2 rounded-full text-xs font-medium"
-                style={{ backgroundColor: '#f2f2f2', color: '#333' }}
-              >
-                Inicio
-              </Link>
-              <Link 
-                href="/proyectos"
-                className="px-4 py-2 rounded-full text-xs font-medium"
-                style={{ backgroundColor: '#f2f2f2', color: '#333' }}
-              >
-                Proyectos
-              </Link>
-              <Link 
-                href="/estudio"
-                className="px-4 py-2 rounded-full text-xs font-medium"
-                style={{ backgroundColor: '#f2f2f2', color: '#333' }}
-              >
-                Estudio
-              </Link>
-              <Link 
-                href="/servicios"
-                className="px-4 py-2 rounded-full text-xs font-medium"
-                style={{ backgroundColor: '#f2f2f2', color: '#333' }}
-              >
-                Servicios
-              </Link>
-              <Link 
-                href="/blog"
-                className="px-4 py-2 rounded-full text-xs font-medium"
-                style={{ backgroundColor: '#f2f2f2', color: '#333' }}
-              >
-                Blog
-              </Link>
-              <Link 
-                href="/contacto"
-                className="px-4 py-2 rounded-full text-xs font-medium"
-                style={{ backgroundColor: '#f2f2f2', color: '#333' }}
-              >
-                Contacto
-              </Link>
-            </nav>
-          </div>
+          
+          {/* Menu Button */}
+          <button 
+            className="px-6 py-2 rounded-full"
+            style={{ 
+              backgroundColor: '#F5F5F5', 
+              color: '#000', 
+              fontFamily: 'neue-haas-grotesk-text, sans-serif',
+              height: '36px', 
+              fontWeight: '400',
+              fontSize: '10px',
+              letterSpacing: '0',
+              lineHeight: '1.2em',
+              textAlign: 'center',
+              textTransform: 'none',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flex: '1 1 35%'
+            }}
+            onClick={toggleMobileMenu}
+          >
+            Menu
+          </button>
+          
+          {/* Tienda Button */}
+          <Link 
+            href="/tienda"
+            className="px-6 py-2 rounded-full"
+            style={{ 
+              backgroundColor: '#d0ddc3', 
+              color: '#333', 
+              fontFamily: 'neue-haas-grotesk-text, sans-serif',
+              height: '36px', 
+              fontWeight: '400',
+              fontSize: '10px',
+              letterSpacing: '0',
+              lineHeight: '1.2em',
+              textAlign: 'center',
+              textTransform: 'none',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flex: '1 1 30%'
+            }}
+          >
+            Tienda
+          </Link>
         </div>
+
+        {/* Mobile Navigation - Centered Menu */}
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 bg-white z-50 flex items-start justify-center pt-16 overflow-hidden">
+            <div className="flex flex-col items-center space-y-4">
+              
+              {/* Close Button */}
+              <button 
+                className="px-4 py-2 rounded-full mb-6" 
+                style={{ 
+                  backgroundColor: '#F5F5F5', 
+                  color: '#333333', 
+                  fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                  fontWeight: '600',
+                  fontSize: '16px',
+                  letterSpacing: '0em',
+                  lineHeight: '102%',
+                  textAlign: 'center',
+                  textTransform: 'none',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '37px',
+                  width: '60px'
+                }}
+                onClick={closeMobileMenu}
+              >
+                ✕
+              </button>
+              
+              {/* Navigation Items - Vertical Stack */}
+              <nav className="flex flex-col items-center space-y-4">
+                <Link 
+                  href="/"
+                  className="px-8 py-2 rounded-full"
+                  style={{ 
+                    backgroundColor: '#F5F5F5', 
+                    color: '#333333', 
+                    fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                    fontWeight: '400',
+                    fontSize: '10px',
+                    letterSpacing: '0em',
+                    lineHeight: '102%',
+                    textAlign: 'center',
+                    textTransform: 'none',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '37px',
+                    width: '147px'
+                  }}
+                  onClick={closeMobileMenu}
+                >
+                  Inicio
+                </Link>
+                <Link 
+                  href="/proyectos"
+                  className="px-8 py-2 rounded-full"
+                  style={{ 
+                    backgroundColor: '#F5F5F5', 
+                    color: '#333333', 
+                    fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                    fontWeight: '400',
+                    fontSize: '10px',
+                    letterSpacing: '0em',
+                    lineHeight: '102%',
+                    textAlign: 'center',
+                    textTransform: 'none',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '37px',
+                    width: '147px'
+                  }}
+                  onClick={closeMobileMenu}
+                >
+                  Proyectos
+                </Link>
+                <Link 
+                  href="/estudio"
+                  className="px-8 py-2 rounded-full"
+                  style={{ 
+                    backgroundColor: '#F5F5F5', 
+                    color: '#333333', 
+                    fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                    fontWeight: '400',
+                    fontSize: '10px',
+                    letterSpacing: '0em',
+                    lineHeight: '102%',
+                    textAlign: 'center',
+                    textTransform: 'none',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '37px',
+                    width: '147px'
+                  }}
+                  onClick={closeMobileMenu}
+                >
+                  Estudio
+                </Link>
+                <Link 
+                  href="/servicios"
+                  className="px-8 py-2 rounded-full"
+                  style={{ 
+                    backgroundColor: '#F5F5F5', 
+                    color: '#333333', 
+                    fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                    fontWeight: '400',
+                    fontSize: '10px',
+                    letterSpacing: '0em',
+                    lineHeight: '102%',
+                    textAlign: 'center',
+                    textTransform: 'none',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '37px',
+                    width: '147px'
+                  }}
+                  onClick={closeMobileMenu}
+                >
+                  Servicios
+                </Link>
+                <Link 
+                  href="/blog"
+                  className="px-8 py-2 rounded-full"
+                  style={{ 
+                    backgroundColor: '#F5F5F5', 
+                    color: '#333333', 
+                    fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                    fontWeight: '400',
+                    fontSize: '10px',
+                    letterSpacing: '0em',
+                    lineHeight: '102%',
+                    textAlign: 'center',
+                    textTransform: 'none',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '37px',
+                    width: '147px'
+                  }}
+                  onClick={closeMobileMenu}
+                >
+                  Blog
+                </Link>
+                <Link 
+                  href="/contacto"
+                  className="px-8 py-2 rounded-full"
+                  style={{ 
+                    backgroundColor: '#F5F5F5', 
+                    color: '#333333', 
+                    fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                    fontWeight: '400',
+                    fontSize: '10px',
+                    letterSpacing: '0em',
+                    lineHeight: '102%',
+                    textAlign: 'center',
+                    textTransform: 'none',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '37px',
+                    width: '147px'
+                  }}
+                  onClick={closeMobileMenu}
+                >
+                  Contacto
+                </Link>
+              </nav>
+            </div>
+          </div>
+        )}
 
       </div>
     </header>
