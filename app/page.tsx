@@ -30,14 +30,13 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-none">
           {/* COLUMN 1 (Left) - 8 cards */}
           <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-            {/* 1. Hembra Statement - 3D TEXT */}
+            {/* 1. Hembra Estudio - NO 3D TEXT */}
             <ThreeDTextCard
               cardNumber={1}
               label="Estudio"
-              title="<strong>Hembra</strong> es un estudio de <strong>diseño industrial</strong> con la misión de <strong>transformar residuos</strong> en soluciones sustentables."
-              backgroundColor="#b3c1a2"
-              textColor="#718355"
-              minHeight="min-h-[140px] sm:min-h-[160px]"
+              title="<strong>HEMBRA ESTUDIO</strong> "
+              backgroundColor="#f2f2f2ff"
+              textColor="#333333"
               showArrow={true}
               href="/estudio"
             />
@@ -78,14 +77,13 @@ export default function HomePage() {
               minHeight="min-h-[140px] sm:min-h-[160px]"
             />
 
-            {/* 5. Sustainability Statement - 3D TEXT (TIPO 1) */}
+            {/* 5. Sustainability Statement - NO 3D TEXT */}
             <ThreeDTextCard
               cardNumber={5}
               label="Estudio"
               title="Diseñamos con la <strong>convicción</strong> de que la <strong>sustentabilidad</strong> no es una opción, sino una <strong>responsabilidad</strong>"
-              backgroundColor="#fefcfb"
-              textColor="#7c8e60"
-              minHeight="min-h-[140px] sm:min-h-[160px]"
+              backgroundColor="#f2f2f2ff"
+              textColor="#333333"
               showArrow={true}
               href="/estudio"
             />
@@ -260,14 +258,13 @@ export default function HomePage() {
               showArrow={true}
             />
 
-            {/* 18. Propósito Creativo - 3D TEXT (TIPO 1) */}
+            {/* 18. Propósito Creativo - NO 3D TEXT */}
             <ThreeDTextCard
               cardNumber={18}
               title="<strong>Reimaginamos</strong> los materiales descartados como <strong>oportunidades</strong> para un futuro más <strong>consciente</strong>"
               label="Estudio"
-              backgroundColor="#93a584"
-              textColor="#fefcfb"
-              minHeight="min-h-[180px] sm:min-h-[200px]"
+              backgroundColor="#f2f2f2ff"
+              textColor="#333333"
               showArrow={true}
               href="/estudio"
             />
@@ -284,14 +281,13 @@ export default function HomePage() {
               minHeight="min-h-[140px] sm:min-h-[160px]"
             />
 
-            {/* 20. Impacto Social - 3D TEXT (TIPO 1) */}
+            {/* 20. Impacto Social - NO 3D TEXT */}
             <ThreeDTextCard
               cardNumber={20}
               title="Creamos <strong>productos con propósito</strong>, integrando <strong>diseño</strong>, <strong>impacto social</strong> y <strong>compromiso ambiental</strong>."
               label="Estudio"
-              backgroundColor="#b3927f"
-              textColor="#fefcfb"
-              minHeight="min-h-[160px] sm:min-h-[200px]"
+              backgroundColor="#f2f2f2ff"
+              textColor="#333333"
               showArrow={true}
               href="/estudio"
             />

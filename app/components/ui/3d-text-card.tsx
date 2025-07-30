@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React from "react";
 import Link from "next/link";
 
 interface ThreeDTextCardProps {
@@ -11,7 +11,6 @@ interface ThreeDTextCardProps {
   href?: string;
   backgroundColor?: string;
   textColor?: string;
-  minHeight?: string;
   cardNumber?: number;
   showArrow?: boolean;
   className?: string;
@@ -23,44 +22,12 @@ export default function ThreeDTextCard({
   content,
   label = 'Studio',
   href,
-  backgroundColor = '#b3c1a2',
-  textColor = '#718355',
-  minHeight = 'min-h-[140px] sm:min-h-[160px]',
+  backgroundColor = '#f2f2f2ff', // Nuevo color por defecto
+  textColor = '#333333', // Color consistente con otras cards
   cardNumber,
   showArrow = true,
   className = ''
 }: ThreeDTextCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
-    
-    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (cardRef.current) {
-      cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-      cardRef.current.style.transition = "transform 0.8s ease-out";
-    }
-  };
-
   // Check if backgroundColor is dark to determine text color
   const isDarkBackground = backgroundColor === '#718355' || backgroundColor === '#a8836d' || backgroundColor === '#2c2c2c';
   const finalTextColor = isDarkBackground ? '#ffffff' : textColor;
@@ -70,27 +37,16 @@ export default function ThreeDTextCard({
   return (
     <div className="w-full">
       <div 
-        ref={cardRef}
-        className={`relative w-full rounded-xl overflow-hidden cursor-pointer px-4 md:px-6 py-6 md:py-9 pb-16 md:pb-20 flex flex-col justify-center ${minHeight} ${className}`}
+        className={`relative w-full rounded-xl overflow-hidden cursor-pointer px-4 md:px-6 py-6 md:py-9 pb-16 md:pb-20 flex flex-col justify-center ${className} hover:shadow-md transition-shadow duration-300`}
         style={{
           backgroundColor,
           color: finalTextColor,
-          transformStyle: "preserve-3d",
-          transition: isHovered ? "none" : "transform 0.8s ease-out"
+          height: '340px', // Altura fija para todas las pantallas
         }}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
         {/* Card Number */}
         {cardNumber && (
-          <div 
-            className="absolute top-2 right-2 z-20 transition-transform duration-500"
-            style={{
-              transform: isHovered ? "translateZ(30px)" : "translateZ(0px)",
-              transformStyle: "preserve-3d"
-            }}
-          >
+          <div className="absolute top-2 right-2 z-20">
             <div className="bg-red-500 text-white text-xs px-2 py-1 rounded font-bold">
               {cardNumber}
             </div>
@@ -99,25 +55,13 @@ export default function ThreeDTextCard({
 
         {/* Label */}
         {label && (
-          <div 
-            className={`absolute top-8 left-1/2 z-30 transition-transform duration-500 ${labelClass}`}
-            style={{
-              transform: isHovered ? "translateX(-50%) translateZ(40px)" : "translateX(-50%) translateZ(0px)",
-              transformStyle: "preserve-3d"
-            }}
-          >
+          <div className={`absolute top-8 left-1/2 transform -translate-x-1/2 z-30 ${labelClass}`}>
             {label}
           </div>
         )}
 
         {/* Content */}
-        <div 
-          className="flex flex-col justify-center items-center h-full text-center mt-12 transition-transform duration-500"
-          style={{
-            transform: isHovered ? "translateZ(50px)" : "translateZ(0px)",
-            transformStyle: "preserve-3d"
-          }}
-        >
+        <div className="flex flex-col justify-center items-center text-center h-full mt-12">
           {title && (
             <h2 
               className="text-headline mb-2 w-full"
@@ -141,13 +85,7 @@ export default function ThreeDTextCard({
 
         {/* Arrow */}
         {showArrow && (
-          <div 
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center transition-transform duration-500"
-            style={{
-              transform: isHovered ? "translateX(-50%) translateZ(60px)" : "translateX(-50%) translateZ(0px)",
-              transformStyle: "preserve-3d"
-            }}
-          >
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
             <span className={arrowClass}>→</span>
           </div>
         )}

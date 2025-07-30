@@ -141,7 +141,6 @@ export default function EstudioPage() {
               label="Enfoque"
               backgroundColor="#b3c1a2"
               textColor="#3D4A3D"
-              minHeight="min-h-[200px]"
               showArrow={false}
             />
             
@@ -151,7 +150,6 @@ export default function EstudioPage() {
               label="Innovación"
               backgroundColor="#cedbbf"
               textColor="#3D4A3D"
-              minHeight="min-h-[200px]"
               showArrow={false}
             />
           </div>
@@ -268,7 +266,6 @@ export default function EstudioPage() {
             label="Filosofía"
             backgroundColor="#a2ae92"
             textColor="#fefcfb"
-            minHeight="min-h-[300px]"
             showArrow={false}
           />
         </div>
