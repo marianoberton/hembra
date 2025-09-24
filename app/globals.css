@@ -1,4 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/liberation-sans');
 @import url("https://p.typekit.net/p.css?s=1&k=zzl1xzu&ht=tk&f=39504.39505.39506.39507.39508.39509&a=12822158&app=typekit&e=css");
+
+/* Root CSS variables for fonts */
+:root {
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-helvetica: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+}
+@font-face {
+  font-family: 'Helvetica Neue LT Pro';
+  src: local('Helvetica Neue'), local('HelveticaNeue'), 
+       url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue LT Pro';
+  src: local('Helvetica Neue'), local('HelveticaNeue'),
+       url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700&display=swap');
+  font-weight: 400;
+  font-style: normal;
+}
 
 @font-face {
 font-family:"neue-haas-grotesk-text";
@@ -38,16 +62,29 @@ font-display:swap;font-style:italic;font-weight:700;font-stretch:normal;
 
 .tk-neue-haas-grotesk-text { font-family: "neue-haas-grotesk-text",sans-serif; }
 
+/* Using system Helvetica Neue font */
+
+/* OnlineWebFonts - Liberation Sans */
+@font-face {
+    font-family: "Liberation Sans";
+    src: url("https://db.onlinewebfonts.com/t/787d6e2d0b2dc681350f981d634ddfbf.eot");
+    src: url("https://db.onlinewebfonts.com/t/787d6e2d0b2dc681350f981d634ddfbf.eot?#iefix") format("embedded-opentype"),
+         url("https://db.onlinewebfonts.com/t/787d6e2d0b2dc681350f981d634ddfbf.woff2") format("woff2"),
+         url("https://db.onlinewebfonts.com/t/787d6e2d0b2dc681350f981d634ddfbf.woff") format("woff"),
+         url("https://db.onlinewebfonts.com/t/787d6e2d0b2dc681350f981d634ddfbf.ttf") format("truetype"),
+         url("https://db.onlinewebfonts.com/t/787d6e2d0b2dc681350f981d634ddfbf.svg#Liberation Sans") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* Custom navbar button hover effects */
 .nav-button {
   border: 1px solid transparent;
   transition: all 0.2s ease;
 }
 
-.nav-button:hover {
-  background-color: white !important;
-  border-color: black !important;
-}
+/* Removed conflicting hover styles - now handled by Tailwind classes */
 
 /* Tienda button with arrow animation */
 .tienda-button {
@@ -160,7 +197,7 @@ font-display:swap;font-style:italic;font-weight:700;font-stretch:normal;
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -213,11 +250,11 @@ body {
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 .text-headline {
-  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
@@ -230,7 +267,7 @@ body {
 }
 
 .text-headline-white {
-  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
@@ -247,7 +284,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.01em;
-  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 .text-caption {
@@ -256,7 +293,7 @@ body {
   line-height: 1.4;
   letter-spacing: -0.01em;
   color: var(--gray-600);
-  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 /* Navigation and UI Elements - Refined Letter Spacing */
@@ -409,7 +446,7 @@ body {
 
 /* PROWL Card Styles */
 .prowl-label {
-  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -422,7 +459,7 @@ body {
 }
 
 .prowl-label-white {
-  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -435,7 +472,7 @@ body {
 }
 
 .prowl-label-hover {
-  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -448,7 +485,7 @@ body {
 }
 
 .prowl-arrow {
-  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Liberation Sans", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -462,7 +499,7 @@ body {
 }
 
 .prowl-arrow-white {
-  font-family: "Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Liberation Sans", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -485,7 +522,7 @@ body {
 
 /* CardTitleSubtitle Specific Styles */
 .card-title-subtitle-main {
-  font-family: "Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
@@ -498,7 +535,7 @@ body {
 }
 
 .card-title-subtitle-description {
-  font-family: "Neue Haas Grotesk Display Pro 56 Roman Italic", "Neue Haas Grotesk Display Pro 56 Roman Italic Placeholder", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 20px;
   font-style: italic;
   line-height: 102%;

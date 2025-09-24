@@ -76,7 +76,7 @@ export default function TypographyCard({
             style={{
               fontSize: item.fontSize || '32px',
               color: isDarkBackground ? '#ffffff' : (item.color || 'inherit'),
-              fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", "Neue Haas Grotesk Display Pro 55 Roman Placeholder", sans-serif'
+              fontFamily: '"Helvetica Neue", sans-serif'
             }}
           >
             {item.text}
@@ -92,4 +92,4 @@ export default function TypographyCard({
       )}
     </BaseCard>
   );
-} 
+}

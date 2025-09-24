@@ -56,7 +56,7 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={3}
               items={[
-                { text: "Estrategia Circular", className: "text-headline", color: "#000000" }
+                { text: "Soluciones Circulares", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
               backgroundColor="#718355"
@@ -81,7 +81,7 @@ export default function HomePage() {
             <ThreeDTextCard
               cardNumber={5}
               label="Estudio"
-              title="Diseñamos con la <strong>convicción</strong> de que la <strong>sustentabilidad</strong> no es una opción, sino una <strong>responsabilidad</strong>"
+              title="Creamos proyectos con un profundo <strong>enfoque en la sustentabilidad</strong>, ofreciendo soluciones <strong>estratégicas</strong>, <strong>creativas</strong> e <strong>innovadoras</strong>"
               backgroundColor="#f2f2f2ff"
               textColor="#333333"
               showArrow={true}
@@ -103,7 +103,7 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={7}
               items={[
-                { text: "Diseño de Objetos con Alma", className: "text-headline", color: "#000000" }
+                { text: "Diseño Regenerativo", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
               backgroundColor="#7c8e60"
@@ -208,7 +208,7 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={14}
               items={[
-                { text: "Innovación Sostenible", className: "text-headline", color: "#000000" }
+                { text: "Ecodiseño y Biomímesis", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
               backgroundColor="#b3c1a2"
@@ -239,7 +239,7 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={16}
               items={[
-                { text: "Prototipado y Desarrollo", className: "text-headline", color: "#000000" }
+                { text: "Gestión de Residuos", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
               backgroundColor="#909b82"
@@ -261,7 +261,7 @@ export default function HomePage() {
             {/* 18. Propósito Creativo - NO 3D TEXT */}
             <ThreeDTextCard
               cardNumber={18}
-              title="<strong>Reimaginamos</strong> los materiales descartados como <strong>oportunidades</strong> para un futuro más <strong>consciente</strong>"
+              title="Cada propuesta está pensada para ser parte de un <strong>sistema circular</strong>, donde los materiales extienden su <strong>durabilidad</strong> y se <strong>ahorran recursos</strong>"
               label="Estudio"
               backgroundColor="#f2f2f2ff"
               textColor="#333333"
@@ -284,7 +284,7 @@ export default function HomePage() {
             {/* 20. Impacto Social - NO 3D TEXT */}
             <ThreeDTextCard
               cardNumber={20}
-              title="Creamos <strong>productos con propósito</strong>, integrando <strong>diseño</strong>, <strong>impacto social</strong> y <strong>compromiso ambiental</strong>."
+              title="El <strong>pensamiento circular</strong> es una necesidad urgente y no una opción. Nos enfocamos en la <strong>etapa cero</strong> del ciclo de vida para evitar la generación de desechos desde su origen"
               label="Estudio"
               backgroundColor="#f2f2f2ff"
               textColor="#333333"
@@ -307,7 +307,7 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={22}
               items={[
-                { text: "Producción Responsable", className: "text-headline", color: "#000000" }
+                { text: "Producciones Sostenibles", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
               backgroundColor="#a2ae92"
@@ -334,4 +334,4 @@ export default function HomePage() {
       <Footer />
     </div>
   );
-} 
+}

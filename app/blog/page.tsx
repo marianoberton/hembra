@@ -83,7 +83,7 @@ export default function BlogPage() {
   const postsRow3 = mockPosts.slice(4, 6); // Last 2 posts
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{backgroundColor: '#e6e6e1'}}>
       {/* Full width container without wrapper */}
       <div className="w-full px-2 sm:px-4 lg:px-6 py-4 space-y-3 sm:space-y-4 lg:space-y-6">
         
@@ -214,4 +214,4 @@ export default function BlogPage() {
       <Footer />
     </div>
   );
-} 
+}

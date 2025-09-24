@@ -71,7 +71,7 @@ export default function ImageCardHover({
         {showArrow && (
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-              <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold' }}>→</span>
+              <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold', fontFamily: '"Liberation Sans", sans-serif' }}>→</span>
             </div>
           </div>
         )}
@@ -81,4 +81,4 @@ export default function ImageCardHover({
       </div>
     </div>
   );
-} 
+}

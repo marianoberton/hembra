@@ -3,6 +3,11 @@
 import React from "react";
 import Link from "next/link";
 
+// Helper function to strip HTML tags and return plain text
+const stripHtmlTags = (html: string): string => {
+  return html.replace(/<[^>]*>/g, '');
+};
+
 interface ThreeDTextCardProps {
   title?: string;
   subtitle?: string;
@@ -63,17 +68,43 @@ export default function ThreeDTextCard({
         {/* Content */}
         <div className="flex flex-col justify-center items-center text-center h-full mt-12">
           {title && (
-            <h2 
-              className="text-headline mb-2 w-full"
-              dangerouslySetInnerHTML={{ __html: title }}
-              style={{ fontWeight: '300' }}
-            />
+            <div 
+              className="mb-2 w-full"
+              style={{ 
+                fontFamily: '"Helvetica Neue", sans-serif',
+                fontSize: '32px',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                letterSpacing: '0em',
+                lineHeight: '95%',
+                textAlign: 'center' as const,
+                color: '#000000',
+                textDecoration: 'none',
+                textTransform: 'none'
+              }}
+            >
+              {stripHtmlTags(title)}
+            </div>
           )}
           
           {subtitle && (
-            <h3 className="text-headline mb-8 max-w-4xl">
-              {subtitle}
-            </h3>
+            <div 
+              className="mb-8 max-w-4xl"
+              style={{ 
+                fontFamily: '"Helvetica Neue", sans-serif',
+                fontSize: '32px',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                letterSpacing: '0em',
+                lineHeight: '95%',
+                textAlign: 'center' as const,
+                color: '#000000',
+                textDecoration: 'none',
+                textTransform: 'none'
+              }}
+            >
+              {stripHtmlTags(subtitle)}
+            </div>
           )}
           
           {content && (
@@ -95,4 +126,4 @@ export default function ThreeDTextCard({
       </div>
     </div>
   );
-} 
+}

@@ -4,11 +4,9 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import { proyectos } from '../../../data/proyectos';
 import { Proyecto } from '../../../types/proyectos';
-import { TextCard, SimpleTextCard, VerticalImageCard, HorizontalImageCard } from '../../components/cards';
-import ScrollReveal from '../../components/ui/ScrollReveal';
+import ProjectHeader from '../../components/ProjectHeader';
 
 export default function ProyectoDetailPage() {
   const params = useParams();
@@ -30,10 +28,10 @@ export default function ProyectoDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#F9F8F6'}}>
+      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#e6e6e1'}}>
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3D4A3D] mx-auto mb-4"></div>
-          <h2 className="text-xl font-medium" style={{color: '#2C2C2C'}}>Cargando proyecto...</h2>
+          <h2 className="text-xl font-medium" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>Cargando proyecto...</h2>
         </div>
       </div>
     );
@@ -41,13 +39,13 @@ export default function ProyectoDetailPage() {
 
   if (!proyecto) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#F9F8F6'}}>
+      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#e6e6e1'}}>
         <div className="text-center">
-          <h1 className="text-4xl font-light mb-4" style={{color: '#3D4A3D'}}>Proyecto no encontrado</h1>
+          <h1 className="text-4xl font-light mb-4" style={{color: '#3D4A3D', fontFamily: 'Helvetica Neue LT Pro'}}>Proyecto no encontrado</h1>
           <Link 
             href="/proyectos"
             className="text-lg hover:underline"
-            style={{color: '#2C2C2C'}}
+            style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}
           >
             ← Volver a Proyectos
           </Link>
@@ -56,335 +54,262 @@ export default function ProyectoDetailPage() {
     );
   }
 
-  // Generate dynamic text blocks based on project content
-  const generateTextBlocks = (proyecto: Proyecto) => {
-    // Split the detail description into meaningful chunks
-    const sentences = proyecto.detailDescription.split('. ');
-    const chunks: string[] = [];
-    
-    // Group sentences into chunks of roughly equal length
-    const targetChunkSize = Math.ceil(sentences.length / 5);
-    for (let i = 0; i < sentences.length; i += targetChunkSize) {
-      const chunk = sentences.slice(i, i + targetChunkSize).join('. ');
-      chunks.push(chunk.endsWith('.') ? chunk : chunk + '.');
-    }
-    
-    // Ensure we have exactly 5 chunks
-    while (chunks.length < 5) {
-      chunks.push(chunks[chunks.length - 1]);
-    }
-    while (chunks.length > 5) {
-      chunks[chunks.length - 2] += ' ' + chunks.pop();
-    }
-    
-    return chunks;
-  };
-
-  const textBlocks = generateTextBlocks(proyecto);
-
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#F9F8F6'}}>
-      {/* Header expandido cuando viene desde home */}
-      {fromHome && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full h-32 relative overflow-hidden"
-          style={{backgroundColor: proyecto.backgroundColor}}
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <h1 className="text-4xl md:text-6xl font-light tracking-wide font-serif" style={{color: '#2C2C2C'}}>
-              {proyecto.title}
-            </h1>
-          </div>
-        </motion.div>
-      )}
-      
+    <div className="min-h-screen" style={{backgroundColor: '#e6e6e1'}}>
       {/* Navigation Bar */}
-      <div className="w-full border-b border-gray-200" style={{backgroundColor: 'white'}}>
+      <div className="w-full border-b border-gray-200" style={{backgroundColor: '#e6e6e1'}}>
         <div className="w-full px-4 py-4 flex justify-between items-center">
           <Link 
             href="/proyectos"
             className="text-sm font-medium tracking-wide hover:underline"
-            style={{color: '#2C2C2C'}}
+            style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}
           >
             ← Proyectos
           </Link>
         </div>
       </div>
 
-      {/* Main Content - Full Width */}
-      <div className="w-full">
-        
-        {/* Header TextCard - Compact */}
-        <div className="w-full px-2 py-6">
-          <TextCard
-            title={`${proyecto.title} — ${proyecto.subtitle}`}
-            label="Proyecto"
-            backgroundColor={proyecto.backgroundColor}
-            textColor="#2C2C2C"
-            minHeight="min-h-[200px]"
-            className="rounded-3xl"
-            showArrow={false}
-          />
-        </div>
+      {/* Header con título del proyecto */}
+      <ProjectHeader 
+        title={proyecto.title}
+        subtitle={proyecto.subtitle}
+        backgroundColor="#d0ddc3"
+      />
 
-        {/* Content Container */}
-        <div className="w-full px-2 py-4">
-          
-          {/* Mobile: Stack todas las cards una arriba de otra */}
-          <div className="block md:hidden space-y-4">
-            {/* Hero Image 1 - HORIZONTAL */}
-            <HorizontalImageCard
-              src={proyecto.image}
-              alt={proyecto.title}
-            />
-            
-            {/* Text Block 1 - ScrollReveal */}
-            <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
-              <ScrollReveal
-                baseOpacity={0}
-                enableBlur={true}
-                baseRotation={5}
-                blurStrength={10}
-                textClassName="text-black"
-              >
-                {textBlocks[0]}
-              </ScrollReveal>
+      {/* Contenedor Principal */}
+      <div className="w-full px-2 sm:px-4 lg:px-6">
+        
+        {/* Sección 1: Proyecto (Introducción) */}
+        <section className="py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+            {/* Columna Izquierda - 60% (3/5) */}
+            <div className="lg:col-span-3">
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+                <Image
+                  src={proyecto.image}
+                  alt={proyecto.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
             
-            {/* Hero Image 2 - VERTICAL */}
-            <VerticalImageCard
-              src={proyecto.gallery[1] || proyecto.image}
-              alt={`${proyecto.title} - Vista 2`}
-            />
-            
-            {/* Text Block 2 - ScrollReveal */}
-            <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
-              <ScrollReveal
-                baseOpacity={0}
-                enableBlur={true}
-                baseRotation={3}
-                blurStrength={8}
-                textClassName="text-black"
-              >
-                {textBlocks[1]}
-              </ScrollReveal>
+            {/* Columna Derecha - 40% (2/5) */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                  Las botellas de vino desechadas constituyen una gran parte de los residuos de vidrio de nuestro planeta. 
+                  Pero, ¿y si pudiéramos darles una segunda vida y transformarlas en algo realmente hermoso? 
+                  Nos enorgullece presentar nuestro tan preciado {proyecto.title}.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Línea de separación */}
+        <div className="w-full h-px bg-gray-300 my-8"></div>
+
+        {/* Sección 2: Galería de Estilo de Vida */}
+        <section className="py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Columna Izquierda - 50% */}
+            <div className="space-y-4">
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+                <Image
+                  src={proyecto.gallery[0] || proyecto.image}
+                  alt={`${proyecto.title} - Ambiente 1`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+                <Image
+                  src={proyecto.gallery[1] || proyecto.image}
+                  alt={`${proyecto.title} - Ambiente 2`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
             
-            {/* Process Image - VERTICAL */}
-            <VerticalImageCard
-              src={proyecto.gallery[2] || proyecto.image}
-              alt={`${proyecto.title} - Proceso`}
-            />
-            
-            {/* Text Block 3 - ScrollReveal */}
-            <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
-              <ScrollReveal
-                baseOpacity={0}
-                enableBlur={true}
-                baseRotation={6}
-                blurStrength={9}
-                textClassName="text-black"
-              >
-                {textBlocks[2]}
-              </ScrollReveal>
+            {/* Columna Derecha - 50% */}
+            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-xl">
+              <Image
+                src={proyecto.gallery[2] || proyecto.image}
+                alt={`${proyecto.title} - Con flores`}
+                fill
+                className="object-cover"
+              />
             </div>
-            
-            {/* Detail Image - VERTICAL */}
-            <VerticalImageCard
-              src={proyecto.gallery[0] || proyecto.image}
-              alt={`${proyecto.title} - Detalle`}
-            />
-            
-            {/* Text Block 4 - ScrollReveal */}
-            <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
-              <ScrollReveal
-                baseOpacity={0}
-                enableBlur={true}
-                baseRotation={4}
-                blurStrength={12}
-                textClassName="text-black"
-              >
-                {textBlocks[3]}
-              </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Línea de separación */}
+        <div className="w-full h-px bg-gray-300 my-8"></div>
+
+        {/* Sección 3: Proceso de Elaboración */}
+        <section className="py-8 space-y-6">
+          {/* Bloque 1: Título y Descripción del Proceso */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <div className="lg:col-span-1">
+              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                Proceso
+              </h2>
             </div>
-            
-            {/* Cycle Image - VERTICAL */}
-            <VerticalImageCard
-              src={proyecto.gallery[3] || proyecto.image}
-              alt={`${proyecto.title} - Ciclo`}
-            />
-            
-            {/* Text Block 5 - ScrollReveal */}
-            <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
-              <ScrollReveal
-                baseOpacity={0}
-                enableBlur={true}
-                baseRotation={2}
-                blurStrength={11}
-                textClassName="text-black"
-              >
-                {textBlocks[4]}
-              </ScrollReveal>
+            <div className="lg:col-span-3">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                  Esta elaborado 100% a mano, su cuerpo está hecho a partir de botellas de vino reutilizadas, 
+                  y su base se fabrica con retazos de chapa recuperada de chatarreras. Al reutilizar estas botellas, 
+                  no solo estamos reduciendo significativamente los residuos, sino que también estamos creando 
+                  oportunidades laborales en nuestra comunidad local.
+                </p>
+              </div>
             </div>
-            
-            {/* Final Image - HORIZONTAL */}
-            <HorizontalImageCard
-              src={proyecto.gallery[4] || proyecto.image}
-              alt={`${proyecto.title} - Final`}
-            />
           </div>
 
-          {/* Desktop: 2 columnas apiladas con espaciado reducido */}
-          <div className="hidden md:grid md:grid-cols-2 gap-3">
-            
-            {/* COLUMNA IZQUIERDA */}
-            <div className="space-y-3">
-              {/* Hero Image 1 - HORIZONTAL */}
-              <HorizontalImageCard
-                src={proyecto.image}
-                alt={proyecto.title}
+          {/* Bloque 2: Imagen del Taller */}
+          <div className="w-full">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+              <Image
+                src={proyecto.gallery[3] || proyecto.image}
+                alt={`${proyecto.title} - Proceso de elaboración`}
+                fill
+                className="object-cover"
               />
-              
-              {/* Text Block 1 - ScrollReveal */}
-              <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
-                <ScrollReveal
-                  baseOpacity={0}
-                  enableBlur={true}
-                  baseRotation={5}
-                  blurStrength={10}
-                  textClassName="text-black"
-                >
-                  {textBlocks[0]}
-                </ScrollReveal>
-              </div>
-              
-              {/* Process Image - VERTICAL */}
-              <VerticalImageCard
-                src={proyecto.gallery[2] || proyecto.image}
-                alt={`${proyecto.title} - Proceso`}
+            </div>
+          </div>
+
+          {/* Bloque 3: Imagen de Materiales */}
+          <div className="w-full">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+              <Image
+                src={proyecto.gallery[4] || proyecto.image}
+                alt={`${proyecto.title} - Materiales utilizados`}
+                fill
+                className="object-cover"
               />
-              
-              {/* Text Block 3 - ScrollReveal */}
-              <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
-                <ScrollReveal
-                  baseOpacity={0}
-                  enableBlur={true}
-                  baseRotation={6}
-                  blurStrength={9}
-                  textClassName="text-black"
-                >
-                  {textBlocks[2]}
-                </ScrollReveal>
-              </div>
-              
-              {/* Text Block 5 - ScrollReveal */}
-              <div className="bg-white rounded-xl p-8 min-h-[450px] flex items-center">
-                <ScrollReveal
-                  baseOpacity={0}
-                  enableBlur={true}
-                  baseRotation={2}
-                  blurStrength={11}
-                  textClassName="text-black"
-                >
-                  {textBlocks[4]}
-                </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Línea de separación */}
+        <div className="w-full h-px bg-gray-300 my-8"></div>
+
+        {/* Sección 4: Vista y Detalle del Diseño */}
+        <section className="py-8 space-y-6">
+          {/* Bloque 1: Título y Concepto de Diseño */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <div className="lg:col-span-1">
+              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                Diseño con Propósito
+              </h2>
+            </div>
+            <div className="lg:col-span-3">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                  Este jarrón no solo es una pieza decorativa, sino también un símbolo de sostenibilidad y compromiso social. 
+                  Lo diseñamos bajo el concepto de upcycling, dándole un nuevo valor a materiales que de otra manera serían desechados.
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* COLUMNA DERECHA */}
-            <div className="space-y-3">
-              {/* Hero Image 2 - VERTICAL */}
-              <VerticalImageCard
-                src={proyecto.gallery[1] || proyecto.image}
-                alt={`${proyecto.title} - Vista 2`}
-              />
-              
-              {/* Text Block 2 - ScrollReveal */}
-              <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
-                <ScrollReveal
-                  baseOpacity={0}
-                  enableBlur={true}
-                  baseRotation={3}
-                  blurStrength={8}
-                  textClassName="text-black"
-                >
-                  {textBlocks[1]}
-                </ScrollReveal>
-              </div>
-              
-              {/* Detail Image - VERTICAL */}
-              <VerticalImageCard
+          {/* Bloque 2: Imágenes de Producto en Detalle */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+              <Image
                 src={proyecto.gallery[0] || proyecto.image}
                 alt={`${proyecto.title} - Detalle`}
+                fill
+                className="object-cover"
               />
-              
-              {/* Text Block 4 - ScrollReveal */}
-              <div className="bg-white rounded-xl p-8 min-h-[400px] flex items-center">
-                <ScrollReveal
-                  baseOpacity={0}
-                  enableBlur={true}
-                  baseRotation={4}
-                  blurStrength={12}
-                  textClassName="text-black"
-                >
-                  {textBlocks[3]}
-                </ScrollReveal>
-              </div>
-              
-              {/* Cycle Image - VERTICAL */}
-              <VerticalImageCard
-                src={proyecto.gallery[3] || proyecto.image}
-                alt={`${proyecto.title} - Ciclo`}
-              />
-              
-              {/* Final Image - HORIZONTAL */}
-              <HorizontalImageCard
-                src={proyecto.gallery[4] || proyecto.image}
-                alt={`${proyecto.title} - Final`}
+            </div>
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+              <Image
+                src={proyecto.gallery[1] || proyecto.image}
+                alt={`${proyecto.title} - Proceso`}
+                fill
+                className="object-cover"
               />
             </div>
           </div>
+        </section>
 
-          {/* Navigation */}
-          <div className="flex justify-between items-center pt-12 border-t" style={{borderColor: '#CEDBBF'}}>
-            <Link 
-              href="/proyectos"
-              className="flex items-center space-x-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
-              style={{backgroundColor: '#3D4A3D', color: 'white'}}
-            >
-              <span>←</span>
-              <span>Ver Todos los Proyectos</span>
-            </Link>
+        {/* Línea de separación */}
+        <div className="w-full h-px bg-gray-300 my-8"></div>
 
-            <div className="flex space-x-6">
-              {/* Proyecto anterior */}
-              {proyectos.findIndex(p => p.id === proyectoId) > 0 && (
-                <Link 
-                  href={`/proyectos/${proyectos[proyectos.findIndex(p => p.id === proyectoId) - 1].id}`}
-                  className="px-6 py-3 rounded-full transition-colors hover:underline"
-                  style={{color: '#7C8E60'}}
-                >
-                  ← Anterior
-                </Link>
-              )}
-              
-              {/* Proyecto siguiente */}
-              {proyectos.findIndex(p => p.id === proyectoId) < proyectos.length - 1 && (
-                <Link 
-                  href={`/proyectos/${proyectos[proyectos.findIndex(p => p.id === proyectoId) + 1].id}`}
-                  className="px-6 py-3 rounded-full transition-colors hover:underline"
-                  style={{color: '#7C8E60'}}
-                >
-                  Siguiente →
-                </Link>
-              )}
+        {/* Sección 5: Nuestra Red de Colaboradores */}
+        <section className="py-8 space-y-6">
+          {/* Bloque 1: Título y Descripción de la Colaboración */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <div className="lg:col-span-1">
+              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                Impacto Social
+              </h2>
             </div>
+            <div className="lg:col-span-3">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                  Trabajamos de cerca con una red de talleros en el conurbano y con la cooperativa Supercrea, 
+                  quienes se encargan de proveernos estos envases de vidrio recuperados. Así, hemos logrado construir 
+                  una red de actores comprometidos con el medio ambiente y el desarrollo social.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Bloque 2: Imagen Contextual de la Comunidad */}
+          <div className="w-full">
+            <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+              <Image
+                src={proyecto.gallery[2] || proyecto.image}
+                alt={`${proyecto.title} - Comunidad`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Navigation */}
+        <div className="flex justify-between items-center py-16 border-t" style={{borderColor: '#CEDBBF'}}>
+          <Link 
+            href="/proyectos"
+            className="flex items-center space-x-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
+            style={{backgroundColor: '#d0ddc3', color: '#000', fontFamily: 'Helvetica Neue LT Pro'}}
+          >
+            <span>←</span>
+            <span>Ver Todos los Proyectos</span>
+          </Link>
+
+          <div className="flex space-x-6">
+            {/* Proyecto anterior */}
+            {proyectos.findIndex(p => p.id === proyectoId) > 0 && (
+              <Link 
+                href={`/proyectos/${proyectos[proyectos.findIndex(p => p.id === proyectoId) - 1].id}`}
+                className="px-6 py-3 rounded-full transition-colors hover:underline"
+                style={{color: '#7C8E60', fontFamily: 'Helvetica Neue LT Pro'}}
+              >
+                ← Anterior
+              </Link>
+            )}
+            
+            {/* Proyecto siguiente */}
+            {proyectos.findIndex(p => p.id === proyectoId) < proyectos.length - 1 && (
+              <Link 
+                href={`/proyectos/${proyectos[proyectos.findIndex(p => p.id === proyectoId) + 1].id}`}
+                className="px-6 py-3 rounded-full transition-colors hover:underline"
+                style={{color: '#7C8E60', fontFamily: 'Helvetica Neue LT Pro'}}
+              >
+                Siguiente →
+              </Link>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}

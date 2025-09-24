@@ -14,6 +14,9 @@ function HeaderClient() {
   // Detectar si estamos en la tienda (e-commerce)
   const isEcommerce = pathname?.includes('tienda') || pathname?.includes('carrito') || pathname?.includes('producto');
   
+  // Detectar si estamos en home
+  const isHome = pathname === '/';
+  
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -23,7 +26,13 @@ function HeaderClient() {
   };
   
   return (
-    <header className="w-full bg-white overflow-hidden" style={{ marginTop: '8px' }}>
+    <header 
+      className="w-full overflow-hidden" 
+      style={{ 
+        marginTop: '8px',
+        backgroundColor: isHome ? '#ffffff' : '#e6e6e1'
+      }}
+    >
       <div className="w-full overflow-hidden">
         
         {/* Desktop Layout - PROWL Style with Full Width */}
@@ -33,7 +42,7 @@ function HeaderClient() {
           <div className="flex-shrink-0">
             <Link href="/" className="block">
               <div className="text-white px-12 py-2 rounded-full flex items-center" style={{ backgroundColor: '#969697' }}>
-                <span className="text-sm font-medium tracking-wide" style={{ fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif' }}>
+                <span className="text-sm tracking-wide" style={{ fontFamily: '"Helvetica Neue", sans-serif', fontWeight: '400' }}>
                   HEMBRA
                 </span>
               </div>
@@ -44,15 +53,18 @@ function HeaderClient() {
           <nav className="flex items-center space-x-2">
             <Link 
               href="/proyectos"
-              className="flex items-center justify-center rounded-full nav-button"
+              className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
+                isHome 
+                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+              }`}
               style={{ 
-                backgroundColor: '#F5F5F5', 
                 color: '#000', 
                 height: '36px',
                 minWidth: '95px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontFamily: '"Helvetica Neue", sans-serif',
                 fontWeight: '400'
               }}
             >
@@ -60,15 +72,18 @@ function HeaderClient() {
             </Link>
             <Link 
               href="/estudio"
-              className="flex items-center justify-center rounded-full nav-button"
+              className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
+                isHome 
+                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+              }`}
               style={{ 
-                backgroundColor: '#F5F5F5', 
                 color: '#000', 
                 height: '36px',
                 minWidth: '85px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontFamily: '"Helvetica Neue", sans-serif',
                 fontWeight: '400'
               }}
             >
@@ -76,15 +91,18 @@ function HeaderClient() {
             </Link>
             <Link 
               href="/servicios"
-              className="flex items-center justify-center rounded-full nav-button"
+              className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
+                isHome 
+                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+              }`}
               style={{ 
-                backgroundColor: '#F5F5F5', 
                 color: '#000', 
                 height: '36px',
                 minWidth: '95px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontFamily: '"Helvetica Neue", sans-serif',
                 fontWeight: '400'
               }}
             >
@@ -92,15 +110,18 @@ function HeaderClient() {
             </Link>
             <Link 
               href="/blog"
-              className="flex items-center justify-center rounded-full nav-button"
+              className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
+                isHome 
+                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+              }`}
               style={{ 
-                backgroundColor: '#F5F5F5', 
                 color: '#000', 
                 height: '36px',
                 minWidth: '75px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontFamily: '"Helvetica Neue", sans-serif',
                 fontWeight: '400'
               }}
             >
@@ -108,15 +129,18 @@ function HeaderClient() {
             </Link>
             <Link 
               href="/contacto"
-              className="flex items-center justify-center rounded-full nav-button"
+              className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
+                isHome 
+                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+              }`}
               style={{ 
-                backgroundColor: '#F5F5F5', 
                 color: '#000', 
                 height: '36px',
                 minWidth: '95px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontFamily: '"Helvetica Neue", sans-serif',
                 fontWeight: '400'
               }}
             >
@@ -127,7 +151,9 @@ function HeaderClient() {
           {/* Tienda Button Right */}
           <div className="flex items-center">
             <Link 
-              href="/tienda"
+              href="https://www.hembra.cloudland.me/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center rounded-full tienda-button"
               style={{ 
                 backgroundColor: '#d0ddc3', 
@@ -136,7 +162,7 @@ function HeaderClient() {
                 minWidth: '85px',
                 padding: '0 42px',
                 fontSize: '14px',
-                fontFamily: '"Helvetica Neue LT Pro 55 Roman", "Helvetica Neue LT Pro 55 Roman Placeholder", sans-serif',
+                fontFamily: '"Helvetica Neue", sans-serif',
                 fontWeight: '400'
               }}
             >
@@ -168,7 +194,7 @@ function HeaderClient() {
                style={{ 
                  backgroundColor: '#969697', 
                  color: '#FFF', 
-                 fontFamily: 'neue-haas-grotesk-text, sans-serif',
+                 fontFamily: '"Helvetica Neue", sans-serif',
                  height: '36px', 
                  fontWeight: '400',
                  fontSize: '10px',
@@ -212,12 +238,14 @@ function HeaderClient() {
           
           {/* Tienda Button */}
           <Link 
-            href="/tienda"
+            href="https://www.hembra.cloudland.me/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-2 rounded-full"
             style={{ 
               backgroundColor: '#d0ddc3', 
               color: '#333', 
-              fontFamily: 'neue-haas-grotesk-text, sans-serif',
+              fontFamily: '"Helvetica Neue", sans-serif',
               height: '36px', 
               fontWeight: '400',
               fontSize: '10px',
@@ -442,4 +470,4 @@ export default function Header() {
       <HeaderClient />
     </Suspense>
   );
-} 
+}
