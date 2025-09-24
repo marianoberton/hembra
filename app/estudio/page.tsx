@@ -278,7 +278,7 @@ export default function EstudioPage() {
           <ThreeDTextCard
             title="El pensamiento circular es una necesidad urgente, no una opción. Reconocemos que el reciclaje es vital para abordar los problemas actuales de residuos, pero nuestro objetivo final es trascender este modelo. Nos enfocamos en la 'etapa cero' del ciclo de vida: el diseño, para evitar la generación de desechos desde su origen. En Hembra, no solo buscamos solucionar los problemas existentes, sino reeducar y asumir la responsabilidad de un compromiso ineludible con el futuro."
             label="Filosofía"
-            backgroundColor="#a2ae92"
+            backgroundColor="#d0ddc3"
             textColor="#fefcfb"
             minHeight="min-h-[300px]"
             showArrow={false}

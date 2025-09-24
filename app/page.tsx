@@ -13,6 +13,7 @@ const projectCardMappings = [
   { cardNumber: 9, projectId: 'upcycled-luminarias' },      // ImageCard -> Upcycled Luminarias  
   { cardNumber: 13, projectId: 'mesa-bea' },                // ImageCard -> Mesa Bea (horizontal)
   { cardNumber: 17, projectId: 'recap' },                   // ImageCard -> RECAP (horizontal)
+  { cardNumber: 18, projectId: 'orne' },                    // ImageCard -> Orne (hover)
   { cardNumber: 21, projectId: 'linea-vasos' }              // ImageCard -> Línea Vasos (horizontal)
 ];
 
@@ -35,7 +36,7 @@ export default function HomePage() {
               cardNumber={1}
               label="Estudio"
               title="<strong>HEMBRA ESTUDIO</strong> "
-              backgroundColor="#f2f2f2ff"
+              backgroundColor="#e6e6e1"
               textColor="#333333"
               showArrow={true}
               href="/estudio"
@@ -56,33 +57,22 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={3}
               items={[
-                { text: "Soluciones Circulares", className: "text-headline", color: "#000000" }
+                { text: "Estrategia Circular", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
-              backgroundColor="#718355"
+              backgroundColor="#dfe6d4ff"
               showArrow={true}
               href="/servicios"
             />
 
-            {/* 4. Blog Post - CARDTITLE (TIPO 3) */}
-            <CardTitleSubtitle
-              cardNumber={4}
-              title="Cómo diseñar productos sustentables"
-              subtitle="Guía completa para principiantes"
-              description="Estrategias y ejemplos prácticos para crear productos que respeten el medio ambiente sin comprometer la funcionalidad."
-              label="Blog"
-              href="/blog"
-              backgroundColor="#cedbbf"
-              textColor="#3D4A3D"
-              minHeight="min-h-[140px] sm:min-h-[160px]"
-            />
+
 
             {/* 5. Sustainability Statement - NO 3D TEXT */}
             <ThreeDTextCard
               cardNumber={5}
               label="Estudio"
               title="Creamos proyectos con un profundo <strong>enfoque en la sustentabilidad</strong>, ofreciendo soluciones <strong>estratégicas</strong>, <strong>creativas</strong> e <strong>innovadoras</strong>"
-              backgroundColor="#f2f2f2ff"
+              backgroundColor="#e6e6e1"
               textColor="#333333"
               showArrow={true}
               href="/estudio"
@@ -103,10 +93,10 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={7}
               items={[
-                { text: "Diseño Regenerativo", className: "text-headline", color: "#000000" }
+                { text: "Diseño de Objetos con Alma", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
-              backgroundColor="#7c8e60"
+              backgroundColor="#d0ddc3ff"
               showArrow={true}
               href="/servicios"
             />
@@ -136,29 +126,28 @@ export default function HomePage() {
               showArrow={true}
             />
 
-            {/* 10. Marquesina Superior */}
-            <div className="h-32 sm:h-40 lg:h-48 rounded-xl relative overflow-hidden">
-              <Image
-                src="https://framerusercontent.com/images/ORcrWDmgvL8vrAJjyE7jwI4lbLo.gif?scale-down-to=1024"
-                alt="Marquesina"
-                fill
-                className="object-cover"
-                unoptimized
-              />
-              <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
-                10
-              </div>
-            </div>
+            {/* 10. Innovación Sostenible (intercambiada desde posición 14) */}
+            <TypographyCard
+              cardNumber={10}
+              items={[
+                { text: "Innovación Sostenible", className: "text-headline", color: "#000000" }
+              ]}
+              label="Servicios"
+              backgroundColor="#dfe6d4ff"
+              showArrow={true}
+              href="/servicios"
+            />
 
-            {/* 11. Blog Post - CARDTITLE (TIPO 3) */}
+            {/* 11. Blog Post - CARDTITLE (TIPO 3) - Reemplazada con Card 4 */}
             <CardTitleSubtitle
               cardNumber={11}
-              title="Tendencias en diseño industrial 2024"
-              subtitle="Lo que viene este año"
-              description="Análisis profundo de las tendencias más relevantes en materiales, procesos y estilos que marcarán el diseño industrial."
-              backgroundColor="#b59582"
-              textColor="#fefcfb"
+              title="Cómo diseñar productos sustentables"
+              subtitle="Guía completa para principiantes"
+              description="Estrategias y ejemplos prácticos para crear productos que respeten el medio ambiente sin comprometer la funcionalidad."
               label="Blog"
+              href="/blog"
+              backgroundColor="#cedbbf"
+              textColor="#3D4A3D"
               minHeight="min-h-[140px] sm:min-h-[160px]"
             />
 
@@ -204,19 +193,7 @@ export default function HomePage() {
               showArrow={true}
             />
 
-            {/* 14. Innovación Sostenible - TYPOGRAPHY (TIPO 4) */}
-            <TypographyCard
-              cardNumber={14}
-              items={[
-                { text: "Ecodiseño y Biomímesis", className: "text-headline", color: "#000000" }
-              ]}
-              label="Servicios"
-              backgroundColor="#b3c1a2"
-              showArrow={true}
-              href="/servicios"
-            />
-
-            {/* 15. Marquesina Inferior */}
+            {/* 14. Marquesina (intercambiada desde posición 10) */}
             <div className="h-32 sm:h-40 lg:h-48 rounded-xl relative overflow-hidden">
               <Image
                 src="https://framerusercontent.com/images/ORcrWDmgvL8vrAJjyE7jwI4lbLo.gif?scale-down-to=1024"
@@ -226,10 +203,9 @@ export default function HomePage() {
                 unoptimized
               />
               <div className="absolute top-2 right-2 text-xs px-2 py-1 rounded font-bold z-20" style={{backgroundColor: '#a8836d', color: '#fefcfb'}}>
-                15
+                14
               </div>
             </div>
-
 
           </div>
 
@@ -239,10 +215,10 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={16}
               items={[
-                { text: "Gestión de Residuos", className: "text-headline", color: "#000000" }
+                { text: "Prototipado y Desarrollo", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
-              backgroundColor="#909b82"
+              backgroundColor="#d0ddc3ff"
               showArrow={true}
               href="/servicios"
             />
@@ -258,15 +234,15 @@ export default function HomePage() {
               showArrow={true}
             />
 
-            {/* 18. Propósito Creativo - NO 3D TEXT */}
-            <ThreeDTextCard
+            {/* 18. Orne Project - IMAGE HOVER */}
+            <ImageCardHover
               cardNumber={18}
-              title="Cada propuesta está pensada para ser parte de un <strong>sistema circular</strong>, donde los materiales extienden su <strong>durabilidad</strong> y se <strong>ahorran recursos</strong>"
+              src="/images/orne.JPG"
+              alt="Orne - Proyecto Artesanal"
+              title="Estudio"
               label="Estudio"
-              backgroundColor="#f2f2f2ff"
-              textColor="#333333"
-              showArrow={true}
               href="/estudio"
+              showArrow={true}
             />
 
             {/* 19. Blog Post - CARDTITLE (TIPO 3) */}
@@ -275,7 +251,7 @@ export default function HomePage() {
               title="Colaboraciones que inspiran"
               subtitle="Alianzas estratégicas"
               description="Historias reales de colaboraciones exitosas y cómo las alianzas estratégicas potencian la innovación."
-              backgroundColor="#718355"
+              backgroundColor="#dfe6d4ff"
               textColor="#fefcfb"
               label="Blog"
               minHeight="min-h-[140px] sm:min-h-[160px]"
@@ -286,7 +262,7 @@ export default function HomePage() {
               cardNumber={20}
               title="El <strong>pensamiento circular</strong> es una necesidad urgente y no una opción. Nos enfocamos en la <strong>etapa cero</strong> del ciclo de vida para evitar la generación de desechos desde su origen"
               label="Estudio"
-              backgroundColor="#f2f2f2ff"
+              backgroundColor="#e6e6e1"
               textColor="#333333"
               showArrow={true}
               href="/estudio"
@@ -307,25 +283,14 @@ export default function HomePage() {
             <TypographyCard
               cardNumber={22}
               items={[
-                { text: "Producciones Sostenibles", className: "text-headline", color: "#000000" }
+                { text: "Producción Responsable", className: "text-headline", color: "#000000" }
               ]}
               label="Servicios"
-              backgroundColor="#a2ae92"
+              backgroundColor="#dfe6d4ff"
               showArrow={true}
               href="/servicios"
             />
 
-            {/* 23. Blog Post - CARDTITLE (TIPO 3) */}
-            <CardTitleSubtitle
-              cardNumber={23}
-              title="Diseño circular en acción"
-              subtitle="Casos de éxito"
-              description="Ejemplos reales de cómo implementamos principios de economía circular en proyectos tangibles y exitosos."
-              backgroundColor="#cedbbf"
-              textColor="#3D4A3D"
-              label="Blog"
-              minHeight="min-h-[140px] sm:min-h-[160px]"
-            />
           </div>
         </div>
       </div>
