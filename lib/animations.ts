@@ -1,11 +1,11 @@
 // Animation utilities for Hembra V2.0 - Premium experience
 // Performance-optimized animations using transform and opacity only
 
-import { Variants, Transition } from 'framer-motion';
+import { Variants } from 'framer-motion';
 
 // GSAP será importado dinámicamente para evitar SSR issues
-let gsap: any;
-let ScrollTrigger: any;
+let gsap: typeof import('gsap').gsap;
+let ScrollTrigger: typeof import('gsap/ScrollTrigger').ScrollTrigger;
 
 // Importación dinámica de GSAP
 export const initGSAP = async () => {
@@ -413,7 +413,7 @@ export const slideInRight: Variants = {
 export const gsapUtils = {
   // Scroll-triggered stagger animation
   scrollStagger: async (selector: string, options = {}) => {
-    const { gsap, ScrollTrigger } = await initGSAP();
+    const { gsap } = await initGSAP();
     
     return gsap.fromTo(selector, 
       { 
@@ -440,7 +440,7 @@ export const gsapUtils = {
 
   // Parallax effect
   parallax: async (selector: string, speed = 0.5) => {
-    const { gsap, ScrollTrigger } = await initGSAP();
+    const { gsap } = await initGSAP();
     
     return gsap.to(selector, {
       yPercent: -50 * speed,
@@ -533,7 +533,7 @@ export const performanceVariants = {
   }
 };
 
-export default {
+const animationsConfig = {
   transitions,
   viewportSettings,
   pageVariants,
@@ -556,4 +556,6 @@ export default {
   gsapUtils,
   performanceVariants,
   initGSAP
-}; 
+};
+
+export default animationsConfig;

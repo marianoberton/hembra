@@ -1,19 +1,4 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { Lora, Inter } from 'next/font/google';
-
-// Premium typography setup
-const lora = Lora({
-  subsets: ['latin'],
-  variable: '--font-lora',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'Hembra | Tienda',
@@ -24,20 +9,3 @@ export const metadata: Metadata = {
     images: ['/images/logo.jpg']
   },
 };
-
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-};
-
-export default function TiendaLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="min-h-screen" style={{backgroundColor: '#e9f5db'}}>
-      {children}
-    </div>
-  );
-} 

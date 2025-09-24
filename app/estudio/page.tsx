@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { TextCard, CardTitleSubtitle } from '../components/cards';
 import ThreeDTextCard from '../components/ui/3d-text-card';
 import Footer from '../components/Footer';
 

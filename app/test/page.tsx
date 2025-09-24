@@ -2,7 +2,7 @@ import { tiendanubeFetch } from '../../utils/tiendanube';
 import Header from '../components/Header';
 
 export default async function TestPage() {
-  let results: any = {};
+  const results: Record<string, { success: boolean; count?: number; data?: any; error?: string }> = {};
 
   // Test 1: Listar productos
   try {
@@ -145,7 +145,7 @@ export default async function TestPage() {
         <div className="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">📊 Resumen de Pruebas</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Object.entries(results).map(([key, result]: [string, any]) => (
+            {Object.entries(results).map(([key, result]: [string, { success: boolean; count?: number; data?: any; error?: string }]) => (
               <div key={key} className="text-center">
                 <div className={`text-2xl mb-2 ${result.success ? 'text-green-600' : 'text-red-600'}`}>
                   {result.success ? '✅' : '❌'}
@@ -164,7 +164,7 @@ export default async function TestPage() {
 
 interface TestCardProps {
   title: string;
-  result: any;
+  result: { success: boolean; count?: number; data?: any; error?: string };
   description: string;
 }
 
@@ -203,4 +203,4 @@ function TestCard({ title, result, description }: TestCardProps) {
       )}
     </div>
   );
-} 
+}

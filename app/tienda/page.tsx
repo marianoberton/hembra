@@ -75,8 +75,8 @@ function TiendaClient() {
   const [products, setProducts] = useState<TiendanubeProduct[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<TiendanubeProduct[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'newest'>('newest');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -575,7 +575,7 @@ function TiendaClient() {
               </div>
               {searchTerm && (
                 <div className="text-xs mt-1" style={{color: '#a8836d'}}>
-                  para "{searchTerm}"
+                  para &quot;{searchTerm}&quot;
                 </div>
               )}
             </div>
@@ -852,4 +852,4 @@ export default function TiendaPage() {
       <TiendaClient />
     </Suspense>
   );
-} 
+}

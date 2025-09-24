@@ -22,7 +22,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
   try {
     const data = await fs.readFile(POSTS_FILE, 'utf-8');
     const posts = JSON.parse(data);
-    return posts.map((post: any) => ({
+    return posts.map((post: Omit<BlogPost, 'publishedAt' | 'updatedAt'> & { publishedAt: string; updatedAt: string }) => ({
       ...post,
       publishedAt: new Date(post.publishedAt),
       updatedAt: new Date(post.updatedAt)
@@ -135,8 +135,8 @@ export async function getCommentsByPostId(postId: string): Promise<BlogComment[]
     const data = await fs.readFile(COMMENTS_FILE, 'utf-8');
     const comments = JSON.parse(data);
     return comments
-      .filter((comment: any) => comment.postId === postId)
-      .map((comment: any) => ({
+      .filter((comment: Omit<BlogComment, 'createdAt'> & { createdAt: string }) => comment.postId === postId)
+      .map((comment: Omit<BlogComment, 'createdAt'> & { createdAt: string }) => ({
         ...comment,
         createdAt: new Date(comment.createdAt)
       }));
@@ -183,4 +183,4 @@ export function generateSlug(title: string): string {
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .trim();
-} 
+}
