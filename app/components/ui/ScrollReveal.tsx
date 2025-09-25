@@ -41,7 +41,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     if (text.includes('<strong>')) {
       // Parse HTML and split by words while preserving tags
       const parts = text.split(/(<strong>.*?<\/strong>)/g);
-      let wordIndex = 0;
+      const wordIndex = 0;
       
       return parts.map((part, partIndex) => {
         if (part.startsWith('<strong>')) {
@@ -187,4 +187,4 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   );
 };
 
-export default ScrollReveal; 
+export default ScrollReveal;

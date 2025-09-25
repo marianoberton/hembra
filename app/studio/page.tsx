@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import Image from 'next/image';
-
 export default function StudioPage() {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center">
@@ -12,4 +9,4 @@ export default function StudioPage() {
       </div>
     </div>
   );
-} 
+}

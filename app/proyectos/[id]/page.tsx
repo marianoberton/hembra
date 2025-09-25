@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { proyectos } from '../../../data/proyectos';
@@ -10,10 +10,8 @@ import ProjectHeader from '../../components/ProjectHeader';
 
 export default function ProyectoDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const searchParams = useSearchParams();
   const proyectoId = params.id as string;
-  const fromHome = searchParams.get('from') === 'home';
   
   const [proyecto, setProyecto] = useState<Proyecto | null>(null);
   const [loading, setLoading] = useState(true);
@@ -31,7 +29,7 @@ export default function ProyectoDetailPage() {
       <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#e6e6e1'}}>
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3D4A3D] mx-auto mb-4"></div>
-          <h2 className="text-xl font-medium" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>Cargando proyecto...</h2>
+          <h2 className="text-xl font-medium" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>Cargando proyecto...</h2>
         </div>
       </div>
     );
@@ -41,11 +39,11 @@ export default function ProyectoDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#e6e6e1'}}>
         <div className="text-center">
-          <h1 className="text-4xl font-light mb-4" style={{color: '#3D4A3D', fontFamily: 'Helvetica Neue LT Pro'}}>Proyecto no encontrado</h1>
+          <h1 className="text-4xl font-light mb-4" style={{color: '#3D4A3D', fontFamily: 'Helvetica Neue, sans-serif'}}>Proyecto no encontrado</h1>
           <Link 
             href="/proyectos"
             className="text-lg hover:underline"
-            style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}
+            style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}
           >
             ← Volver a Proyectos
           </Link>
@@ -62,7 +60,7 @@ export default function ProyectoDetailPage() {
           <Link 
             href="/proyectos"
             className="text-sm font-medium tracking-wide hover:underline"
-            style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}
+            style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}
           >
             ← Proyectos
           </Link>
@@ -98,7 +96,7 @@ export default function ProyectoDetailPage() {
             {/* Columna Derecha - 40% (2/5) */}
             <div className="lg:col-span-2 space-y-6">
               <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
                   Las botellas de vino desechadas constituyen una gran parte de los residuos de vidrio de nuestro planeta. 
                   Pero, ¿y si pudiéramos darles una segunda vida y transformarlas en algo realmente hermoso? 
                   Nos enorgullece presentar nuestro tan preciado {proyecto.title}.
@@ -154,13 +152,13 @@ export default function ProyectoDetailPage() {
           {/* Bloque 1: Título y Descripción del Proceso */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
                 Proceso
               </h2>
             </div>
             <div className="lg:col-span-3">
               <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
                   Esta elaborado 100% a mano, su cuerpo está hecho a partir de botellas de vino reutilizadas, 
                   y su base se fabrica con retazos de chapa recuperada de chatarreras. Al reutilizar estas botellas, 
                   no solo estamos reduciendo significativamente los residuos, sino que también estamos creando 
@@ -203,13 +201,13 @@ export default function ProyectoDetailPage() {
           {/* Bloque 1: Título y Concepto de Diseño */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
                 Diseño con Propósito
               </h2>
             </div>
             <div className="lg:col-span-3">
               <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
                   Este jarrón no solo es una pieza decorativa, sino también un símbolo de sostenibilidad y compromiso social. 
                   Lo diseñamos bajo el concepto de upcycling, dándole un nuevo valor a materiales que de otra manera serían desechados.
                 </p>
@@ -246,13 +244,13 @@ export default function ProyectoDetailPage() {
           {/* Bloque 1: Título y Descripción de la Colaboración */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             <div className="lg:col-span-1">
-              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
                 Impacto Social
               </h2>
             </div>
             <div className="lg:col-span-3">
               <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue LT Pro'}}>
+                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
                   Trabajamos de cerca con una red de talleros en el conurbano y con la cooperativa Supercrea, 
                   quienes se encargan de proveernos estos envases de vidrio recuperados. Así, hemos logrado construir 
                   una red de actores comprometidos con el medio ambiente y el desarrollo social.
@@ -279,7 +277,7 @@ export default function ProyectoDetailPage() {
           <Link 
             href="/proyectos"
             className="flex items-center space-x-3 px-8 py-4 rounded-full transition-all duration-300 hover:scale-105"
-            style={{backgroundColor: '#d0ddc3', color: '#000', fontFamily: 'Helvetica Neue LT Pro'}}
+            style={{backgroundColor: '#d0ddc3', color: '#000', fontFamily: 'Helvetica Neue, sans-serif'}}
           >
             <span>←</span>
             <span>Ver Todos los Proyectos</span>
@@ -302,7 +300,7 @@ export default function ProyectoDetailPage() {
               <Link 
                 href={`/proyectos/${proyectos[proyectos.findIndex(p => p.id === proyectoId) + 1].id}`}
                 className="px-6 py-3 rounded-full transition-colors hover:underline"
-                style={{color: '#7C8E60', fontFamily: 'Helvetica Neue LT Pro'}}
+                style={{color: '#7C8E60', fontFamily: 'Helvetica Neue, sans-serif'}}
               >
                 Siguiente →
               </Link>

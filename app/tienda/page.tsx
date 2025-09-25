@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import ProductGridPremium from '../components/ProductGridPremium';
 import { TiendanubeProduct } from '../../types/tiendanube';
 
@@ -70,13 +71,11 @@ function getProductPrice(product: TiendanubeProduct): number {
 
 function TiendaClient() {
   const searchParams = useSearchParams();
-  const categoria = searchParams.get('categoria');
   
   const [products, setProducts] = useState<TiendanubeProduct[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<TiendanubeProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'newest'>('newest');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -118,7 +117,7 @@ function TiendaClient() {
         setProducts(data);
         setFilteredProducts(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        console.error('Error fetching products:', err);
       } finally {
         setLoading(false);
       }
@@ -369,10 +368,11 @@ function TiendaClient() {
                     }}
                   >
                     <div className="aspect-square relative overflow-hidden">
-                      <img
+                      <Image
                         src={category.image}
                         alt={category.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.src = '/images/placeholder-hero.jpg';
@@ -743,10 +743,11 @@ function TiendaClient() {
                       }}
                     >
                       <div className="aspect-[4/3] relative overflow-hidden">
-                        <img
+                        <Image
                           src={category.image}
                           alt={category.name}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.src = '/images/placeholder-hero.jpg';

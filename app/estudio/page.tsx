@@ -141,7 +141,6 @@ export default function EstudioPage() {
             label="Enfoque"
             backgroundColor="#b3c1a2"
             textColor="#3D4A3D"
-            minHeight="min-h-[200px]"
             showArrow={false}
           />
           
@@ -151,7 +150,6 @@ export default function EstudioPage() {
             label="Innovación"
             backgroundColor="#cedbbf"
             textColor="#3D4A3D"
-            minHeight="min-h-[200px]"
             showArrow={false}
           />
         </div>
@@ -241,7 +239,7 @@ export default function EstudioPage() {
             
             <p className="text-black leading-relaxed" style={{fontSize: '18px', lineHeight: '1.6', fontFamily: 'Helvetica Neue, sans-serif'}}>
               <strong>Producciones Futuras:</strong> Alineamos la creatividad con principios de Ecodiseño, Biodiseño y Biomímesis, 
-              considerando la "etapa cero" del diseño para evitar residuos desde el origen.
+              considerando la &ldquo;etapa cero&rdquo; del diseño para evitar residuos desde el origen.
             </p>
           </div>
           
@@ -280,7 +278,6 @@ export default function EstudioPage() {
             label="Filosofía"
             backgroundColor="#d0ddc3"
             textColor="#fefcfb"
-            minHeight="min-h-[300px]"
             showArrow={false}
           />
         </div>

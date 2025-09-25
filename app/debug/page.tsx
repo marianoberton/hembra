@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function DebugPage() {
   // Variables de entorno del servidor
   const serverVars = {
@@ -72,28 +74,28 @@ export default function DebugPage() {
             <div className="mt-6 p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-blue-800 mb-2">🔧 Instrucciones</h3>
               <p className="text-sm text-blue-700">
-                Si alguna variable aparece como "Faltante", necesitas reiniciar completamente el servidor 
+                Si alguna variable aparece como &ldquo;Faltante&rdquo;, necesitas reiniciar completamente el servidor 
                 después de actualizar el archivo .env.local
               </p>
             </div>
 
             <div className="flex space-x-4">
-              <a
+              <Link
                 href="/test" 
                 className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
               >
                 🧪 Ir a Pruebas
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/"
                 className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700"
               >
                 🏠 Inicio
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}

@@ -3,13 +3,14 @@ export const dynamic = "force-dynamic";
 
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 function AuthCallbackClient() {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [message, setMessage] = useState('');
   const searchParams = useSearchParams();
   
-  const [tokenData, setTokenData] = useState<any>(null);
+  const [tokenData, setTokenData] = useState<unknown>(null);
 
   useEffect(() => {
     const code = searchParams.get('code');
@@ -73,14 +74,14 @@ function AuthCallbackClient() {
               <h2 className="text-xl font-semibold text-green-800 mb-2">¡Autenticación exitosa!</h2>
               <p className="text-gray-600 mb-4">{message}</p>
               
-              {tokenData && (
+              {tokenData && typeof tokenData === 'object' && tokenData !== null && (
                 <div className="bg-gray-50 rounded-lg p-4 text-left mb-4">
                   <h3 className="font-semibold text-gray-800 mb-3">🔐 Agrega estas credenciales a tu .env.local:</h3>
                   <div className="bg-gray-900 text-green-400 p-3 rounded font-mono text-sm overflow-x-auto">
                     <div className="space-y-1">
-                      <div>TN_STORE_ID={tokenData.store_id}</div>
-                      <div>TN_ACCESS_TOKEN={tokenData.access_token}</div>
-                      <div className="text-gray-500"># Scopes autorizados: {tokenData.scope}</div>
+                      <div>TN_STORE_ID={typeof tokenData === 'object' && tokenData !== null && 'store_id' in tokenData ? (tokenData as {store_id: string}).store_id : 'N/A'}</div>
+                      <div>TN_ACCESS_TOKEN={typeof tokenData === 'object' && tokenData !== null && 'access_token' in tokenData ? (tokenData as {access_token: string}).access_token : 'N/A'}</div>
+                      <div className="text-gray-500"># Scopes autorizados: {typeof tokenData === 'object' && tokenData !== null && 'scope' in tokenData ? (tokenData as {scope: string}).scope : 'N/A'}</div>
                     </div>
                   </div>
                   <p className="text-sm text-gray-600 mt-2">
@@ -100,20 +101,20 @@ function AuthCallbackClient() {
           )}
           
           <div className="mt-6 space-x-4">
-            {status === 'success' && tokenData && (
+            {(status === 'success' && tokenData && typeof tokenData === 'object' && tokenData !== null) ? (
               <a
                 href="/test"
                 className="inline-block bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors"
               >
                 🧪 Probar integración
               </a>
-            )}
-            <a
+            ) : null}
+            <Link
               href="/"
               className="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
             >
               Volver al inicio
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -134,4 +135,4 @@ export default function AuthCallbackPage() {
       <AuthCallbackClient />
     </Suspense>
   );
-} 
+}

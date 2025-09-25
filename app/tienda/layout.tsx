@@ -9,3 +9,11 @@ export const metadata: Metadata = {
     images: ['/images/logo.jpg']
   },
 };
+
+export default function TiendaLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return children;
+}

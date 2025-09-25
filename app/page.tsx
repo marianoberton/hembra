@@ -1,4 +1,4 @@
-import { TextCard, TypographyCard, CardTitleSubtitle } from './components/cards';
+import { TypographyCard, CardTitleSubtitle } from './components/cards';
 import ThreeDTextCard from './components/ui/3d-text-card';
 import ImageCardHover from './components/ui/image-card-hover';
 import ImageCardHorizontal from './components/ui/image-card-horizontal';

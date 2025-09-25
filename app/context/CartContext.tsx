@@ -7,7 +7,7 @@ export interface CartItem {
   id: number;
   product: TiendanubeProduct;
   quantity: number;
-  selectedVariant?: any;
+  selectedVariant?: unknown;
 }
 
 interface CartState {
@@ -17,7 +17,7 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: 'ADD_ITEM'; payload: { product: TiendanubeProduct; quantity: number; variant?: any } }
+  | { type: 'ADD_ITEM'; payload: { product: TiendanubeProduct; quantity: number; variant?: unknown } }
   | { type: 'REMOVE_ITEM'; payload: { id: number } }
   | { type: 'UPDATE_QUANTITY'; payload: { id: number; quantity: number } }
   | { type: 'CLEAR_CART' }
@@ -26,7 +26,7 @@ type CartAction =
 const CartContext = createContext<{
   state: CartState;
   dispatch: React.Dispatch<CartAction>;
-  addToCart: (product: TiendanubeProduct, quantity: number, variant?: any) => void;
+  addToCart: (product: TiendanubeProduct, quantity: number, variant?: unknown) => void;
   removeFromCart: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
@@ -133,7 +133,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('cart', JSON.stringify(state));
   }, [state]);
 
-  const addToCart = (product: TiendanubeProduct, quantity: number, variant?: any) => {
+  const addToCart = (product: TiendanubeProduct, quantity: number, variant?: unknown) => {
     dispatch({ type: 'ADD_ITEM', payload: { product, quantity, variant } });
   };
 
@@ -176,4 +176,4 @@ export function useCart() {
     throw new Error('useCart must be used within a CartProvider');
   }
   return context;
-} 
+}

@@ -87,7 +87,7 @@ export default function ContactoPage() {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
-                    style={{fontFamily: 'Helvetica Neue LT Pro', focusRingColor: '#d0ddc3'}}
+                    style={{fontFamily: 'Helvetica Neue LT Pro'}}
                   />
                 </div>
                 <div>
@@ -102,7 +102,7 @@ export default function ContactoPage() {
                     onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
-                    style={{fontFamily: 'Helvetica Neue LT Pro', focusRingColor: '#d0ddc3'}}
+                    style={{fontFamily: 'Helvetica Neue LT Pro'}}
                   />
                 </div>
               </div>
@@ -119,7 +119,7 @@ export default function ContactoPage() {
                     value={formData.telefono}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
-                    style={{fontFamily: 'Helvetica Neue LT Pro', focusRingColor: '#d0ddc3'}}
+                    style={{fontFamily: 'Helvetica Neue LT Pro'}}
                   />
                 </div>
                 <div>
@@ -133,7 +133,7 @@ export default function ContactoPage() {
                     value={formData.empresa}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
-                    style={{fontFamily: 'Helvetica Neue LT Pro', focusRingColor: '#d0ddc3'}}
+                    style={{fontFamily: 'Helvetica Neue LT Pro'}}
                   />
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function ContactoPage() {
                   value={formData.tipoProyecto}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
-                  style={{fontFamily: 'Helvetica Neue LT Pro', focusRingColor: '#d0ddc3'}}
+                  style={{fontFamily: 'Helvetica Neue LT Pro'}}
                 >
                   <option value="">Selecciona una opción</option>
                   <option value="diseño-producto">Diseño de Producto</option>
@@ -171,7 +171,7 @@ export default function ContactoPage() {
                   required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 focus:border-transparent resize-vertical"
-                  style={{fontFamily: 'Helvetica Neue LT Pro', focusRingColor: '#d0ddc3'}}
+                  style={{fontFamily: 'Helvetica Neue LT Pro'}}
                   placeholder="Cuéntanos sobre tu proyecto, objetivos y cómo podemos ayudarte..."
                 />
               </div>

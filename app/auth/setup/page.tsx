@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { generateAuthUrl, getAuthInstructions } from '../../../utils/tiendanube-auth';
 
 function AuthSetupClient() {
-  const [instructions, setInstructions] = useState<any>(null);
+  const [instructions, setInstructions] = useState<unknown>(null);
   const [authUrl, setAuthUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
 
@@ -45,10 +45,10 @@ function AuthSetupClient() {
               <div className="space-y-2">
                 <div className="flex items-center">
                   <span className={`w-3 h-3 rounded-full mr-2 ${
-                    instructions?.needsConfig ? 'bg-red-500' : 'bg-green-500'
+                    (instructions && typeof instructions === 'object' && 'needsConfig' in instructions && (instructions as {needsConfig: boolean}).needsConfig) ? 'bg-red-500' : 'bg-green-500'
                   }`}></span>
                   <span className="text-sm">
-                    Configuración OAuth: {instructions?.needsConfig ? 'Pendiente' : 'Completa'}
+                    Configuración OAuth: {(instructions && typeof instructions === 'object' && 'needsConfig' in instructions && (instructions as {needsConfig: boolean}).needsConfig) ? 'Pendiente' : 'Completa'}
                   </span>
                 </div>
                 <div className="flex items-center">
@@ -68,14 +68,15 @@ function AuthSetupClient() {
               
               <div className="bg-gray-50 rounded-lg p-4">
                 <ol className="space-y-3">
-                  {instructions?.steps.map((step: string, index: number) => (
-                    <li key={index} className="flex">
-                      <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm mr-3 mt-0.5">
-                        {index + 1}
-                      </span>
-                      <span className="text-gray-700">{step}</span>
-                    </li>
-                  ))}
+                  {(instructions && typeof instructions === 'object' && 'steps' in instructions && Array.isArray((instructions as {steps: string[]}).steps)) ? 
+                    (instructions as {steps: string[]}).steps.map((step: string, index: number) => (
+                      <li key={index} className="flex">
+                        <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm mr-3 mt-0.5">
+                          {index + 1}
+                        </span>
+                        <span className="text-gray-700">{step}</span>
+                      </li>
+                    )) : null}
                 </ol>
               </div>
             </div>
@@ -98,7 +99,7 @@ function AuthSetupClient() {
 
             {/* Action Buttons */}
             <div className="space-y-4">
-              {instructions?.needsConfig ? (
+              {(instructions && typeof instructions === 'object' && 'needsConfig' in instructions && (instructions as {needsConfig: boolean}).needsConfig) ? (
                 <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
                   <p className="text-orange-800 mb-3">
                     ⚠️ Necesitas configurar CLIENT_ID y CLIENT_SECRET antes de continuar
@@ -180,4 +181,4 @@ export default function AuthSetupPage() {
       <AuthSetupClient />
     </Suspense>
   );
-} 
+}

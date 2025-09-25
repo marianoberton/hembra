@@ -1,14 +1,6 @@
 import { tiendanubeFetch } from '../utils/tiendanube';
 import { TiendanubeProduct } from '../types/tiendanube';
-import { TextCard, ImageCard, ProjectCard, TypographyCard, CardTitleSubtitle } from './components/cards';
-
-// Helper function to get product name in the preferred language
-function getProductName(name: TiendanubeProduct['name']): string {
-  if (typeof name === 'string') {
-    return name;
-  }
-  return name?.es || name?.en || name?.pt || 'Producto';
-}
+import { TextCard, ImageCard, TypographyCard, CardTitleSubtitle } from './components/cards';
 
 export default async function HomePage() {
   let products: TiendanubeProduct[] = [];
@@ -399,4 +391,4 @@ export default async function HomePage() {
         )}
     </div>
   );
-} 
+}

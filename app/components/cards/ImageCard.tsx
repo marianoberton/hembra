@@ -23,7 +23,6 @@ export default function ImageCard({
   title,
   label = 'Work',
   href = '/work',
-  minHeight = 'min-h-[280px]',
   cardNumber,
   showArrow = true,
   placeholder,

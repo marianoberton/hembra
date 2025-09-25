@@ -162,7 +162,7 @@ export default function EstudioPage() {
               lineHeight: '28px'
             }}
           >
-            Nuestro valor distintivo radica en crear soluciones de impacto positivo medible. Consideramos el pensamiento circular como urgencia, no opción. Reconocemos el reciclaje, pero trascendemos hacia la "etapa cero" para erradicar residuos desde la raíz. En Hembra, reeducamos, inspiramos y asumimos el compromiso ineludible con el futuro.
+            Nuestro valor distintivo radica en crear soluciones de impacto positivo medible. Consideramos el pensamiento circular como urgencia, no opción. Reconocemos el reciclaje, pero trascendemos hacia la &ldquo;etapa cero&rdquo; para erradicar residuos desde la raíz. En Hembra, reeducamos, inspiramos y asumimos el compromiso ineludible con el futuro.
           </p>
         </Section>
 

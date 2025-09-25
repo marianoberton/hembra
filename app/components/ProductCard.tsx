@@ -13,7 +13,7 @@ import {
   transitions,
   viewportSettings 
 } from '../../lib/animations';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 interface ProductCardProps {
   product: TiendanubeProduct;

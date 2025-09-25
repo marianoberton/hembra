@@ -103,7 +103,7 @@ export default function TestPremiumPage() {
     }
 
     fetchProducts();
-  }, []);
+  }, [testProduct]);
 
   if (loading) {
     return (
@@ -183,4 +183,4 @@ export default function TestPremiumPage() {
       </div>
     </div>
   );
-} 
+}

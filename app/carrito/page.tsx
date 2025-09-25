@@ -15,16 +15,25 @@ export default function CartPage() {
     }).format(price);
   };
 
-  const getProductName = (product: any): string => {
-    if (typeof product.name === 'string') {
-      return product.name;
+  const getProductName = (product: unknown): string => {
+    if (typeof product === 'object' && product !== null && 'name' in product) {
+      const productObj = product as { name?: string | { es?: string; en?: string } };
+      if (typeof productObj.name === 'string') {
+        return productObj.name;
+      }
+      return (productObj.name as { es?: string; en?: string })?.es || 
+             (productObj.name as { es?: string; en?: string })?.en || 
+             'Producto sin nombre';
     }
-    return product.name?.es || product.name?.en || 'Producto sin nombre';
+    return 'Producto sin nombre';
   };
 
-  const getMainImage = (product: any): string => {
-    if (product.images && product.images.length > 0) {
-      return product.images[0].src;
+  const getMainImage = (product: unknown): string => {
+    if (typeof product === 'object' && product !== null && 'images' in product) {
+      const productObj = product as { images?: Array<{ src: string }> };
+      if (productObj.images && productObj.images.length > 0) {
+        return productObj.images[0].src;
+      }
     }
     return '/placeholder-product.jpg';
   };
@@ -95,11 +104,11 @@ export default function CartPage() {
                       Precio unitario: {formatPrice(getItemPrice(item))}
                     </p>
 
-                    {item.selectedVariant && (
+                    {item.selectedVariant ? (
                       <p className="text-sm text-gray-500">
                         Variante: {JSON.stringify(item.selectedVariant)}
                       </p>
-                    )}
+                    ) : null}
                   </div>
 
                   {/* Controles de cantidad */}
@@ -200,4 +209,4 @@ export default function CartPage() {
       </main>
     </div>
   );
-} 
+}
