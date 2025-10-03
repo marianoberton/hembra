@@ -102,12 +102,19 @@ export default function TypographyCard({
       {/* Arrow - positioned with equal distance from bottom */}
       {showArrow && (
         <div 
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
           style={{ 
             zIndex: 10
           }}
         >
-          <span className={arrowClass}>→</span>
+          <span 
+            className={arrowClass}
+            style={{
+              fontFamily: '"Helvetica Neue", sans-serif',
+              fontSize: '28px',
+              fontWeight: 100
+            }}
+          >→</span>
         </div>
       )}
     </BaseCard>

@@ -29,7 +29,7 @@ function HeaderClient() {
       className="w-full overflow-hidden" 
       style={{ 
         marginTop: '8px',
-        backgroundColor: isHome ? '#ffffff' : '#e6e6e1'
+        backgroundColor: isHome ? '#ffffff' : '#f2f2f2'
       }}
     >
       <div className="w-full overflow-hidden">
@@ -54,8 +54,8 @@ function HeaderClient() {
               href="/proyectos"
               className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
                 isHome 
-                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
-                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+                  ? 'bg-[#f2f2f2] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#f2f2f2] hover:border-black'
               }`}
               style={{ 
                 color: '#000', 
@@ -73,8 +73,8 @@ function HeaderClient() {
               href="/estudio"
               className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
                 isHome 
-                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
-                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+                  ? 'bg-[#f2f2f2] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#f2f2f2] hover:border-black'
               }`}
               style={{ 
                 color: '#000', 
@@ -92,8 +92,8 @@ function HeaderClient() {
               href="/servicios"
               className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
                 isHome 
-                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
-                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+                  ? 'bg-[#f2f2f2] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#f2f2f2] hover:border-black'
               }`}
               style={{ 
                 color: '#000', 
@@ -112,8 +112,8 @@ function HeaderClient() {
               href="/contacto"
               className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
                 isHome 
-                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
-                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
+                  ? 'bg-[#f2f2f2] border-transparent hover:bg-white hover:border-black' 
+                  : 'bg-white border-transparent hover:bg-[#f2f2f2] hover:border-black'
               }`}
               style={{ 
                 color: '#000', 
@@ -200,7 +200,7 @@ function HeaderClient() {
           <button 
             className="px-6 py-2 rounded-full"
             style={{ 
-              backgroundColor: '#F5F5F5', 
+              backgroundColor: isHome ? '#f2f2f2' : '#F5F5F5', 
               color: '#000', 
               fontFamily: 'neue-haas-grotesk-text, sans-serif',
               height: '36px', 
@@ -251,14 +251,19 @@ function HeaderClient() {
 
         {/* Mobile Navigation - Centered Menu */}
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-white z-50 flex items-start justify-center pt-16 overflow-hidden">
+          <div 
+            className="fixed inset-0 z-50 flex items-start justify-center pt-16 overflow-hidden"
+            style={{
+        backgroundColor: isHome ? '#ffffff' : '#f2f2f2'
+      }}
+          >
             <div className="flex flex-col items-center space-y-4">
               
               {/* Close Button */}
               <button 
                 className="px-4 py-2 rounded-full mb-6" 
                 style={{ 
-                  backgroundColor: '#F5F5F5', 
+                  backgroundColor: isHome ? '#f2f2f2' : '#F5F5F5', 
                   color: '#333333', 
                   fontFamily: 'neue-haas-grotesk-text, sans-serif',
                   fontWeight: '600',
@@ -285,7 +290,7 @@ function HeaderClient() {
                   href="/"
                   className="px-8 py-2 rounded-full"
                   style={{ 
-                    backgroundColor: '#F5F5F5', 
+                    backgroundColor: isHome ? '#f2f2f2' : '#F5F5F5', 
                     color: '#333333', 
                     fontFamily: 'neue-haas-grotesk-text, sans-serif',
                     fontWeight: '400',
@@ -309,7 +314,7 @@ function HeaderClient() {
                   href="/proyectos"
                   className="px-8 py-2 rounded-full"
                   style={{ 
-                    backgroundColor: '#F5F5F5', 
+                    backgroundColor: isHome ? '#f2f2f2' : '#F5F5F5', 
                     color: '#333333', 
                     fontFamily: 'neue-haas-grotesk-text, sans-serif',
                     fontWeight: '400',
@@ -333,7 +338,7 @@ function HeaderClient() {
                   href="/estudio"
                   className="px-8 py-2 rounded-full"
                   style={{ 
-                    backgroundColor: '#F5F5F5', 
+                    backgroundColor: isHome ? '#f2f2f2' : '#F5F5F5', 
                     color: '#333333', 
                     fontFamily: 'neue-haas-grotesk-text, sans-serif',
                     fontWeight: '400',
@@ -357,7 +362,7 @@ function HeaderClient() {
                   href="/servicios"
                   className="px-8 py-2 rounded-full"
                   style={{ 
-                    backgroundColor: '#F5F5F5', 
+                    backgroundColor: isHome ? '#f2f2f2' : '#F5F5F5', 
                     color: '#333333', 
                     fontFamily: 'neue-haas-grotesk-text, sans-serif',
                     fontWeight: '400',
@@ -382,7 +387,7 @@ function HeaderClient() {
                   href="/contacto"
                   className="px-8 py-2 rounded-full"
                   style={{ 
-                    backgroundColor: '#F5F5F5', 
+                    backgroundColor: isHome ? '#f2f2f2' : '#F5F5F5', 
                     color: '#333333', 
                     fontFamily: 'neue-haas-grotesk-text, sans-serif',
                     fontWeight: '400',

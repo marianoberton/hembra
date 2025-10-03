@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export default function ProyectosPage() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#e6e6e1' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f2f2f2' }}>
       <section className="pt-12 sm:pt-16 lg:pt-20">
         <div className="w-full px-2 sm:px-4 lg:px-6 pb-12">
           
@@ -42,7 +42,7 @@ export default function ProyectosPage() {
                   {/* Arrow - Centered on hover, black */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                     <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                      <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold', fontFamily: '"Liberation Sans", sans-serif' }}>→</span>
+                      <span style={{ color: '#ffffff', fontSize: '28px', fontWeight: 100, fontFamily: '"Helvetica Neue", sans-serif' }}>→</span>
                     </div>
                   </div>
                 </div>
@@ -86,7 +86,7 @@ export default function ProyectosPage() {
                     {/* Arrow - Centered on hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                        <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold', fontFamily: '"Liberation Sans", sans-serif' }}>→</span>
+                        <span style={{ color: '#ffffff', fontSize: '28px', fontWeight: 100, fontFamily: '"Helvetica Neue", sans-serif' }}>→</span>
                       </div>
                     </div>
                   </div>
@@ -128,7 +128,7 @@ export default function ProyectosPage() {
                     {/* Arrow - Centered on hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                        <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold', fontFamily: '"Liberation Sans", sans-serif' }}>→</span>
+                        <span style={{ color: '#ffffff', fontSize: '28px', fontWeight: 100, fontFamily: '"Helvetica Neue", sans-serif' }}>→</span>
                       </div>
                     </div>
                   </div>
@@ -166,7 +166,7 @@ export default function ProyectosPage() {
                     {/* Arrow - Centered on hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                        <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold', fontFamily: '"Liberation Sans", sans-serif' }}>→</span>
+                        <span style={{ color: '#ffffff', fontSize: '28px', fontWeight: 100, fontFamily: '"Helvetica Neue", sans-serif' }}>→</span>
                       </div>
                     </div>
                   </div>

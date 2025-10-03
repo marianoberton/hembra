@@ -88,9 +88,16 @@ export default function CardTitleSubtitle({
 
       {showArrow && (
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-          <span className="prowl-arrow">→</span>
+          <span 
+            className="prowl-arrow"
+            style={{
+              fontFamily: '"Helvetica Neue", sans-serif',
+              fontSize: '28px',
+              fontWeight: 100
+            }}
+          >→</span>
         </div>
       )}
     </BaseCard>
   );
-} 
+}

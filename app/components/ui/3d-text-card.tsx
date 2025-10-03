@@ -22,6 +22,7 @@ interface ThreeDTextCardProps {
   className?: string;
   svgPath?: string; // Nueva prop para mostrar SVG en lugar de texto
   compactText?: boolean; // Nueva prop para cards con texto largo
+  cardVariant?: 'card-5' | 'card-20'; // Nueva prop para identificar cards específicas sin mostrar números
 }
 
 export default function ThreeDTextCard({
@@ -36,7 +37,8 @@ export default function ThreeDTextCard({
   showArrow = true,
   className = '',
   svgPath, // Nueva prop para SVG
-  compactText = false // Nueva prop para texto compacto
+  compactText = false, // Nueva prop para texto compacto
+  cardVariant // Nueva prop para identificar cards específicas
 }: ThreeDTextCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   
@@ -62,7 +64,7 @@ export default function ThreeDTextCard({
       >
         {/* Card Number */}
         {cardNumber && (
-          <div className="absolute top-8 right-2 z-20">
+          <div className="absolute top-4 right-4 z-30">
             <div className="bg-red-500 text-white text-xs px-2 py-1 rounded font-bold">
               {cardNumber}
             </div>
@@ -78,55 +80,74 @@ export default function ThreeDTextCard({
 
         {/* Content */}
         <div 
-          className={`absolute inset-x-0 flex flex-col items-center justify-center text-center overflow-hidden ${
+          className={`absolute inset-x-0 flex flex-col items-center justify-center text-center overflow-visible ${
             compactText ? 'px-6 py-4' : 'px-4 py-6'
           }`}
           style={{ 
             color: finalTextColor,
-            backgroundColor: 'transparent',
-            top: (cardNumber === 5 || cardNumber === 20) ? 'clamp(50px, 10vh, 65px)' : 'clamp(45px, 8vh, 55px)', // Más espacio desde arriba en móvil
-            bottom: (cardNumber === 5 || cardNumber === 20) ? 'clamp(50px, 10vh, 65px)' : 'clamp(45px, 8vh, 55px)', // Más espacio desde abajo en móvil
+            // Mantener el espacio superior para acercar al badge verde
+            top: label || cardNumber ? 'clamp(50px, 10vh, 65px)' : 'clamp(35px, 6vh, 45px)',
+            // Ajustar bottom para que termine exactamente donde comienza la flecha (32px + padding)
+            bottom: showArrow ? '40px' : 'clamp(25px, 4vh, 35px)', // 32px (bottom-8) + 8px padding = 40px
+            margin: '0', // Sin margin para que termine exactamente donde comience la flecha
+            paddingTop: '5px',
             ...(compactText && {
-                maxHeight: (cardNumber === 5 || cardNumber === 20) ? 'calc(100% - clamp(100px, 20vh, 130px))' : 'calc(100% - clamp(90px, 16vh, 110px))', // Altura ajustada
-                marginTop: (cardNumber === 5 || cardNumber === 20) ? 'clamp(50px, 10vh, 65px)' : 'clamp(45px, 8vh, 55px)',
-                marginBottom: (cardNumber === 5 || cardNumber === 20) ? 'clamp(50px, 10vh, 65px)' : 'clamp(45px, 8vh, 55px)',
+                // Recalcular maxHeight considerando los nuevos espacios
+                maxHeight: (() => {
+                  const topSpace = label || cardNumber ? 'clamp(50px, 10vh, 65px)' : 'clamp(35px, 6vh, 45px)';
+                  const bottomSpace = showArrow ? '40px' : 'clamp(25px, 4vh, 35px)';
+                  return `calc(100% - ${topSpace} - ${bottomSpace})`;
+                })(),
+                marginTop: label || cardNumber ? 'clamp(50px, 10vh, 65px)' : 'clamp(35px, 6vh, 45px)',
+                marginBottom: showArrow ? '40px' : 'clamp(25px, 4vh, 35px)',
             })
           }}
         >
           {svgPath ? (
-            <div className="flex items-center justify-center h-full">
-              <Image
-                src={svgPath}
-                alt="Logo"
-                width={400}
-                height={80}
-                className="object-contain"
-                style={{ filter: finalTextColor === '#ffffff' ? 'invert(1)' : 'none' }}
-              />
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="w-full flex justify-center">
+                <Image
+                  src="/hembra_estudio.svg"
+                  alt="Hembra Estudio"
+                  width={300}
+                  height={130}
+                  className="object-contain"
+                  style={{ filter: finalTextColor === '#ffffff' ? 'invert(1)' : 'none' }}
+                />
+              </div>
             </div>
           ) : (
             <>
               {title && (
                 <div 
-                  className="w-full h-full flex items-center justify-center"
+                  className={`w-full flex items-start justify-center ${
+                    cardVariant === 'card-5' ? 'card-5-title' : cardVariant === 'card-20' ? 'card-20-title' : ''
+                  }`}
                   style={{ 
                     fontFamily: '"Helvetica Neue", sans-serif',
-                    fontSize: (cardNumber === 5 || cardNumber === 20) ? 'clamp(20px, 3.2vw, 28px)' : (compactText ? 'clamp(22px, 3.5vw, 28px)' : 'clamp(24px, 4vw, 36px)'), // Tamaños más pequeños para móvil
+                    ...(cardVariant !== 'card-5' && cardVariant !== 'card-20' && {
+                      fontSize: compactText ? 'clamp(18px, 3vw, 24px)' : 'clamp(20px, 3.4vw, 30px)'
+                    }),
                     fontStyle: 'normal',
                     fontWeight: 400, // Asegurar que no sea bold
                     letterSpacing: '0em',
-                    lineHeight: (cardNumber === 5 || cardNumber === 20) ? '100%' : (compactText ? '105%' : '110%'), // Línea más compacta
+                    lineHeight: (cardVariant === 'card-5' || cardVariant === 'card-20') ? '95%' : (compactText ? '100%' : '105%'), // Línea más compacta para evitar desbordamiento
                     textAlign: 'center' as const,
                     color: '#000000',
                     textDecoration: 'none',
                     textTransform: 'none',
                     backgroundColor: 'transparent',
-                    margin: (cardNumber === 5 || cardNumber === 20) ? 'clamp(0.5px, 0.2vw, 1px)' : '2px',
-                    padding: (cardNumber === 5 || cardNumber === 20) ? 'clamp(1px, 0.4vw, 2px)' : '4px',
+                    margin: (cardVariant === 'card-5' || cardVariant === 'card-20') ? 'clamp(0.5px, 0.2vw, 1px)' : '2px',
+                    paddingLeft: (cardVariant === 'card-5' || cardVariant === 'card-20') ? 'clamp(1px, 0.4vw, 2px)' : '3px',
+                    paddingRight: (cardVariant === 'card-5' || cardVariant === 'card-20') ? 'clamp(1px, 0.4vw, 2px)' : '3px',
+                    paddingBottom: (cardVariant === 'card-5' || cardVariant === 'card-20') ? 'clamp(1px, 0.4vw, 2px)' : '3px',
+                    paddingTop: '0px', // Sin padding superior para que empiece desde arriba
                     boxSizing: 'border-box',
-                    overflow: 'hidden', // Cambiar a hidden para evitar desbordamiento
+                    overflow: 'visible', // Cambiar a visible para mostrar todo el texto
                     wordWrap: 'break-word', // Permitir que las palabras se rompan
-                    hyphens: 'auto' // Activar guiones automáticos
+                    hyphens: 'auto', // Activar guiones automáticos
+                    minHeight: 'auto', // Altura automática basada en contenido
+                    flexShrink: 0, // No permitir que se encoja
                   }}
                 >
                   <span dangerouslySetInnerHTML={{ __html: title }} />
@@ -135,14 +156,18 @@ export default function ThreeDTextCard({
               
               {subtitle && (
                 <div 
-                  className={`${compactText ? 'mb-4 max-w-full' : 'mb-8 max-w-4xl'} overflow-hidden`}
+                  className={`${compactText ? 'mb-4 max-w-full' : 'mb-8 max-w-4xl'} overflow-hidden ${
+                    cardNumber === 5 ? 'card-5-subtitle' : cardNumber === 20 ? 'card-20-subtitle' : ''
+                  }`}
                   style={{ 
                     fontFamily: '"Helvetica Neue", sans-serif',
-                    fontSize: compactText ? '22px' : '32px',
+                    ...(cardNumber !== 5 && cardNumber !== 20 && {
+                      fontSize: compactText ? 'clamp(16px, 2.6vw, 20px)' : 'clamp(18px, 3vw, 26px)'
+                    }),
                     fontStyle: 'normal',
                     fontWeight: 400,
                     letterSpacing: '0em',
-                    lineHeight: compactText ? '110%' : '95%',
+                    lineHeight: compactText ? '105%' : '100%', // Más compacto para evitar desbordamiento
                     textAlign: 'center' as const,
                     color: '#000000',
                     textDecoration: 'none',
@@ -160,10 +185,14 @@ export default function ThreeDTextCard({
               )}
               
               {content && (
-                <p className={`text-body italic underline ${compactText ? 'max-w-full' : 'max-w-4xl'} overflow-hidden`} style={{
+                <p className={`text-body italic underline ${compactText ? 'max-w-full' : 'max-w-4xl'} overflow-hidden ${
+                  cardNumber === 5 ? 'card-5-content' : cardNumber === 20 ? 'card-20-content' : ''
+                }`} style={{
+                  ...(cardNumber !== 5 && cardNumber !== 20 && {
+                    fontSize: compactText ? 'clamp(12px, 2vw, 14px)' : 'clamp(14px, 2.4vw, 16px)'
+                  }),
+                  lineHeight: compactText ? '115%' : '120%', // Más compacto
                   ...(compactText && {
-                    fontSize: '16px',
-                    lineHeight: '120%',
                     display: '-webkit-box',
                     WebkitLineClamp: 3,
                     WebkitBoxOrient: 'vertical' as const,
@@ -179,8 +208,20 @@ export default function ThreeDTextCard({
 
         {/* Arrow */}
         {showArrow && (
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-            <span className={arrowClass}>→</span>
+          <div 
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center px-2 py-1"
+            style={{ 
+              zIndex: 10
+            }}
+          >
+            <span 
+              className={arrowClass}
+              style={{
+                fontFamily: '"Helvetica Neue", sans-serif',
+                fontSize: '28px',
+                fontWeight: 100
+              }}
+            >→</span>
           </div>
         )}
 

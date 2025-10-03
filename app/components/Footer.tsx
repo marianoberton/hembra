@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer 
       className="py-1 sm:py-2 lg:py-4"
-      style={{ backgroundColor: isHome ? '#ffffff' : '#e6e6e1' }}
+      style={{ backgroundColor: isHome ? '#ffffff' : '#f2f2f2' }}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         {/* Logo Gigante Central - Much larger */}
@@ -46,7 +46,7 @@ export default function Footer() {
             {/* Social Links - Left */}
             <div className="flex space-x-3 mb-6 sm:mb-0">
               <a 
-                href="https://www.instagram.com/hembra.studio/" 
+                href="https://www.instagram.com/hembra.estudio/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full transition-all duration-300 hover:bg-opacity-80 hover:scale-105"
@@ -68,7 +68,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a 
-                href="https://www.linkedin.com/company/hembra-studio/" 
+                href="https://www.linkedin.com/company/hembra.estudio&taller/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full transition-all duration-300 hover:bg-opacity-80 hover:scale-105"
@@ -91,12 +91,12 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* CTA - Right - Estilo igual a navbar */}
-            <div className="flex rounded-lg p-1" style={{backgroundColor: '#d0ddc3'}}>
+            {/* CTA - Right - Mismo color que iconos sociales */}
+            <div className="flex">
               <Link 
                 href="/contacto" 
-                className="px-6 py-2 rounded-md text-sm font-normal transition-all duration-300 prowl-label-white text-elegant bg-white shadow-sm"
-                style={{color: '#000'}}
+                className="px-6 py-2 rounded-full text-sm font-normal transition-all duration-300 hover:bg-opacity-80 hover:scale-105"
+                style={{backgroundColor: '#d0ddc3', color: '#000'}}
               >
                 Contacto
               </Link>

@@ -49,7 +49,7 @@ export default function ContactoPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#e6e6e1'}}>
+    <div className="min-h-screen" style={{backgroundColor: '#f2f2f2'}}>
       {/* Header */}
       <HeaderContacto />
       

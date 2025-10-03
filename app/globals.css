@@ -253,6 +253,59 @@ body {
   font-family: "Helvetica Neue", sans-serif;
 }
 
+/* Estilos por defecto para cards 5 y 20 */
+.card-5-title,
+.card-20-title {
+  font-size: clamp(16px, 2.6vw, 22px) !important;
+}
+
+.card-5-subtitle,
+.card-20-subtitle {
+  font-size: clamp(16px, 2.6vw, 20px) !important;
+}
+
+.card-5-content,
+.card-20-content {
+  font-size: clamp(12px, 2vw, 14px) !important;
+}
+
+/* Media query específica para cards 5 y 20 desde 1024px hasta 1099px */
+@media (min-width: 1024px) and (max-width: 1099px) {
+  /* Aumentar tamaño de fuente en 10 puntos adicionales para las cards específicas */
+  .card-5-title,
+  .card-20-title {
+    font-size: clamp(24px, 1.8vw, 30px) !important;
+  }
+  
+  .card-5-subtitle,
+  .card-20-subtitle {
+    font-size: clamp(24px, 1.6vw, 28px) !important;
+  }
+  
+  .card-5-content,
+  .card-20-content {
+    font-size: clamp(20px, 1.2vw, 22px) !important;
+  }
+}
+
+/* Media query para cards 5 y 20 desde 1100px en adelante - tamaño aumentado +6px */
+@media (min-width: 1100px) {
+  .card-5-title,
+  .card-20-title {
+    font-size: clamp(22px, 2.6vw, 28px) !important;
+  }
+  
+  .card-5-subtitle,
+  .card-20-subtitle {
+    font-size: clamp(22px, 2.6vw, 26px) !important;
+  }
+  
+  .card-5-content,
+  .card-20-content {
+    font-size: clamp(18px, 2vw, 20px) !important;
+  }
+}
+
 .text-headline {
   font-family: "Helvetica Neue", sans-serif;
   font-size: 40px;

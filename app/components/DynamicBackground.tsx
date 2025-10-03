@@ -33,13 +33,13 @@ export default function DynamicBackground() {
       document.body.classList.add('dynamic-bg-tienda');
       console.log('✅ DynamicBackground: WHITE for TIENDA/ECOMMERCE');
     } else {
-      document.documentElement.style.backgroundColor = '#e6e6e1';
-      document.body.style.backgroundColor = '#e6e6e1';
-      document.documentElement.style.setProperty('background-color', '#e6e6e1', 'important');
-      document.body.style.setProperty('background-color', '#e6e6e1', 'important');
+      document.documentElement.style.backgroundColor = '#f2f2f2';
+        document.body.style.backgroundColor = '#f2f2f2';
+        document.documentElement.style.setProperty('background-color', '#f2f2f2', 'important');
+        document.body.style.setProperty('background-color', '#f2f2f2', 'important');
       document.documentElement.classList.add('dynamic-bg-other');
       document.body.classList.add('dynamic-bg-other');
-      console.log('✅ DynamicBackground: #e6e6e1 for route:', pathname);
+      console.log('✅ DynamicBackground: #f2f2f2 for route:', pathname);
     }
 
   }, [pathname]);

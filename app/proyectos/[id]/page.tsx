@@ -26,7 +26,7 @@ export default function ProyectoDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#e6e6e1'}}>
+      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#f2f2f2'}}>
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#3D4A3D] mx-auto mb-4"></div>
           <h2 className="text-xl font-medium" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>Cargando proyecto...</h2>
@@ -37,7 +37,7 @@ export default function ProyectoDetailPage() {
 
   if (!proyecto) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#e6e6e1'}}>
+      <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#f2f2f2'}}>
         <div className="text-center">
           <h1 className="text-4xl font-light mb-4" style={{color: '#3D4A3D', fontFamily: 'Helvetica Neue, sans-serif'}}>Proyecto no encontrado</h1>
           <Link 
@@ -53,9 +53,9 @@ export default function ProyectoDetailPage() {
   }
 
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#e6e6e1'}}>
+    <div className="min-h-screen" style={{backgroundColor: '#f2f2f2'}}>
       {/* Navigation Bar */}
-      <div className="w-full border-b border-gray-200" style={{backgroundColor: '#e6e6e1'}}>
+      <div className="w-full border-b border-gray-200" style={{backgroundColor: '#f2f2f2'}}>
         <div className="w-full px-4 py-4 flex justify-between items-center">
           <Link 
             href="/proyectos"

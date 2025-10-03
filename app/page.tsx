@@ -10,14 +10,14 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Cards grid responsive */}
-      <div className="w-full px-2 sm:px-4 lg:px-6 pb-12 pt-4" style={{ paddingTop: '20px' }}>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 max-w-none">
+      <div className="w-full px-2 sm:px-4 lg:px-4 pb-12 pt-4" style={{ paddingTop: '20px' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-1 sm:gap-2 lg:gap-3 max-w-none">
           {/* COLUMN 1 (Left) - 8 cards */}
-          <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+          <div className="space-y-1 sm:space-y-2 lg:space-y-3">
             {/* 1. Hembra Estudio - CON SVG */}
             <ThreeDTextCard
               label="Estudio"
-              backgroundColor="#e6e6e1"
+              backgroundColor="#f2f2f2"
               textColor="#333333"
               showArrow={true}
               href="/estudio"
@@ -51,11 +51,12 @@ export default function HomePage() {
             <ThreeDTextCard
               label="Estudio"
               title="Creamos proyectos con un profundo enfoque en la sustentabilidad, ofreciendo soluciones estratégicas, creativas e innovadoras"
-              backgroundColor="#e6e6e1"
+              backgroundColor="#f2f2f2"
               textColor="#333333"
               showArrow={true}
               href="/estudio"
               compactText={false}
+              cardVariant="card-5"
             />
 
             {/* 6. Línea de Complementos - IMAGE HORIZONTAL */}
@@ -91,7 +92,7 @@ export default function HomePage() {
           </div>
 
           {/* COLUMN 2 (Center) - 5 cards + 3 elementos especiales = 8 elementos */}
-          <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+          <div className="space-y-1 sm:space-y-2 lg:space-y-3">
             {/* 9. Upcycled Luminarias - IMAGE HOVER */}
             <ImageCardHover
               src="/images/upcycled-luminarias.JPG"
@@ -138,7 +139,7 @@ export default function HomePage() {
           </div>
 
           {/* COLUMN 3 (Right) - 8 cards */}
-          <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+          <div className="space-y-1 sm:space-y-2 lg:space-y-3">
             {/* 16. Diseño de Objetos con Alma - TYPOGRAPHY (TIPO 4) */}
             <TypographyCard
               items={[
@@ -224,11 +225,12 @@ export default function HomePage() {
             <ThreeDTextCard
               label="Estudio"
               title="El pensamiento circular es urgente, no opcional. Desde la etapa cero evitamos desechos en su origen"
-              backgroundColor="#e6e6e1"
+              backgroundColor="#f2f2f2"
               textColor="#333333"
               showArrow={true}
               href="/estudio"
               compactText={false}
+              cardVariant="card-20"
             />
 
           </div>

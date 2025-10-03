@@ -92,7 +92,14 @@ export default function ImageCard({
 
       {showArrow && (
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-          <span className="prowl-arrow-white">→</span>
+          <span 
+            className={arrowClass}
+            style={{
+              fontFamily: '"Helvetica Neue", sans-serif',
+              fontSize: '28px',
+              fontWeight: 100
+            }}
+          >→</span>
         </div>
       )}
     </div>
@@ -107,4 +114,4 @@ export default function ImageCard({
   }
 
   return cardContent;
-} 
+}

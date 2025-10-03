@@ -41,7 +41,7 @@ export default function EstudioPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#e6e6e1'}}>
+    <div className="min-h-screen" style={{backgroundColor: '#f2f2f2'}}>
       
       {/* Main Header Section */}
       <div className="w-full px-2 sm:px-4 lg:px-6 py-16">
