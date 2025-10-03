@@ -107,25 +107,7 @@ function HeaderClient() {
             >
               Servicios
             </Link>
-            <Link 
-              href="/blog"
-              className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
-                isHome 
-                  ? 'bg-[#e6e6e1] border-transparent hover:bg-white hover:border-black' 
-                  : 'bg-white border-transparent hover:bg-[#e6e6e1] hover:border-black'
-              }`}
-              style={{ 
-                color: '#000', 
-                height: '36px',
-                minWidth: '75px',
-                padding: '0 42px',
-                fontSize: '14px',
-                fontFamily: '"Helvetica Neue", sans-serif',
-                fontWeight: '400'
-              }}
-            >
-              Blog
-            </Link>
+
             <Link 
               href="/contacto"
               className={`flex items-center justify-center rounded-full nav-button transition-all duration-200 border ${
@@ -189,26 +171,30 @@ function HeaderClient() {
         <div className="lg:hidden flex items-center justify-center space-x-2 py-4 px-4 overflow-hidden">
           
           {/* Logo Button */}
-          <div className="px-6 py-2 rounded-full flex items-center justify-center"
-               style={{ 
-                 backgroundColor: '#969697', 
-                 color: '#FFF', 
-                 fontFamily: '"Helvetica Neue", sans-serif',
-                 height: '36px', 
-                 fontWeight: '400',
-                 fontSize: '10px',
-                 letterSpacing: '0',
-                 lineHeight: '1.2em',
-                 textAlign: 'center',
-                 textTransform: 'none',
-                 textDecoration: 'none',
-                 display: 'flex',
-                 alignItems: 'center',
-                 justifyContent: 'center',
-                 flex: '1 1 35%'
-               }}>
+          <button 
+            onClick={() => window.location.href = '/'}
+            className="px-6 py-2 rounded-full flex items-center justify-center cursor-pointer"
+            style={{ 
+              backgroundColor: '#969697', 
+              color: '#FFF', 
+              fontFamily: '"Helvetica Neue", sans-serif',
+              height: '36px', 
+              fontWeight: '400',
+              fontSize: '10px',
+              letterSpacing: '0',
+              lineHeight: '1.2em',
+              textAlign: 'center',
+              textTransform: 'none',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flex: '1 1 35%',
+              border: 'none'
+            }}
+          >
             HEMBRA
-          </div>
+          </button>
           
           {/* Menu Button */}
           <button 
@@ -391,30 +377,7 @@ function HeaderClient() {
                 >
                   Servicios
                 </Link>
-                <Link 
-                  href="/blog"
-                  className="px-8 py-2 rounded-full"
-                  style={{ 
-                    backgroundColor: '#F5F5F5', 
-                    color: '#333333', 
-                    fontFamily: 'neue-haas-grotesk-text, sans-serif',
-                    fontWeight: '400',
-                    fontSize: '10px',
-                    letterSpacing: '0em',
-                    lineHeight: '102%',
-                    textAlign: 'center',
-                    textTransform: 'none',
-                    textDecoration: 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '37px',
-                    width: '147px'
-                  }}
-                  onClick={closeMobileMenu}
-                >
-                  Blog
-                </Link>
+
                 <Link 
                   href="/contacto"
                   className="px-8 py-2 rounded-full"

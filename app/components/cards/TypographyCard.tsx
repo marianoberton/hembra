@@ -60,33 +60,53 @@ export default function TypographyCard({
       cardNumber={cardNumber}
       href={href}
     >
-      {/* Label - positioned like other cards */}
+      {/* Label - positioned with equal distance from top */}
       {label && (
-        <div className={`absolute top-8 left-1/2 transform -translate-x-1/2 ${labelClass}`}>
+        <div 
+          className={`absolute top-6 left-1/2 transform -translate-x-1/2 ${labelClass}`}
+          style={{ 
+            zIndex: 10
+          }}
+        >
           {label}
         </div>
       )}
 
-      {/* Main content area with consistent spacing */}
-      <div className="space-y-2 text-center mt-8 mb-4">
-        {items.map((item, index) => (
-          <div 
-            key={index} 
-            className={item.className || 'font-light'}
-            style={{
-              fontSize: item.fontSize || '32px',
-              color: isDarkBackground ? '#ffffff' : (item.color || 'inherit'),
-              fontFamily: '"Helvetica Neue", sans-serif'
-            }}
-          >
-            {item.text}
-          </div>
-        ))}
+      {/* Main content area - better centering for mobile */}
+      <div 
+        className="absolute inset-0 flex flex-col justify-center items-center px-4"
+        style={{ 
+          paddingTop: '50px',
+          paddingBottom: '50px',
+          zIndex: 1
+        }}
+      >
+        <div className="space-y-1 text-center w-full">
+          {items.map((item, index) => (
+            <div 
+              key={index} 
+              className={item.className || 'font-light'}
+              style={{
+                fontSize: item.fontSize || '32px',
+                color: isDarkBackground ? '#ffffff' : (item.color || 'inherit'),
+                fontFamily: '"Helvetica Neue", sans-serif',
+                lineHeight: '1.2'
+              }}
+            >
+              {item.text}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Arrow - positioned like other cards */}
+      {/* Arrow - positioned with equal distance from bottom */}
       {showArrow && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+        <div 
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center justify-center"
+          style={{ 
+            zIndex: 10
+          }}
+        >
           <span className={arrowClass}>→</span>
         </div>
       )}

@@ -17,16 +17,16 @@ function AccordionItem({ title, content, isOpen, onToggle }: AccordionItemProps)
     <div className="border-b border-gray-200">
       <button
         onClick={onToggle}
-        className="flex items-center justify-between w-full py-6 text-left"
+        className="flex items-center justify-between w-full py-3 text-left"
       >
-        <span className="text-headline text-gray-900" style={{fontFamily: 'Helvetica Neue, sans-serif'}}>{title}</span>
-        <span className="text-xl text-gray-500">
+        <span className="text-gray-900" style={{fontFamily: 'Helvetica Neue, sans-serif', fontSize: '20px', fontWeight: '500'}}>{title}</span>
+        <span className="text-lg text-gray-500">
           {isOpen ? '−' : '+'}
         </span>
       </button>
       {isOpen && (
-        <div className="pb-6">
-          <p className="text-black leading-relaxed" style={{fontSize: '18px', lineHeight: '1.6', fontFamily: 'Helvetica Neue, sans-serif'}}>{content}</p>
+        <div className="pb-3">
+          <p className="text-black" style={{fontSize: '17px', lineHeight: '1.4', fontFamily: 'Helvetica Neue, sans-serif'}}>{content}</p>
         </div>
       )}
     </div>
@@ -96,13 +96,13 @@ export default function EstudioPage() {
 
       {/* Principles Section */}
       <div className="w-full px-2 sm:px-4 lg:px-6 py-16">
-        <h2 className="prowl-label mb-8 uppercase" style={{fontFamily: 'Inter, sans-serif', fontSize: '24px', fontWeight: '600'}}>
+        <h2 className="prowl-label mb-8 uppercase text-center" style={{fontFamily: 'Inter, sans-serif', fontSize: '24px', fontWeight: '600'}}>
           Principios
         </h2>
         
-        {/* Accordion - Full Width */}
-        <div className="w-full mb-16">
-          <div className="space-y-1">
+        {/* Accordion - Centered */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="space-y-0">
             <AccordionItem
               title="¿Qué es el Diseño Regenerativo?"
               content="El diseño regenerativo es un enfoque que va más allá de la sostenibilidad. Mientras la sostenibilidad busca mantener el status quo, el diseño regenerativo busca mejorar y restaurar los sistemas naturales y sociales. Es diseñar con la intención de crear impactos positivos duraderos."

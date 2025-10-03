@@ -19,7 +19,9 @@ export default function BaseCard({
   cardNumber 
 }: BaseCardProps) {
   const baseClasses = "relative rounded-xl overflow-hidden";
-  const combinedClasses = `${baseClasses} ${className}`;
+  // Add hover zoom effect when href is provided (clickable cards)
+  const hoverClasses = href ? "group hover:scale-105 transition-transform duration-700 cursor-pointer" : "";
+  const combinedClasses = `${baseClasses} ${hoverClasses} ${className}`;
 
   const cardContent = (
     <>
@@ -53,4 +55,4 @@ export default function BaseCard({
       {cardContent}
     </div>
   );
-} 
+}

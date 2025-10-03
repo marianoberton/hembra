@@ -14,16 +14,16 @@ export default function Footer() {
 
   return (
     <footer 
-      className="py-16 sm:py-20 lg:py-24 border-t border-gray-100"
+      className="py-1 sm:py-2 lg:py-4"
       style={{ backgroundColor: isHome ? '#ffffff' : '#e6e6e1' }}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         {/* Logo Gigante Central - Much larger */}
-        <div className="text-center mb-16">
-          <div className="relative w-full mb-8" style={{ height: '500px' }}>
+        <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+          <div className="relative w-full mb-0 h-24 sm:h-32 md:h-40 lg:h-64 xl:h-80">
             {!logoError ? (
               <Image
-                src="/images/logo.jpg"
+                src="/hembra.svg"
                 alt="Hembra"
                 fill
                 className="object-contain opacity-90"

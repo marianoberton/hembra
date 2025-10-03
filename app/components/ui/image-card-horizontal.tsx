@@ -32,7 +32,7 @@ export default function ImageCardHorizontal({
           alt={alt}
           fill
           sizes="max((min(100vw, 1920px) - 56px) / 3, 1px)"
-          className="object-cover group-hover:scale-105 transition-transform duration-700"
+          className="object-cover group-hover:scale-105 md:group-hover:scale-105 group-active:scale-105 transition-transform duration-700"
           priority={!!(cardNumber && cardNumber <= 12)}
         />
 
@@ -58,9 +58,9 @@ export default function ImageCardHorizontal({
           </div>
         )}
 
-        {/* Title Overlay - Appears on hover with black semi-transparent background like in /proyectos */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-          <div className="text-center px-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+        {/* Title overlay */}
+        <div className="absolute inset-0 bg-black/30 opacity-100 md:opacity-0 md:group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div className="text-center px-6 transform translate-y-0 md:translate-y-4 group-hover:translate-y-0 md:group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-500">
             <h2 className="text-headline-white">
               {title}
             </h2>
@@ -69,7 +69,7 @@ export default function ImageCardHorizontal({
 
         {/* Arrow - Centered on hover, white */}
         {showArrow && (
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+          <div className="absolute inset-0 opacity-100 md:opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 flex items-center justify-center">
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
               <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold', fontFamily: '"Liberation Sans", sans-serif' }}>→</span>
             </div>
