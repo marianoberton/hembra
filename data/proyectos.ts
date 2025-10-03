@@ -5,7 +5,7 @@ export const proyectos: Proyecto[] = [
     id: 'florero-betty',
     title: 'Florero Betty',
     subtitle: 'Diseño Sustentable',
-    description: 'Florero artesanal creado a partir de materiales recuperados',
+    description: 'Las botellas de vino desechadas constituyen una gran parte de los residuos de vidrio de nuestro planeta. Pero, ¿y si pudiéramos darles una segunda vida y transformarlas en algo realmente hermoso? Nos enorgullece presentar nuestro tan preciado Florero Betty.',
     detailDescription: 'Las <strong>botellas de vino desechadas</strong> constituyen una gran parte de los residuos de vidrio de nuestro planeta. Pero, ¿y si pudiéramos darles una <strong>segunda vida</strong> y transformarlas en algo realmente hermoso? Nos enorgullece presentar nuestro tan preciado <strong>Florero Betty</strong>. Este jarrón no solo es una pieza decorativa, sino también un <strong>símbolo de sostenibilidad</strong> y compromiso social. Lo diseñamos bajo el concepto de <strong>upcycling</strong>, dándole un nuevo valor a materiales que de otra manera serían desechados. Esta elaborado <strong>100% a mano</strong>, su cuerpo está hecho a partir de botellas de vino reutilizadas, y su base se fabrica con <strong>retazos de chapa recuperada</strong> de chatarreras. Al reutilizar estas botellas, no solo estamos <strong>reduciendo significativamente los residuos</strong>, sino que también estamos creando <strong>oportunidades laborales</strong> en nuestra comunidad local. Trabajamos de cerca con una red de talleros en el conurbano y con la cooperativa Supercrea, quienes se encargan de proveernos estos envases de vidrio recuperados. Así, hemos logrado construir una <strong>red de actores comprometidos</strong> con el medio ambiente y el desarrollo social.',
     image: '/images/1. Florero Betty/Copia de Betty Vase Colours.jpg',
     gallery: [
@@ -36,27 +36,36 @@ export const proyectos: Proyecto[] = [
   },
   {
     id: 'linea-complementos-chapa',
-    title: 'Línea de Complementos en Chapa',
-    subtitle: 'Repusaje Artesanal',
-    description: 'Serie de objetos funcionales trabajados con técnica de repusaje',
-    detailDescription: 'Esta línea representa la <strong>maestría del repusaje</strong> aplicada a objetos cotidianos. Cada pieza surge de la colaboración con <strong>talleristas especializados</strong> en Villa Bosch, utilizando <strong>matrices recuperadas</strong> y chapa reciclada para crear complementos únicos que combinan <strong>funcionalidad y expresión artística</strong>.',
-    image: '/images/linea-complementos-chapa.jpeg',
-    gallery: ['/images/linea-complementos-chapa.jpeg', '/images/7work.avif', '/images/5work.avif'],
+    title: 'Línea de complementos de chapa',
+    subtitle: 'Tradición Artesanal',
+    description: 'Una colección que combina tradición artesanal y conciencia material: piezas creadas a partir de retazos recuperados, moldeadas en el torno por manos expertas y terminadas con la nobleza de un oficio transmitido por generaciones.',
+    detailDescription: 'Una colección que combina <strong>tradición artesanal</strong> y conciencia material: piezas creadas a partir de <strong>retazos recuperados</strong>, moldeadas en el torno por manos expertas y terminadas con la nobleza de un oficio transmitido por generaciones.',
+    image: '/images/2. Linea de Complementos en Chapa/IMG_1240.JPG',
+    gallery: [
+      '/images/2. Linea de Complementos en Chapa/IMG_1240.JPG',
+      '/images/2. Linea de Complementos en Chapa/Copia de IMG_1216.JPG',
+      '/images/2. Linea de Complementos en Chapa/Copia de IMG_1221.JPG',
+      '/images/2. Linea de Complementos en Chapa/Copia de IMG_1279.JPG',
+      '/images/2. Linea de Complementos en Chapa/Copia de IMG_1573-01.jpeg',
+      '/images/2. Linea de Complementos en Chapa/IMG_0219-01.jpeg',
+      '/images/2. Linea de Complementos en Chapa/IMG_1539-01.jpeg',
+      '/images/2. Linea de Complementos en Chapa/Copia de 20201029_152255-1.jpg'
+    ],
     backgroundColor: '#a8836d',
     category: 'Funcional',
     year: '2023',
-    collaborators: ['Taller de Repusaje Villa Bosch'],
-    materials: ['Chapa recuperada', 'Matrices reutilizadas', 'Acabados naturales'],
-    process: ['Recuperación de chapa', 'Preparación de matrices', 'Torneado manual', 'Acabado artesanal'],
+    collaborators: ['Oscar - Maestro Repujador del Conurbano Bonaerense'],
+    materials: ['Chapa recuperada de chatarreras', 'Pintura horneable', 'Técnica de torneado'],
+    process: ['Cada objeto comienza con discos de chapa recuperada de chatarreras, moldeados en el torno hasta obtener formas limpias y volumétricas. El acabado final se realiza en talleres locales con pintura horneable que asegura color y durabilidad.'],
     impact: {
-      environmental: 'Reutiliza 95% de materiales que serían descartados',
-      social: 'Mantiene viva la tradición del repusaje argentino',
-      economic: 'Reduce costos de materias primas en 60%'
+      environmental: 'Transformación de materiales descartados en elementos de valor',
+      social: 'La colección nace en el taller de Oscar, maestro repujador del conurbano bonaerense. Su oficio, heredado de familia, mantiene viva la técnica del torneado de metales y otorga identidad única a cada pieza.',
+      economic: 'Más que objetos complementarios, son piezas que dialogan entre el diseño contemporáneo y el respeto por el ciclo de los materiales, transformando lo descartado en elementos de valor y belleza perdurable.'
     },
     specifications: {
       dimensions: 'Variables según pieza',
       weight: '0.5kg - 2kg',
-      colors: ['Cobre natural', 'Hierro oxidado', 'Bronce patinado']
+      colors: ['Acabados con pintura horneable', 'Colores diversos', 'Durabilidad garantizada']
     },
     status: 'completed',
     featured: true
@@ -183,4 +192,4 @@ export const proyectos: Proyecto[] = [
     status: 'completed',
     featured: true
   }
-]; 
+];

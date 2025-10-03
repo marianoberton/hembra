@@ -6,7 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { proyectos } from '../../../data/proyectos';
 import { Proyecto } from '../../../types/proyectos';
-import ProjectHeader from '../../components/ProjectHeader';
+import TextBlock from '../../components/ui/TextBlock';
+import TitleDescription from '../../components/ui/TitleDescription';
+import Footer from '../../components/Footer';
 
 export default function ProyectoDetailPage() {
   const params = useParams();
@@ -67,21 +69,22 @@ export default function ProyectoDetailPage() {
         </div>
       </div>
 
-      {/* Header con título del proyecto */}
-      <ProjectHeader 
-        title={proyecto.title}
-        subtitle={proyecto.subtitle}
-        backgroundColor="#d0ddc3"
-      />
-
       {/* Contenedor Principal */}
       <div className="w-full px-2 sm:px-4 lg:px-6">
         
         {/* Sección 1: Proyecto (Introducción) */}
-        <section className="py-8">
+        <section className="pt-1 sm:pt-2 lg:pt-3 pb-4">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
             {/* Columna Izquierda - 60% (3/5) */}
             <div className="lg:col-span-3">
+              <TitleDescription 
+                title={proyecto.title}
+                description={proyecto.description}
+              />
+            </div>
+            
+            {/* Columna Derecha - 40% (2/5) */}
+            <div className="lg:col-span-2">
               <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
                 <Image
                   src={proyecto.image}
@@ -92,81 +95,44 @@ export default function ProyectoDetailPage() {
                 />
               </div>
             </div>
-            
-            {/* Columna Derecha - 40% (2/5) */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
-                  Las botellas de vino desechadas constituyen una gran parte de los residuos de vidrio de nuestro planeta. 
-                  Pero, ¿y si pudiéramos darles una segunda vida y transformarlas en algo realmente hermoso? 
-                  Nos enorgullece presentar nuestro tan preciado {proyecto.title}.
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* Línea de separación */}
-        <div className="w-full h-px bg-gray-300 my-8"></div>
-
         {/* Sección 2: Galería de Estilo de Vida */}
-        <section className="py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <section>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 sm:gap-2 lg:gap-3">
             {/* Columna Izquierda - 50% */}
-            <div className="space-y-4">
-              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
-                <Image
-                  src={proyecto.gallery[0] || proyecto.image}
-                  alt={`${proyecto.title} - Ambiente 1`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
-                <Image
-                  src={proyecto.gallery[1] || proyecto.image}
-                  alt={`${proyecto.title} - Ambiente 2`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+            <div className="space-y-1 sm:space-y-2 lg:space-y-3">
+            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
+              <Image
+                src={proyecto.gallery[1] || proyecto.image}
+                alt={`${proyecto.title} - Ambiente 1`}
+                fill
+                className="object-contain bg-gray-50"
+              />
             </div>
+          </div>
             
             {/* Columna Derecha - 50% */}
-            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-xl">
+            <div className="relative w-full aspect-[4/5] overflow-hidden rounded-xl">
               <Image
                 src={proyecto.gallery[2] || proyecto.image}
                 alt={`${proyecto.title} - Con flores`}
                 fill
-                className="object-cover"
+                className="object-contain bg-gray-50"
               />
             </div>
           </div>
         </section>
 
-        {/* Línea de separación */}
-        <div className="w-full h-px bg-gray-300 my-8"></div>
-
         {/* Sección 3: Proceso de Elaboración */}
-        <section className="py-8 space-y-6">
+        <section className="pt-1 sm:pt-2 lg:pt-3 space-y-1 sm:space-y-2 lg:space-y-3">
           {/* Bloque 1: Título y Descripción del Proceso */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
-                Proceso
-              </h2>
-            </div>
-            <div className="lg:col-span-3">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
-                  Esta elaborado 100% a mano, su cuerpo está hecho a partir de botellas de vino reutilizadas, 
-                  y su base se fabrica con retazos de chapa recuperada de chatarreras. Al reutilizar estas botellas, 
-                  no solo estamos reduciendo significativamente los residuos, sino que también estamos creando 
-                  oportunidades laborales en nuestra comunidad local.
-                </p>
-              </div>
-            </div>
-          </div>
+          <TextBlock 
+            title="Proceso"
+            content={proyecto.process[0]}
+            showSeparator={true}
+          />
 
           {/* Bloque 2: Imagen del Taller */}
           <div className="w-full">
@@ -175,7 +141,7 @@ export default function ProyectoDetailPage() {
                 src={proyecto.gallery[3] || proyecto.image}
                 alt={`${proyecto.title} - Proceso de elaboración`}
                 fill
-                className="object-cover"
+                className="object-contain bg-gray-50"
               />
             </div>
           </div>
@@ -187,39 +153,26 @@ export default function ProyectoDetailPage() {
                 src={proyecto.gallery[4] || proyecto.image}
                 alt={`${proyecto.title} - Materiales utilizados`}
                 fill
-                className="object-cover"
+                className="object-contain bg-gray-50"
               />
             </div>
           </div>
         </section>
 
-        {/* Línea de separación */}
-        <div className="w-full h-px bg-gray-300 my-8"></div>
-
         {/* Sección 4: Vista y Detalle del Diseño */}
-        <section className="py-8 space-y-6">
+        <section className="pt-1 sm:pt-2 lg:pt-3 space-y-1 sm:space-y-2 lg:space-y-3">
           {/* Bloque 1: Título y Concepto de Diseño */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
-                Diseño con Propósito
-              </h2>
-            </div>
-            <div className="lg:col-span-3">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
-                  Este jarrón no solo es una pieza decorativa, sino también un símbolo de sostenibilidad y compromiso social. 
-                  Lo diseñamos bajo el concepto de upcycling, dándole un nuevo valor a materiales que de otra manera serían desechados.
-                </p>
-              </div>
-            </div>
-          </div>
+          <TextBlock 
+            title="Diseño con Propósito"
+            content={proyecto.impact.economic}
+            showSeparator={true}
+          />
 
           {/* Bloque 2: Imágenes de Producto en Detalle */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 sm:gap-2 lg:gap-3">
             <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
               <Image
-                src={proyecto.gallery[0] || proyecto.image}
+                src={proyecto.gallery[5] || proyecto.image}
                 alt={`${proyecto.title} - Detalle`}
                 fill
                 className="object-cover"
@@ -227,7 +180,7 @@ export default function ProyectoDetailPage() {
             </div>
             <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
               <Image
-                src={proyecto.gallery[1] || proyecto.image}
+                src={proyecto.gallery[6] || proyecto.image}
                 alt={`${proyecto.title} - Proceso`}
                 fill
                 className="object-cover"
@@ -236,34 +189,20 @@ export default function ProyectoDetailPage() {
           </div>
         </section>
 
-        {/* Línea de separación */}
-        <div className="w-full h-px bg-gray-300 my-8"></div>
-
         {/* Sección 5: Nuestra Red de Colaboradores */}
-        <section className="py-8 space-y-6">
+        <section className="pt-1 sm:pt-2 lg:pt-3 space-y-1 sm:space-y-2 lg:space-y-3">
           {/* Bloque 1: Título y Descripción de la Colaboración */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl font-light" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
-                Impacto Social
-              </h2>
-            </div>
-            <div className="lg:col-span-3">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-lg leading-relaxed" style={{color: '#2C2C2C', fontFamily: 'Helvetica Neue, sans-serif'}}>
-                  Trabajamos de cerca con una red de talleros en el conurbano y con la cooperativa Supercrea, 
-                  quienes se encargan de proveernos estos envases de vidrio recuperados. Así, hemos logrado construir 
-                  una red de actores comprometidos con el medio ambiente y el desarrollo social.
-                </p>
-              </div>
-            </div>
-          </div>
+          <TextBlock 
+            title="Herencia Artesanal"
+            content={proyecto.impact.social}
+            showSeparator={true}
+          />
 
           {/* Bloque 2: Imagen Contextual de la Comunidad */}
           <div className="w-full">
             <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
               <Image
-                src={proyecto.gallery[2] || proyecto.image}
+                src={proyecto.gallery[7] || proyecto.image}
                 alt={`${proyecto.title} - Comunidad`}
                 fill
                 className="object-cover"
@@ -308,6 +247,9 @@ export default function ProyectoDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* Footer con logo gigante */}
+      <Footer />
     </div>
   );
 }

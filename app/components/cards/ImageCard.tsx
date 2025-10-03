@@ -41,6 +41,9 @@ export default function ImageCard({
     }
   };
 
+  // Define arrowClass for consistency with other card components
+  const arrowClass = 'prowl-arrow-white';
+
   const cardContent = (
     <div 
       className={`bg-gray-100 relative overflow-hidden rounded-xl w-full ${href ? 'group cursor-pointer' : ''} ${className}`}
